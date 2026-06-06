@@ -1,0 +1,20 @@
+# Configuración de Netlify (opcional). Si arrastrás la carpeta a netlify.com/drop
+# no hace falta tocar nada; esto sirve si conectás un repo de Git.
+
+[build]
+  publish = "."
+  command = ""
+
+# Cabeceras de seguridad básicas
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Cache largo para imágenes (se sirven más rápido)
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
