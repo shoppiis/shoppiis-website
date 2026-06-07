@@ -121,8 +121,8 @@ const DICT = {
   // --- 04 Metrics ---
   "04 / By The Numbers": "04 / En números",
   "Real operations, measured.": "Operaciones reales, medidas.",
-  "Operational metrics from active Shoppiis Cargo routes.":
-    "Métricas operativas de rutas activas de Shoppiis Cargo.",
+  "Operational metrics from active Shoppiis Cargo routes across Florida.":
+    "Métricas operativas de rutas activas de Shoppiis Cargo por toda Florida.",
   "(Placeholders &mdash; populate with verified figures before publishing.)":
     "(Marcadores &mdash; completá con cifras verificadas antes de publicar.)",
   "Vehicles Moved": "Vehículos movidos",
@@ -230,6 +230,7 @@ const DICT = {
     "Opiniones reales de concesionarios, brókers y clientes particulares.",
   "(Placeholders &mdash; replace with verified testimonials. Tip: also collect reviews on your CarrierSource profile.)":
     "(Marcadores &mdash; reemplazá con testimonios verificados. Tip: juntá reseñas también en tu perfil de CarrierSource.)",
+  "ADD REAL QUOTE": "AGREGAR RESEÑA REAL",
   "Customer testimonial goes here &mdash; a sentence or two about reliability, communication, or condition on delivery.":
     "Acá va el testimonio del cliente &mdash; una o dos frases sobre confiabilidad, comunicación o estado en la entrega.",
   "Customer Name": "Nombre del cliente",
@@ -278,21 +279,55 @@ const DICT = {
   "Other": "Otros",
   "Investor inquiries": "Consultas de inversores",
   "Partner with us": "Asociate con nosotros",
-  "FMCSA SAFER lookup": "Verificar en FMCSA SAFER"
+  "FMCSA SAFER lookup": "Verificar en FMCSA SAFER",
+  "INTERSTATE · PROPERTY · $1M INSURED": "INTERESTATAL · PROPIEDAD · $1M ASEGURADO"
 };
 
-/* ---- 1. Auto-etiquetado: pone data-en / data-es donde haya traducción ---- */
+/* ---- 1. Auto-etiquetado: pone data-en / data-es donde haya traducción ----
+   El navegador serializa las entidades HTML al leer innerHTML / nodeValue
+   (&mdash; → "—", &rsquo; → "’", &middot; → "·", & → &amp;…). Para que las
+   claves del DICT coincidan SIEMPRE, normalizamos ambos lados pasándolos por
+   el mismo serializador del DOM antes de comparar. Así dejan de fallar los
+   textos con guiones largos, comillas, viñetas, etc. */
+const _normEl = document.createElement('div');
+function normKey(str){ _normEl.innerHTML = str; return _normEl.innerHTML.trim(); }
+
+/* Índice: forma normalizada del inglés -> { en: claveOriginal, es: traducción } */
+const LOOKUP = {};
+Object.keys(DICT).forEach(k => { LOOKUP[normKey(k)] = { en: k, es: DICT[k] }; });
+
 (function tagTranslatables(){
   const sel = 'a, p, h1, h2, h3, h4, span, label, button, option, div, li, small, b, strong, em';
   document.querySelectorAll(sel).forEach(el=>{
     if (el.hasAttribute('data-en')) return;        // respeta lo puesto a mano
-    if (el.children.length === 0) {                // solo texto puro
-      const key = el.innerHTML.trim();
-      if (key && DICT[key]) {
-        el.setAttribute('data-en', key);
-        el.setAttribute('data-es', DICT[key]);
+    if (el.childElementCount === 0) {              // texto puro: traducimos el elemento entero
+      const hit = LOOKUP[normKey(el.innerHTML.trim())];
+      if (hit) {
+        el.setAttribute('data-en', hit.en);
+        el.setAttribute('data-es', hit.es);
       }
+      return;
     }
+    // Mezcla de texto + hijos (ej. la "+" del FAQ, el <small> de credibilidad,
+    // el <b> de testimonios): envolvemos solo los nodos de texto que matcheen.
+    Array.from(el.childNodes).forEach(node=>{
+      if (node.nodeType !== 3) return;             // solo nodos de texto
+      const trimmed = node.nodeValue.trim();
+      if (!trimmed) return;
+      const hit = LOOKUP[normKey(trimmed)];
+      if (!hit) return;
+      const span = document.createElement('span');
+      span.setAttribute('data-en', hit.en);
+      span.setAttribute('data-es', hit.es);
+      span.innerHTML = hit.en;
+      const lead = node.nodeValue.match(/^\s*/)[0];
+      const trail = node.nodeValue.match(/\s*$/)[0];
+      const frag = document.createDocumentFragment();
+      if (lead) frag.appendChild(document.createTextNode(lead));
+      frag.appendChild(span);
+      if (trail) frag.appendChild(document.createTextNode(trail));
+      el.replaceChild(frag, node);
+    });
   });
   document.querySelectorAll('input[placeholder], textarea[placeholder]').forEach(el=>{
     if (el.hasAttribute('data-ph-en')) return;
@@ -341,6 +376,7 @@ const WA_MSG = {
 };
 function setLang(lang){
   document.documentElement.lang = lang;
+  try { localStorage.setItem('shoppiis-lang', lang); } catch(e){}
   document.querySelectorAll('[data-en]').forEach(el => {
     const val = el.getAttribute('data-' + lang);
     if (val !== null) el.innerHTML = val;
@@ -364,6 +400,15 @@ function setLang(lang){
 document.querySelectorAll('[data-lang-toggle] button').forEach(b => {
   b.addEventListener('click', () => setLang(b.getAttribute('data-lang')));
 });
+
+/* Idioma inicial: recordamos la última elección; si no hay, usamos el idioma
+   del navegador (español si corresponde) y, por defecto, inglés. */
+(function initLang(){
+  let saved;
+  try { saved = localStorage.getItem('shoppiis-lang'); } catch(e){}
+  const browser = (navigator.language || '').toLowerCase().startsWith('es') ? 'es' : 'en';
+  setLang(saved === 'es' || saved === 'en' ? saved : browser);
+})();
 
 /* ---- 7. Formulario de cotización ----
    PASO 1: creá una clave gratis en https://web3forms.com (te pide solo el email
