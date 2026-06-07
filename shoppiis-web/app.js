@@ -30,7 +30,7 @@ const DICT = {
   // --- Hero ---
   "FMCSA-AUTHORIZED FLORIDA AUTO CARRIER · USDOT 4261491":
     "TRANSPORTISTA DE AUTOS EN FLORIDA · AUTORIZADO FMCSA · USDOT 4261491",
-  "Your vehicles, moved across": "Tus vehículos, transportados por toda",
+  "Your vehicles, moved across": "Sus vehículos, transportados por toda",
   "&mdash; safely, on time, fully insured.": "&mdash; seguros, a tiempo y asegurados.",
   "Shoppiis Cargo is an owner-operated vehicle transport company hauling cars across Florida and the Southeast for dealerships, manufacturers, private customers, and government loads. Real trucks, real routes, real accountability.":
     "Shoppiis Cargo es una empresa de transporte de vehículos, operada por sus dueños, que traslada autos por Florida y el sureste para concesionarios, fabricantes, clientes particulares y cargas gubernamentales. Camiones reales, rutas reales, responsabilidad real.",
@@ -82,7 +82,7 @@ const DICT = {
     "Cada carga viaja en camiones y tráileres operados por Shoppiis. Ganamos la carga, manejamos la ruta y respondemos por el resultado &mdash; sin entregas anónimas a un desconocido.",
   "Dealer-to-Dealer Transfers": "Traslados entre concesionarios",
   "Move inventory between dealership locations quickly, with clear pickup and delivery windows you can plan around.":
-    "Mové inventario entre sucursales rápido, con ventanas claras de recogida y entrega para planificar.",
+    "Mueva inventario entre sucursales con rapidez, con ventanas claras de recogida y entrega para planificar.",
   "Auction &amp; Manufacturer Deliveries": "Entregas de subasta y fábrica",
   "Reliable, repeatable hauling of auction purchases and manufacturer deliveries on established regional lanes.":
     "Transporte confiable y repetible de compras en subasta y entregas de fábrica en rutas regionales establecidas.",
@@ -98,33 +98,33 @@ const DICT = {
   "Built for shippers who are tired of chasing carriers.":
     "Hecho para quienes están cansados de perseguir transportistas.",
   "The auto-transport market is full of brokers who pass your vehicle to whoever answers. We run it differently &mdash; we own the trucks, we drive the routes, and you deal directly with the people responsible for your shipment.":
-    "El mercado del transporte de autos está lleno de brókers que le pasan tu vehículo a cualquiera. Nosotros lo hacemos distinto &mdash; somos dueños de los camiones, manejamos las rutas y tratás directo con los responsables de tu envío.",
+    "El mercado del transporte de autos está lleno de brókers que le pasan su vehículo a cualquiera. Nosotros lo hacemos distinto &mdash; somos dueños de los camiones, manejamos las rutas y usted trata directamente con los responsables de su envío.",
   "Owned equipment, one point of contact": "Equipo propio, un solo contacto",
   "Your vehicle stays on Shoppiis trucks and trailers. No re-brokering, no mystery driver, no finger-pointing.":
-    "Tu vehículo viaja siempre en camiones y tráileres de Shoppiis. Sin reventa, sin chofer misterioso, sin echar culpas.",
+    "Su vehículo viaja siempre en camiones y tráileres de Shoppiis. Sin reventa, sin conductor misterioso, sin echar culpas.",
   "Transparent per-mile pricing": "Precio por milla transparente",
   "Clear, mileage-based quotes with no surprise fees. You know what the move costs before you book.":
-    "Cotizaciones claras por millaje, sin cargos sorpresa. Sabés cuánto cuesta antes de reservar.",
+    "Cotizaciones claras por millaje, sin cargos sorpresa. Usted sabe cuánto cuesta el traslado antes de reservar.",
   "Fully insured &amp; FMCSA-authorized": "Totalmente asegurado y autorizado por FMCSA",
   "$1M cargo &amp; liability coverage and active interstate authority &mdash; verifiable in public records before you tender.":
     "$1M en cobertura de carga y responsabilidad y autoridad interestatal activa &mdash; verificable en registros públicos antes de contratar.",
   "Florida specialists": "Especialistas en Florida",
   "We know the corridors &mdash; Jacksonville, Orlando, Tampa, Naples, West Palm Beach, Tallahassee &mdash; and run them regularly.":
-    "Conocemos los corredores &mdash; Jacksonville, Orlando, Tampa, Naples, West Palm Beach, Tallahassee &mdash; y los recorremos seguido.",
+    "Conocemos los corredores &mdash; Jacksonville, Orlando, Tampa, Naples, West Palm Beach, Tallahassee &mdash; y los recorremos con frecuencia.",
   "Reliable pickup windows": "Ventanas de recogida confiables",
   "We commit to a window and communicate. Dispatch is a real phone number answered by people who run the loads.":
-    "Nos comprometemos a una ventana y comunicamos. Despacho es un teléfono real atendido por quienes manejan las cargas.",
+    "Nos comprometemos a una ventana y mantenemos la comunicación. Despacho es un teléfono real atendido por quienes manejan las cargas.",
   "Running or non-running": "Arranque o no arranque",
   "Operational and inoperable vehicles handled with the right equipment and securement &mdash; just tell us the condition.":
-    "Vehículos operativos e inoperables manejados con el equipo y amarre correctos &mdash; solo decinos el estado.",
+    "Vehículos operativos e inoperables manejados con el equipo y amarre correctos &mdash; solo díganos el estado.",
 
   // --- 04 Metrics ---
   "04 / By The Numbers": "04 / En números",
   "Real operations, measured.": "Operaciones reales, medidas.",
-  "Operational metrics from active Shoppiis Cargo routes.":
-    "Métricas operativas de rutas activas de Shoppiis Cargo.",
+  "Operational metrics from active Shoppiis Cargo routes across Florida.":
+    "Métricas operativas de rutas activas de Shoppiis Cargo por toda Florida.",
   "(Placeholders &mdash; populate with verified figures before publishing.)":
-    "(Marcadores &mdash; completá con cifras verificadas antes de publicar.)",
+    "(Marcadores &mdash; complete con cifras verificadas antes de publicar.)",
   "Vehicles Moved": "Vehículos movidos",
   "Routes Completed": "Rutas completadas",
   "Repeat Customers": "Clientes que repiten",
@@ -146,30 +146,30 @@ const DICT = {
 
   // --- 06 Quote form ---
   "06 / Request Transport": "06 / Solicitar transporte",
-  "Get a free quote.": "Recibí una cotización gratis.",
+  "Get a free quote.": "Reciba una cotización gratis.",
   "Tell us where it&rsquo;s going and what we&rsquo;re moving. We&rsquo;ll come back with a per-mile quote and an available pickup window &mdash; usually same business day.":
-    "Decinos a dónde va y qué transportamos. Te respondemos con una cotización por milla y una ventana de recogida disponible &mdash; normalmente el mismo día hábil.",
+    "Díganos a dónde va y qué debemos transportar. Le respondemos con una cotización por milla y una ventana de recogida disponible &mdash; normalmente el mismo día hábil.",
   "No obligation, no hidden fees": "Sin compromiso, sin cargos ocultos",
   "$1M cargo &amp; liability coverage": "Cobertura de $1M en carga y responsabilidad",
   "Running &amp; non-running vehicles": "Vehículos que arrancan y que no arrancan",
-  "Talk to dispatch: (347) 865-9529": "Hablá con despacho: (347) 865-9529",
+  "Talk to dispatch: (347) 865-9529": "Hable con despacho: (347) 865-9529",
   "Pickup location": "Lugar de recogida",
   "Delivery location": "Lugar de entrega",
   "Vehicle (year / make / model)": "Vehículo (año / marca / modelo)",
   "# of vehicles": "N.º de vehículos",
   "Vehicle condition": "Estado del vehículo",
   "Transport type": "Tipo de transporte",
-  "Your name": "Tu nombre",
+  "Your name": "Su nombre",
   "Phone": "Teléfono",
   "Email": "Correo",
   "Preferred pickup date": "Fecha de recogida preferida",
   "Notes (optional)": "Notas (opcional)",
   "Request My Quote &rarr;": "Solicitar mi cotización &rarr;",
   "We typically respond the same business day. Your details are used only to quote your transport.":
-    "Normalmente respondemos el mismo día hábil. Tus datos se usan solo para cotizar tu transporte.",
+    "Normalmente respondemos el mismo día hábil. Sus datos se usan solo para cotizar su transporte.",
   "Request received.": "Solicitud recibida.",
   "Thanks &mdash; dispatch will reach out shortly with your quote and an available pickup window. Need it sooner? Call (347)&nbsp;865-9529.":
-    "Gracias &mdash; despacho se comunicará en breve con tu cotización y una ventana de recogida disponible. ¿Lo necesitás antes? Llamá al (347)&nbsp;865-9529.",
+    "Gracias &mdash; despacho se comunicará en breve con su cotización y una ventana de recogida disponible. ¿Lo necesita antes? Llame al (347)&nbsp;865-9529.",
   // opciones del <select>
   "Running": "Arranca",
   "Non-running / inoperable": "No arranca / inoperable",
@@ -180,9 +180,9 @@ const DICT = {
   // --- 07 Credibility ---
   "07 / Authorized &amp; Insured": "07 / Autorizado y asegurado",
   "Verify us before you tender a single load.":
-    "Verificanos antes de entregarnos una sola carga.",
+    "Verifíquenos antes de entregarnos una sola carga.",
   "Brokers and dealerships can confirm our authority and safety standing in public records. Everything below is on file with the FMCSA.":
-    "Brókers y concesionarios pueden confirmar nuestra autoridad y récord de seguridad en registros públicos. Todo lo de abajo está registrado en la FMCSA.",
+    "Los brókers y concesionarios pueden confirmar nuestra autoridad y nuestro historial de seguridad en registros públicos. Todo lo que aparece a continuación está registrado en la FMCSA.",
   "Operating Authority": "Autoridad operativa",
   "Active": "Activa",
   "Coverage": "Cobertura",
@@ -190,11 +190,11 @@ const DICT = {
   "Equipment": "Equipo",
   "Auto Carrier": "Transportista de autos",
   "Owned truck + trailer": "Camión + tráiler propios",
-  "Safety Record": "Récord de seguridad",
+  "Safety Record": "Historial de seguridad",
   "Clean": "Limpio",
   "0 violations · 0 crashes": "0 infracciones · 0 accidentes",
   "Active interstate authority since 09/2024 &middot; Cargo authorization: Property &middot; Hazmat authorized. Verify anytime via the":
-    "Autoridad interestatal activa desde 09/2024 &middot; Autorización de carga: Propiedad &middot; Autorizado para materiales peligrosos. Verificá cuando quieras en el",
+    "Autoridad interestatal activa desde 09/2024 &middot; Autorización de carga: Propiedad &middot; Autorizado para materiales peligrosos. Verifíquela cuando quiera en el",
   "system.": "sistema.",
 
   // --- 08 Gallery ---
@@ -218,7 +218,7 @@ const DICT = {
     "Pasó más de 15 años moviendo carga antes de fundar Shoppiis. Viene de la logística aeronáutica, conoce las rutas al dedillo y sigue atendiendo el teléfono cuando hay que resolver un envío.",
   "Chief Operating Officer": "Director de operaciones",
   "Runs the day-to-day — dispatch, routing, and making sure trucks roll on time. If your vehicle is on the road, Benjamin knows where it is.":
-    "Maneja el día a día: despacho, rutas y que los camiones salgan a tiempo. Si tu vehículo está en la carretera, Benjamin sabe dónde está.",
+    "Maneja el día a día: despacho, rutas y que los camiones salgan a tiempo. Si su vehículo está en la carretera, Benjamin sabe dónde está.",
   "Finance &amp; Operations": "Finanzas y operaciones",
   "Keeps the numbers honest and the pricing fair. Finance grad out of UCF who makes sure every truck we add actually pays for itself.":
     "Mantiene los números claros y los precios justos. Graduado en finanzas de UCF que se asegura de que cada camión que sumamos realmente se pague solo.",
@@ -229,9 +229,10 @@ const DICT = {
   "Real feedback from dealerships, brokers, and private customers.":
     "Opiniones reales de concesionarios, brókers y clientes particulares.",
   "(Placeholders &mdash; replace with verified testimonials. Tip: also collect reviews on your CarrierSource profile.)":
-    "(Marcadores &mdash; reemplazá con testimonios verificados. Tip: juntá reseñas también en tu perfil de CarrierSource.)",
+    "(Marcadores &mdash; reemplace con testimonios verificados. Sugerencia: reúna reseñas también en su perfil de CarrierSource.)",
+  "ADD REAL QUOTE": "AGREGAR RESEÑA REAL",
   "Customer testimonial goes here &mdash; a sentence or two about reliability, communication, or condition on delivery.":
-    "Acá va el testimonio del cliente &mdash; una o dos frases sobre confiabilidad, comunicación o estado en la entrega.",
+    "Aquí va el testimonio del cliente &mdash; una o dos frases sobre confiabilidad, comunicación o estado en la entrega.",
   "Customer Name": "Nombre del cliente",
   "Dealership / Broker · City, FL": "Concesionario / Bróker · Ciudad, FL",
   "Private Customer · City, FL": "Cliente particular · Ciudad, FL",
@@ -242,33 +243,33 @@ const DICT = {
   "Frequently asked questions.": "Preguntas frecuentes.",
   "Is my vehicle insured during transport?": "¿Mi vehículo está asegurado durante el transporte?",
   "Yes. Shoppiis carries $1,000,000 in primary cargo &amp; liability coverage (BIPD) through Progressive, and we operate under active FMCSA interstate authority (USDOT 4261491 / MC 1653490). You can request a certificate of insurance and verify our authority through the FMCSA SAFER system before booking.":
-    "Sí. Shoppiis tiene $1,000,000 en cobertura primaria de carga y responsabilidad (BIPD) a través de Progressive, y operamos bajo autoridad interestatal activa de la FMCSA (USDOT 4261491 / MC 1653490). Podés pedir un certificado de seguro y verificar nuestra autoridad en el sistema FMCSA SAFER antes de reservar.",
+    "Sí. Shoppiis tiene $1,000,000 en cobertura primaria de carga y responsabilidad (BIPD) a través de Progressive, y operamos bajo autoridad interestatal activa de la FMCSA (USDOT 4261491 / MC 1653490). Puede solicitar un certificado de seguro y verificar nuestra autoridad en el sistema FMCSA SAFER antes de reservar.",
   "How soon can you pick up my vehicle?": "¿Qué tan pronto pueden retirar mi vehículo?",
   "It depends on the lane and current routing, but we usually provide an available pickup window the same business day you request a quote. Florida and Southeast corridors move fastest. Tell us your preferred date in the quote form and we&rsquo;ll confirm what&rsquo;s realistic.":
-    "Depende de la ruta y la programación actual, pero normalmente damos una ventana de recogida disponible el mismo día hábil en que pedís la cotización. Los corredores de Florida y el sureste son los más rápidos. Decinos tu fecha preferida en el formulario y confirmamos qué es realista.",
+    "Depende de la ruta y la programación actual, pero normalmente damos una ventana de recogida disponible el mismo día hábil en que solicita la cotización. Los corredores de Florida y el sureste son los más rápidos. Indíquenos su fecha preferida en el formulario y confirmamos qué es realista.",
   "Do you transport non-running or inoperable vehicles?": "¿Transportan vehículos que no arrancan o inoperables?",
   "Yes. We handle both running and non-running vehicles &mdash; just select the condition in your quote request so we bring the right equipment and securement. Non-running vehicles may require a winch and additional handling, which we&rsquo;ll account for in the quote.":
-    "Sí. Manejamos vehículos que arrancan y que no &mdash; solo elegí el estado en tu solicitud para que llevemos el equipo y amarre correctos. Los vehículos que no arrancan pueden requerir cabrestante y manejo adicional, que incluimos en la cotización.",
+    "Sí. Manejamos vehículos que arrancan y que no &mdash; solo elija el estado en su solicitud para que llevemos el equipo y amarre correctos. Los vehículos que no arrancan pueden requerir cabrestante y manejo adicional, que incluimos en la cotización.",
   "What areas do you serve?": "¿Qué zonas cubren?",
   "We operate across Florida and the Southeast, with regular routes through Jacksonville, Orlando, Tampa, Naples, West Palm Beach, and Tallahassee. Jacksonville is a major national auto-transport hub and anchors our network. Have a lane outside this area? Ask &mdash; we hold interstate authority and can quote it.":
-    "Operamos por Florida y el sureste, con rutas regulares por Jacksonville, Orlando, Tampa, Naples, West Palm Beach y Tallahassee. Jacksonville es un gran centro nacional de transporte de autos y ancla nuestra red. ¿Tenés una ruta fuera de esta zona? Preguntá &mdash; tenemos autoridad interestatal y podemos cotizarla.",
+    "Operamos por Florida y el sureste, con rutas regulares por Jacksonville, Orlando, Tampa, Naples, West Palm Beach y Tallahassee. Jacksonville es un gran centro nacional de transporte de autos y ancla nuestra red. ¿Tiene una ruta fuera de esta zona? Pregúntenos &mdash; tenemos autoridad interestatal y podemos cotizarla.",
   "How does pricing and payment work?": "¿Cómo funcionan los precios y el pago?",
   "Transport is priced per mile based on distance, vehicle count, and condition &mdash; no surprise fees. You&rsquo;ll get a clear quote before you book. Payment terms are confirmed at booking; brokers can ask about carrier-packet and payment arrangements directly with dispatch.":
-    "El transporte se cobra por milla según distancia, cantidad de vehículos y estado &mdash; sin cargos sorpresa. Recibís una cotización clara antes de reservar. Los términos de pago se confirman al reservar; los brókers pueden consultar por el carrier-packet y arreglos de pago directamente con despacho.",
+    "El transporte se cobra por milla según distancia, cantidad de vehículos y estado &mdash; sin cargos sorpresa. Recibe una cotización clara antes de reservar. Los términos de pago se confirman al reservar; los brókers pueden consultar por el carrier-packet y los arreglos de pago directamente con despacho.",
   "[Confirm accepted payment methods/terms before publishing.]":
-    "[Confirmá métodos/términos de pago aceptados antes de publicar.]",
+    "[Confirme los métodos/términos de pago aceptados antes de publicar.]",
 
   // --- 12 Contact ---
   "12 / Get In Touch": "12 / Contacto",
-  "Move a vehicle, or build with us.": "Mové un vehículo, o trabajá con nosotros.",
+  "Move a vehicle, or build with us.": "Mueva un vehículo o trabaje con nosotros.",
   "Brokers · Dealerships · Private": "Brókers · Concesionarios · Particulares",
   "Request Transport": "Solicitar transporte",
   "Need a vehicle moved across Florida or the Southeast? Get a per-mile quote with an available pickup window.":
-    "¿Necesitás mover un vehículo por Florida o el sureste? Pedí una cotización por milla con una ventana de recogida disponible.",
-  "Talk To Dispatch": "Hablá con despacho",
-  "Call Us Directly": "Llamanos directamente",
+    "¿Necesita mover un vehículo por Florida o el sureste? Solicite una cotización por milla con una ventana de recogida disponible.",
+  "Talk To Dispatch": "Hable con despacho",
+  "Call Us Directly": "Llámenos directamente",
   "Prefer to talk it through? Reach dispatch directly &mdash; answered by the people who run the loads.":
-    "¿Preferís hablarlo? Comunicate directo con despacho &mdash; atendido por quienes manejan las cargas.",
+    "¿Prefiere hablarlo? Comuníquese directamente con despacho &mdash; atendido por quienes manejan las cargas.",
 
   // --- Footer ---
   "Vehicle transport &amp; logistics infrastructure. Owner-operated auto carrier serving Florida and the Southeast.":
@@ -277,22 +278,56 @@ const DICT = {
   "Get a Quote": "Cotización",
   "Other": "Otros",
   "Investor inquiries": "Consultas de inversores",
-  "Partner with us": "Asociate con nosotros",
-  "FMCSA SAFER lookup": "Verificar en FMCSA SAFER"
+  "Partner with us": "Asóciese con nosotros",
+  "FMCSA SAFER lookup": "Verificar en FMCSA SAFER",
+  "INTERSTATE · PROPERTY · $1M INSURED": "INTERESTATAL · PROPIEDAD · $1M ASEGURADO"
 };
 
-/* ---- 1. Auto-etiquetado: pone data-en / data-es donde haya traducción ---- */
+/* ---- 1. Auto-etiquetado: pone data-en / data-es donde haya traducción ----
+   El navegador serializa las entidades HTML al leer innerHTML / nodeValue
+   (&mdash; → "—", &rsquo; → "’", &middot; → "·", & → &amp;…). Para que las
+   claves del DICT coincidan SIEMPRE, normalizamos ambos lados pasándolos por
+   el mismo serializador del DOM antes de comparar. Así dejan de fallar los
+   textos con guiones largos, comillas, viñetas, etc. */
+const _normEl = document.createElement('div');
+function normKey(str){ _normEl.innerHTML = str; return _normEl.innerHTML.trim(); }
+
+/* Índice: forma normalizada del inglés -> { en: claveOriginal, es: traducción } */
+const LOOKUP = {};
+Object.keys(DICT).forEach(k => { LOOKUP[normKey(k)] = { en: k, es: DICT[k] }; });
+
 (function tagTranslatables(){
   const sel = 'a, p, h1, h2, h3, h4, span, label, button, option, div, li, small, b, strong, em';
   document.querySelectorAll(sel).forEach(el=>{
     if (el.hasAttribute('data-en')) return;        // respeta lo puesto a mano
-    if (el.children.length === 0) {                // solo texto puro
-      const key = el.innerHTML.trim();
-      if (key && DICT[key]) {
-        el.setAttribute('data-en', key);
-        el.setAttribute('data-es', DICT[key]);
+    if (el.childElementCount === 0) {              // texto puro: traducimos el elemento entero
+      const hit = LOOKUP[normKey(el.innerHTML.trim())];
+      if (hit) {
+        el.setAttribute('data-en', hit.en);
+        el.setAttribute('data-es', hit.es);
       }
+      return;
     }
+    // Mezcla de texto + hijos (ej. la "+" del FAQ, el <small> de credibilidad,
+    // el <b> de testimonios): envolvemos solo los nodos de texto que matcheen.
+    Array.from(el.childNodes).forEach(node=>{
+      if (node.nodeType !== 3) return;             // solo nodos de texto
+      const trimmed = node.nodeValue.trim();
+      if (!trimmed) return;
+      const hit = LOOKUP[normKey(trimmed)];
+      if (!hit) return;
+      const span = document.createElement('span');
+      span.setAttribute('data-en', hit.en);
+      span.setAttribute('data-es', hit.es);
+      span.innerHTML = hit.en;
+      const lead = node.nodeValue.match(/^\s*/)[0];
+      const trail = node.nodeValue.match(/\s*$/)[0];
+      const frag = document.createDocumentFragment();
+      if (lead) frag.appendChild(document.createTextNode(lead));
+      frag.appendChild(span);
+      if (trail) frag.appendChild(document.createTextNode(trail));
+      el.replaceChild(frag, node);
+    });
   });
   document.querySelectorAll('input[placeholder], textarea[placeholder]').forEach(el=>{
     if (el.hasAttribute('data-ph-en')) return;
@@ -341,6 +376,7 @@ const WA_MSG = {
 };
 function setLang(lang){
   document.documentElement.lang = lang;
+  try { localStorage.setItem('shoppiis-lang', lang); } catch(e){}
   document.querySelectorAll('[data-en]').forEach(el => {
     const val = el.getAttribute('data-' + lang);
     if (val !== null) el.innerHTML = val;
@@ -364,6 +400,15 @@ function setLang(lang){
 document.querySelectorAll('[data-lang-toggle] button').forEach(b => {
   b.addEventListener('click', () => setLang(b.getAttribute('data-lang')));
 });
+
+/* Idioma inicial: recordamos la última elección; si no hay, usamos el idioma
+   del navegador (español si corresponde) y, por defecto, inglés. */
+(function initLang(){
+  let saved;
+  try { saved = localStorage.getItem('shoppiis-lang'); } catch(e){}
+  const browser = (navigator.language || '').toLowerCase().startsWith('es') ? 'es' : 'en';
+  setLang(saved === 'es' || saved === 'en' ? saved : browser);
+})();
 
 /* ---- 7. Formulario de cotización ----
    PASO 1: creá una clave gratis en https://web3forms.com (te pide solo el email
@@ -397,7 +442,7 @@ if (form) {
       btn.disabled = false;
       btn.innerHTML = original;
       alert(es
-        ? 'No pudimos enviar tu solicitud. Llamanos al (347) 865-9529 o intentá de nuevo.'
+        ? 'No pudimos enviar su solicitud. Llámenos al (347) 865-9529 o intente de nuevo.'
         : "We couldn't send your request. Please call (347) 865-9529 or try again.");
     }
   });
