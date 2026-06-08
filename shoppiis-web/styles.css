@@ -28,7 +28,9 @@ header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.82);backdrop-f
 .nav-links .btn{margin-left:0;padding:11px 15px}
 .nav-phone{display:inline-flex;align-items:center;gap:9px;font-family:'JetBrains Mono';font-size:.86rem;font-weight:700;color:var(--white);letter-spacing:.02em;white-space:nowrap}
 .nav-phone .ph-ico{width:16px;height:16px;fill:var(--yellow);flex-shrink:0}
-.nav-phone span{color:var(--grey);font-size:.66rem;display:block;letter-spacing:.1em}
+.nav-phone .ph-text{display:flex;flex-direction:column;justify-content:center;line-height:1.2}
+.nav-phone .lbl{color:var(--grey);font-size:.66rem;font-weight:700;letter-spacing:.1em}
+.nav-phone b{color:var(--white);font-size:.86rem;font-weight:700}
 .btn{display:inline-flex;align-items:center;gap:9px;background:var(--yellow);color:#000;font-weight:800;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;padding:13px 22px;border:none;cursor:pointer;transition:transform .15s,box-shadow .15s;font-family:'Archivo';white-space:nowrap}
 .btn:hover{transform:translateY(-2px);box-shadow:0 8px 0 -2px var(--yellow-dim)}
 .btn.ghost{background:transparent;color:var(--white);border:1px solid var(--grey-line)}
