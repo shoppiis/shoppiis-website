@@ -364,9 +364,28 @@ document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDel
 const tk = document.getElementById('ticker');
 if (tk) tk.innerHTML += tk.innerHTML;
 
-/* ---- 5. FAQ acordeón ---- */
+/* ---- 5. FAQ acordeón ----
+   La altura abierta se calcula con scrollHeight, así la respuesta nunca se
+   recorta sin importar el ancho de pantalla ni el idioma (ES suele ser más
+   largo que EN). Se recalcula al cambiar el tamaño de la ventana. */
+function setFaqHeight(item){
+  const ans = item.querySelector('.faq-a');
+  if (!ans) return;
+  ans.style.maxHeight = item.classList.contains('open') ? ans.scrollHeight + 'px' : null;
+}
 document.querySelectorAll('.faq-q').forEach(q => {
-  q.addEventListener('click', () => { q.parentElement.classList.toggle('open'); });
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    item.classList.toggle('open');
+    setFaqHeight(item);
+  });
+});
+let _faqResizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(_faqResizeTimer);
+  _faqResizeTimer = setTimeout(() => {
+    document.querySelectorAll('.faq-item.open').forEach(setFaqHeight);
+  }, 120);
 });
 
 /* ---- 6. TOGGLE DE IDIOMA (EN / ES) ---- */
@@ -396,6 +415,10 @@ function setLang(lang){
       b.classList.toggle('active', b.getAttribute('data-lang') === lang);
     });
   });
+  /* el texto traducido cambia de largo: recalcular FAQ abiertos */
+  if (typeof setFaqHeight === 'function') {
+    document.querySelectorAll('.faq-item.open').forEach(setFaqHeight);
+  }
 }
 document.querySelectorAll('[data-lang-toggle] button').forEach(b => {
   b.addEventListener('click', () => setLang(b.getAttribute('data-lang')));
