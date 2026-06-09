@@ -32,8 +32,8 @@ const DICT = {
     "TRANSPORTISTA DE AUTOS EN FLORIDA · AUTORIZADO FMCSA · USDOT 4261491",
   "Your vehicles, moved across": "Sus vehículos, transportados por toda",
   "&mdash; safely, on time, fully insured.": "&mdash; seguros, a tiempo y asegurados.",
-  "Shoppiis Cargo is an owner-operated vehicle transport company hauling cars across Florida and the Southeast for dealerships, manufacturers, private customers, and government loads. Real trucks, real routes, real accountability.":
-    "Shoppiis Cargo es una empresa de transporte de vehículos, operada por sus dueños, que traslada autos por Florida y el sureste para concesionarios, fabricantes, clientes particulares y cargas gubernamentales. Camiones reales, rutas reales, responsabilidad real.",
+  "Shoppiis Cargo is an owner-operated Florida vehicle transport and car shipping company hauling cars across Florida and the Southeast for dealerships, manufacturers, private customers, and government loads. Real trucks, real routes, real accountability.":
+    "Shoppiis Cargo es una empresa de transporte de vehículos y envío de autos en Florida, operada por sus dueños, que traslada autos por Florida y el sureste para concesionarios, fabricantes, clientes particulares y cargas gubernamentales. Camiones reales, rutas reales, responsabilidad real.",
   "Get a Free Quote &rarr;": "Cotización gratis &rarr;",
   "Call Dispatch": "Llamar a despacho",
   "Fast per-mile quotes &middot;": "Cotizaciones rápidas por milla &middot;",
