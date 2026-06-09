@@ -21,14 +21,16 @@ header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.82);backdrop-f
 .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
 .brand{display:flex;align-items:center;gap:12px}
 .brand .logo{height:30px;display:block}
-.nav-right{display:flex;align-items:center;gap:20px}
-.nav-links{display:flex;align-items:center;gap:26px;margin-left:24px}
-.nav-links a{font-size:.82rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--grey);transition:color .2s;white-space:nowrap}
+.nav-right{display:flex;align-items:center;gap:16px}
+.nav-links{display:flex;align-items:center;gap:18px;margin-left:16px}
+.nav-links a{font-size:.8rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--grey);transition:color .2s;white-space:nowrap}
 .nav-links a:hover{color:var(--white)}
-.nav-links .btn{margin-left:6px}
+.nav-links .btn{margin-left:0;padding:11px 15px}
 .nav-phone{display:inline-flex;align-items:center;gap:9px;font-family:'JetBrains Mono';font-size:.86rem;font-weight:700;color:var(--white);letter-spacing:.02em;white-space:nowrap}
 .nav-phone .ph-ico{width:16px;height:16px;fill:var(--yellow);flex-shrink:0}
-.nav-phone span{color:var(--grey);font-size:.66rem;display:block;letter-spacing:.1em}
+.nav-phone .ph-text{display:flex;flex-direction:column;justify-content:center;line-height:1.2}
+.nav-phone .lbl{color:var(--grey);font-size:.66rem;font-weight:700;letter-spacing:.1em}
+.nav-phone b{color:var(--white);font-size:.86rem;font-weight:700}
 .btn{display:inline-flex;align-items:center;gap:9px;background:var(--yellow);color:#000;font-weight:800;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;padding:13px 22px;border:none;cursor:pointer;transition:transform .15s,box-shadow .15s;font-family:'Archivo';white-space:nowrap}
 .btn:hover{transform:translateY(-2px);box-shadow:0 8px 0 -2px var(--yellow-dim)}
 .btn.ghost{background:transparent;color:var(--white);border:1px solid var(--grey-line)}
@@ -268,7 +270,7 @@ footer{background:var(--black);border-top:1px solid var(--grey-line);padding:60p
 
 /* language selector */
 .lang-toggle{display:inline-flex;border:1px solid var(--grey-line);overflow:hidden;font-family:'JetBrains Mono';font-size:.74rem;font-weight:700;letter-spacing:.06em}
-.lang-toggle button{background:transparent;border:none;color:var(--grey);padding:9px 14px;cursor:pointer;transition:background .2s,color .2s}
+.lang-toggle button{background:transparent;border:none;color:var(--grey);padding:8px 12px;cursor:pointer;transition:background .2s,color .2s}
 .lang-toggle button.active{background:var(--yellow);color:#000}
 .lang-toggle button:not(.active):hover{color:var(--white)}
 .lang-sep{width:1px;background:var(--grey-line)}
@@ -287,9 +289,9 @@ footer{background:var(--black);border-top:1px solid var(--grey-line);padding:60p
 .reveal.in{opacity:1;transform:none}
 
 /* responsive */
-@media(max-width:1100px){
+@media(max-width:1240px){
   .nav-phone .lbl{display:none}
-  /* switch to mobile menu here so the bar never crowds on laptops */
+  /* collapse to the mobile menu while the wrap can still fit the (wider) ES labels, so the bar never crowds or clips the phone */
   .nav-links{display:none;position:absolute;top:72px;left:0;right:0;background:var(--ink);flex-direction:column;gap:0;border-bottom:1px solid var(--grey-line);padding:8px 0;margin-left:0}
   .nav-links.open{display:flex}
   .nav-links a{padding:14px 28px;width:100%}
