@@ -123,8 +123,6 @@ const DICT = {
   "Real operations, measured.": "Operaciones reales, medidas.",
   "Operational metrics from active Shoppiis Cargo routes across Florida.":
     "Métricas operativas de rutas activas de Shoppiis Cargo por toda Florida.",
-  "(Placeholders &mdash; populate with verified figures before publishing.)":
-    "(Marcadores &mdash; complete con cifras verificadas antes de publicar.)",
   "Vehicles Moved": "Vehículos movidos",
   "Routes Completed": "Rutas completadas",
   "Repeat Customers": "Clientes que repiten",
@@ -223,23 +221,8 @@ const DICT = {
   "Keeps the numbers honest and the pricing fair. Finance grad out of UCF who makes sure every truck we add actually pays for itself.":
     "Mantiene los números claros y los precios justos. Graduado en finanzas de UCF que se asegura de que cada camión que sumamos realmente se pague solo.",
 
-  // --- 10 Testimonials ---
-  "10 / What Shippers Say": "10 / Lo que dicen los clientes",
-  "Trusted by the people who book us.": "Confían en nosotros quienes nos contratan.",
-  "Real feedback from dealerships, brokers, and private customers.":
-    "Opiniones reales de concesionarios, brókers y clientes particulares.",
-  "(Placeholders &mdash; replace with verified testimonials. Tip: also collect reviews on your CarrierSource profile.)":
-    "(Marcadores &mdash; reemplace con testimonios verificados. Sugerencia: reúna reseñas también en su perfil de CarrierSource.)",
-  "ADD REAL QUOTE": "AGREGAR RESEÑA REAL",
-  "Customer testimonial goes here &mdash; a sentence or two about reliability, communication, or condition on delivery.":
-    "Aquí va el testimonio del cliente &mdash; una o dos frases sobre confiabilidad, comunicación o estado en la entrega.",
-  "Customer Name": "Nombre del cliente",
-  "Dealership / Broker · City, FL": "Concesionario / Bróker · Ciudad, FL",
-  "Private Customer · City, FL": "Cliente particular · Ciudad, FL",
-  "Fleet Manager · City, FL": "Gerente de flota · Ciudad, FL",
-
-  // --- 11 FAQ ---
-  "11 / Questions, Answered": "11 / Preguntas respondidas",
+  // --- 10 FAQ ---
+  "10 / Questions, Answered": "10 / Preguntas respondidas",
   "Frequently asked questions.": "Preguntas frecuentes.",
   "Is my vehicle insured during transport?": "¿Mi vehículo está asegurado durante el transporte?",
   "Yes. Shoppiis carries $1,000,000 in primary cargo &amp; liability coverage (BIPD) through Progressive, and we operate under active FMCSA interstate authority (USDOT 4261491 / MC 1653490). You can request a certificate of insurance and verify our authority through the FMCSA SAFER system before booking.":
@@ -256,11 +239,9 @@ const DICT = {
   "How does pricing and payment work?": "¿Cómo funcionan los precios y el pago?",
   "Transport is priced per mile based on distance, vehicle count, and condition &mdash; no surprise fees. You&rsquo;ll get a clear quote before you book. Payment terms are confirmed at booking; brokers can ask about carrier-packet and payment arrangements directly with dispatch.":
     "El transporte se cobra por milla según distancia, cantidad de vehículos y estado &mdash; sin cargos sorpresa. Recibe una cotización clara antes de reservar. Los términos de pago se confirman al reservar; los brókers pueden consultar por el carrier-packet y los arreglos de pago directamente con despacho.",
-  "[Confirm accepted payment methods/terms before publishing.]":
-    "[Confirme los métodos/términos de pago aceptados antes de publicar.]",
 
-  // --- 12 Contact ---
-  "12 / Get In Touch": "12 / Contacto",
+  // --- 11 Contact ---
+  "11 / Get In Touch": "11 / Contacto",
   "Move a vehicle, or build with us.": "Mueva un vehículo o trabaje con nosotros.",
   "Brokers · Dealerships · Private": "Brókers · Concesionarios · Particulares",
   "Request Transport": "Solicitar transporte",
@@ -308,8 +289,8 @@ Object.keys(DICT).forEach(k => { LOOKUP[normKey(k)] = { en: k, es: DICT[k] }; })
       }
       return;
     }
-    // Mezcla de texto + hijos (ej. la "+" del FAQ, el <small> de credibilidad,
-    // el <b> de testimonios): envolvemos solo los nodos de texto que matcheen.
+    // Mezcla de texto + hijos (ej. la "+" del FAQ, el <small> de credibilidad):
+    // envolvemos solo los nodos de texto que matcheen.
     Array.from(el.childNodes).forEach(node=>{
       if (node.nodeType !== 3) return;             // solo nodos de texto
       const trimmed = node.nodeValue.trim();
