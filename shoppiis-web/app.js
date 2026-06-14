@@ -125,9 +125,9 @@ const DICT = {
     "Métricas operativas de rutas activas de Shoppiis Cargo por toda Florida.",
   "(Placeholders &mdash; populate with verified figures before publishing.)":
     "(Marcadores &mdash; complete con cifras verificadas antes de publicar.)",
+  "Operations To Date": "Operaciones a la fecha",
   "Vehicles Moved": "Vehículos movidos",
-  "Routes Completed": "Rutas completadas",
-  "Repeat Customers": "Clientes que repiten",
+  "Vehicles Per Month": "Vehículos por mes",
   "Safety Violations": "Infracciones de seguridad",
   "FMCSA VERIFIED": "VERIFICADO POR FMCSA",
 
