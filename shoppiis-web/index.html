@@ -83,6 +83,22 @@
 </head>
 <body>
 
+<!-- ============ ICON SPRITE (inline SVG, no emojis) ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="ic-truck" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h11v9H3z"/><path d="M14 9h3.5L21 12v3h-7z"/><circle cx="7" cy="18" r="1.7"/><circle cx="17.5" cy="18" r="1.7"/></g></symbol>
+  <symbol id="ic-dollar" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M14.5 8.6c-.7-.8-1.7-1.1-2.5-1.1-1.4 0-2.6.7-2.6 2s1.2 1.8 2.6 2 2.6.6 2.6 2c0 1.3-1.2 2-2.6 2-.9 0-1.9-.3-2.6-1.1"/><path d="M12 5.8v1.7M12 16.5v1.7"/></g></symbol>
+  <symbol id="ic-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></g></symbol>
+  <symbol id="ic-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c4-4 6-7.2 6-10a6 6 0 1 0-12 0c0 2.8 2 6 6 10z"/><circle cx="12" cy="11" r="2.3"/></g></symbol>
+  <symbol id="ic-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9.5v3.7l2.5 1.8"/><path d="M9 3h6"/></g></symbol>
+  <symbol id="ic-car" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l2-5a2 2 0 0 1 1.9-1.3h10.2A2 2 0 0 1 19 8l2 5v4h-3"/><path d="M6 17H3v-4h18"/><circle cx="7" cy="17" r="1.7"/><circle cx="17" cy="17" r="1.7"/></g></symbol>
+  <symbol id="ic-user" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></g></symbol>
+  <symbol id="ic-badge" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.2 1.6 2.7-.2 1 2.5 2.3 1.4-.8 2.6.8 2.6-2.3 1.4-1 2.5-2.7-.2L12 21l-2.2-1.6-2.7.2-1-2.5-2.3-1.4.8-2.6-.8-2.6 2.3-1.4 1-2.5 2.7.2z"/><path d="M9 12l2 2 4-4"/></g></symbol>
+  <symbol id="ic-phone" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h3l1.5 4.5L8 9c1 2.5 2.5 4 5 5l1.5-2.5L19 13v3c0 1.1-.9 2-2 2A14 14 0 0 1 4 5c0-1.1.9-2 2-2z"/></g></symbol>
+  <symbol id="ic-menu" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></g></symbol>
+  <symbol id="ic-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></symbol>
+  <symbol id="ic-x" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M7 7l10 10M17 7L7 17"/></symbol>
+</svg>
+
 <!-- ============ NAV ============ -->
 <header>
   <div class="wrap nav">
@@ -112,7 +128,7 @@
           <b>(347)&nbsp;865-9529</b>
         </span>
       </a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Menu">&#9776;</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu"><svg class="ic"><use href="#ic-menu"/></svg></button>
     </div>
   </div>
 </header>
@@ -208,12 +224,12 @@
       <p>The auto-transport market is full of brokers who pass your vehicle to whoever answers. We run it differently &mdash; we own the trucks, we drive the routes, and you deal directly with the people responsible for your shipment.</p>
     </div>
     <div class="why-grid">
-      <div class="why-item reveal"><div class="n">&#128666;</div><div><h3>Owned equipment, one point of contact</h3><p>Your vehicle stays on Shoppiis trucks and trailers. No re-brokering, no mystery driver, no finger-pointing.</p></div></div>
-      <div class="why-item reveal"><div class="n">&#128176;</div><div><h3>Transparent per-mile pricing</h3><p>Clear, mileage-based quotes with no surprise fees. You know what the move costs before you book.</p></div></div>
-      <div class="why-item reveal"><div class="n">&#128737;</div><div><h3>Fully insured &amp; FMCSA-authorized</h3><p>$1M cargo &amp; liability coverage and active interstate authority &mdash; verifiable in public records before you tender.</p></div></div>
-      <div class="why-item reveal"><div class="n">&#128205;</div><div><h3>Florida specialists</h3><p>We know the corridors &mdash; Jacksonville, Orlando, Tampa, Naples, West Palm Beach, Tallahassee &mdash; and run them regularly.</p></div></div>
-      <div class="why-item reveal"><div class="n">&#9201;</div><div><h3>Reliable pickup windows</h3><p>We commit to a window and communicate. Dispatch is a real phone number answered by people who run the loads.</p></div></div>
-      <div class="why-item reveal"><div class="n">&#128663;</div><div><h3>Running or non-running</h3><p>Operational and inoperable vehicles handled with the right equipment and securement &mdash; just tell us the condition.</p></div></div>
+      <div class="why-item reveal"><div class="n"><svg class="ic"><use href="#ic-truck"/></svg></div><div><h3>Owned equipment, one point of contact</h3><p>Your vehicle stays on Shoppiis trucks and trailers. No re-brokering, no mystery driver, no finger-pointing.</p></div></div>
+      <div class="why-item reveal"><div class="n"><svg class="ic"><use href="#ic-dollar"/></svg></div><div><h3>Transparent per-mile pricing</h3><p>Clear, mileage-based quotes with no surprise fees. You know what the move costs before you book.</p></div></div>
+      <div class="why-item reveal"><div class="n"><svg class="ic"><use href="#ic-shield"/></svg></div><div><h3>Fully insured &amp; FMCSA-authorized</h3><p>$1M cargo &amp; liability coverage and active interstate authority &mdash; verifiable in public records before you tender.</p></div></div>
+      <div class="why-item reveal"><div class="n"><svg class="ic"><use href="#ic-pin"/></svg></div><div><h3>Florida specialists</h3><p>We know the corridors &mdash; Jacksonville, Orlando, Tampa, Naples, West Palm Beach, Tallahassee &mdash; and run them regularly.</p></div></div>
+      <div class="why-item reveal"><div class="n"><svg class="ic"><use href="#ic-clock"/></svg></div><div><h3>Reliable pickup windows</h3><p>We commit to a window and communicate. Dispatch is a real phone number answered by people who run the loads.</p></div></div>
+      <div class="why-item reveal"><div class="n"><svg class="ic"><use href="#ic-car"/></svg></div><div><h3>Running or non-running</h3><p>Operational and inoperable vehicles handled with the right equipment and securement &mdash; just tell us the condition.</p></div></div>
     </div>
   </div>
 </section>
@@ -234,39 +250,39 @@
       </div>
 
       <div class="compare-row">
-        <div class="compare-feature"><span class="cf-ico">&#128666;</span><span data-en="Direct carrier" data-es="Transportista directo">Direct carrier</span></div>
-        <div class="compare-col col-us"><span class="ck">&#10003;</span><span data-en="We own the trucks and drive every load ourselves." data-es="Somos due&ntilde;os de los camiones y manejamos cada carga.">We own the trucks and drive every load ourselves.</span></div>
-        <div class="compare-col col-them"><span class="cx">&#10007;</span><span data-en="Resells your load to whoever bids the lowest." data-es="Revende su carga a quien ofrezca menos.">Resells your load to whoever bids the lowest.</span></div>
+        <div class="compare-feature"><span class="cf-ico"><svg class="ic"><use href="#ic-truck"/></svg></span><span data-en="Direct carrier" data-es="Transportista directo">Direct carrier</span></div>
+        <div class="compare-col col-us"><span class="ck"><svg class="ic"><use href="#ic-check"/></svg></span><span data-en="We own the trucks and drive every load ourselves." data-es="Somos due&ntilde;os de los camiones y manejamos cada carga.">We own the trucks and drive every load ourselves.</span></div>
+        <div class="compare-col col-them"><span class="cx"><svg class="ic"><use href="#ic-x"/></svg></span><span data-en="Resells your load to whoever bids the lowest." data-es="Revende su carga a quien ofrezca menos.">Resells your load to whoever bids the lowest.</span></div>
       </div>
 
       <div class="compare-row">
-        <div class="compare-feature"><span class="cf-ico">&#128737;</span><span data-en="No brokers" data-es="Sin intermediarios">No brokers</span></div>
-        <div class="compare-col col-us"><span class="ck">&#10003;</span><span data-en="One company, start to finish. No re-brokering." data-es="Una sola empresa, de principio a fin. Sin reventa.">One company, start to finish. No re-brokering.</span></div>
-        <div class="compare-col col-them"><span class="cx">&#10007;</span><span data-en="Layers of middlemen between you and the driver." data-es="Capas de intermediarios entre usted y el conductor.">Layers of middlemen between you and the driver.</span></div>
+        <div class="compare-feature"><span class="cf-ico"><svg class="ic"><use href="#ic-shield"/></svg></span><span data-en="No brokers" data-es="Sin intermediarios">No brokers</span></div>
+        <div class="compare-col col-us"><span class="ck"><svg class="ic"><use href="#ic-check"/></svg></span><span data-en="One company, start to finish. No re-brokering." data-es="Una sola empresa, de principio a fin. Sin reventa.">One company, start to finish. No re-brokering.</span></div>
+        <div class="compare-col col-them"><span class="cx"><svg class="ic"><use href="#ic-x"/></svg></span><span data-en="Layers of middlemen between you and the driver." data-es="Capas de intermediarios entre usted y el conductor.">Layers of middlemen between you and the driver.</span></div>
       </div>
 
       <div class="compare-row">
-        <div class="compare-feature"><span class="cf-ico">&#128104;&#8205;&#128739;</span><span data-en="Owner operated" data-es="Operado por sus due&ntilde;os">Owner operated</span></div>
-        <div class="compare-col col-us"><span class="ck">&#10003;</span><span data-en="Run by the operators who answer for the outcome." data-es="Dirigido por los operadores que responden por el resultado.">Run by the operators who answer for the outcome.</span></div>
-        <div class="compare-col col-them"><span class="cx">&#10007;</span><span data-en="Anonymous dispatch &mdash; no one truly accountable." data-es="Despacho an&oacute;nimo &mdash; nadie realmente responsable.">Anonymous dispatch &mdash; no one truly accountable.</span></div>
+        <div class="compare-feature"><span class="cf-ico"><svg class="ic"><use href="#ic-user"/></svg></span><span data-en="Owner operated" data-es="Operado por sus due&ntilde;os">Owner operated</span></div>
+        <div class="compare-col col-us"><span class="ck"><svg class="ic"><use href="#ic-check"/></svg></span><span data-en="Run by the operators who answer for the outcome." data-es="Dirigido por los operadores que responden por el resultado.">Run by the operators who answer for the outcome.</span></div>
+        <div class="compare-col col-them"><span class="cx"><svg class="ic"><use href="#ic-x"/></svg></span><span data-en="Anonymous dispatch &mdash; no one truly accountable." data-es="Despacho an&oacute;nimo &mdash; nadie realmente responsable.">Anonymous dispatch &mdash; no one truly accountable.</span></div>
       </div>
 
       <div class="compare-row">
-        <div class="compare-feature"><span class="cf-ico">&#9989;</span><span data-en="FMCSA authorized" data-es="Autorizado por FMCSA">FMCSA authorized</span></div>
-        <div class="compare-col col-us"><span class="ck">&#10003;</span><span data-en="Active interstate authority &mdash; USDOT 4261491." data-es="Autoridad interestatal activa &mdash; USDOT 4261491.">Active interstate authority &mdash; USDOT 4261491.</span></div>
-        <div class="compare-col col-them"><span class="cx">&#10007;</span><span data-en="Authority you can&rsquo;t easily verify." data-es="Autoridad que no puede verificar f&aacute;cilmente.">Authority you can&rsquo;t easily verify.</span></div>
+        <div class="compare-feature"><span class="cf-ico"><svg class="ic"><use href="#ic-badge"/></svg></span><span data-en="FMCSA authorized" data-es="Autorizado por FMCSA">FMCSA authorized</span></div>
+        <div class="compare-col col-us"><span class="ck"><svg class="ic"><use href="#ic-check"/></svg></span><span data-en="Active interstate authority &mdash; USDOT 4261491." data-es="Autoridad interestatal activa &mdash; USDOT 4261491.">Active interstate authority &mdash; USDOT 4261491.</span></div>
+        <div class="compare-col col-them"><span class="cx"><svg class="ic"><use href="#ic-x"/></svg></span><span data-en="Authority you can&rsquo;t easily verify." data-es="Autoridad que no puede verificar f&aacute;cilmente.">Authority you can&rsquo;t easily verify.</span></div>
       </div>
 
       <div class="compare-row">
-        <div class="compare-feature"><span class="cf-ico">&#128176;</span><span data-en="$1M insured" data-es="Asegurado en $1M">$1M insured</span></div>
-        <div class="compare-col col-us"><span class="ck">&#10003;</span><span data-en="$1M cargo &amp; liability coverage on every move." data-es="Cobertura de carga y responsabilidad de $1M en cada viaje.">$1M cargo &amp; liability coverage on every move.</span></div>
-        <div class="compare-col col-them"><span class="cx">&#10007;</span><span data-en="Coverage unclear until something goes wrong." data-es="Cobertura incierta hasta que algo sale mal.">Coverage unclear until something goes wrong.</span></div>
+        <div class="compare-feature"><span class="cf-ico"><svg class="ic"><use href="#ic-dollar"/></svg></span><span data-en="$1M insured" data-es="Asegurado en $1M">$1M insured</span></div>
+        <div class="compare-col col-us"><span class="ck"><svg class="ic"><use href="#ic-check"/></svg></span><span data-en="$1M cargo &amp; liability coverage on every move." data-es="Cobertura de carga y responsabilidad de $1M en cada viaje.">$1M cargo &amp; liability coverage on every move.</span></div>
+        <div class="compare-col col-them"><span class="cx"><svg class="ic"><use href="#ic-x"/></svg></span><span data-en="Coverage unclear until something goes wrong." data-es="Cobertura incierta hasta que algo sale mal.">Coverage unclear until something goes wrong.</span></div>
       </div>
 
       <div class="compare-row">
-        <div class="compare-feature"><span class="cf-ico">&#128222;</span><span data-en="Real dispatch phone" data-es="Tel&eacute;fono de despacho real">Real dispatch phone</span></div>
-        <div class="compare-col col-us"><span class="ck">&#10003;</span><span data-en="A real number answered by people who run the loads." data-es="Un n&uacute;mero real atendido por quienes manejan las cargas.">A real number answered by people who run the loads.</span></div>
-        <div class="compare-col col-them"><span class="cx">&#10007;</span><span data-en="Call centers, hold music, and voicemail." data-es="Centros de llamadas, m&uacute;sica de espera y buz&oacute;n de voz.">Call centers, hold music, and voicemail.</span></div>
+        <div class="compare-feature"><span class="cf-ico"><svg class="ic"><use href="#ic-phone"/></svg></span><span data-en="Real dispatch phone" data-es="Tel&eacute;fono de despacho real">Real dispatch phone</span></div>
+        <div class="compare-col col-us"><span class="ck"><svg class="ic"><use href="#ic-check"/></svg></span><span data-en="A real number answered by people who run the loads." data-es="Un n&uacute;mero real atendido por quienes manejan las cargas.">A real number answered by people who run the loads.</span></div>
+        <div class="compare-col col-them"><span class="cx"><svg class="ic"><use href="#ic-x"/></svg></span><span data-en="Call centers, hold music, and voicemail." data-es="Centros de llamadas, m&uacute;sica de espera y buz&oacute;n de voz.">Call centers, hold music, and voicemail.</span></div>
       </div>
     </div>
 
@@ -327,7 +343,7 @@
           <span class="move-city">Miami</span>
         </div>
         <div class="move-type mono" data-en="Auction Delivery &middot; Kia Sedona" data-es="Entrega de subasta &middot; Kia Sedona">Auction Delivery &middot; Kia Sedona</div>
-        <div class="move-status mono"><span class="ck">&#10003;</span><span data-en="Delivered" data-es="Entregado">Delivered</span></div>
+        <div class="move-status mono"><span class="ck"><svg class="ic"><use href="#ic-check"/></svg></span><span data-en="Delivered" data-es="Entregado">Delivered</span></div>
       </div>
 
       <div class="move reveal">
@@ -338,7 +354,7 @@
           <span class="move-city">Melbourne</span>
         </div>
         <div class="move-type mono" data-en="Dealer Transfer" data-es="Traslado de concesionario">Dealer Transfer</div>
-        <div class="move-status mono"><span class="ck">&#10003;</span><span data-en="Delivered" data-es="Entregado">Delivered</span></div>
+        <div class="move-status mono"><span class="ck"><svg class="ic"><use href="#ic-check"/></svg></span><span data-en="Delivered" data-es="Entregado">Delivered</span></div>
       </div>
 
       <div class="move reveal">
@@ -349,7 +365,7 @@
           <span class="move-city">Jacksonville</span>
         </div>
         <div class="move-type mono" data-en="Auction Delivery" data-es="Entrega de subasta">Auction Delivery</div>
-        <div class="move-status mono"><span class="ck">&#10003;</span><span data-en="Delivered" data-es="Entregado">Delivered</span></div>
+        <div class="move-status mono"><span class="ck"><svg class="ic"><use href="#ic-check"/></svg></span><span data-en="Delivered" data-es="Entregado">Delivered</span></div>
       </div>
 
       <div class="move reveal">
@@ -360,7 +376,7 @@
           <span class="move-city">Jacksonville</span>
         </div>
         <div class="move-type mono" data-en="Dealer Transfer" data-es="Traslado de concesionario">Dealer Transfer</div>
-        <div class="move-status mono"><span class="ck">&#10003;</span><span data-en="Delivered" data-es="Entregado">Delivered</span></div>
+        <div class="move-status mono"><span class="ck"><svg class="ic"><use href="#ic-check"/></svg></span><span data-en="Delivered" data-es="Entregado">Delivered</span></div>
       </div>
 
       <div class="move reveal">
@@ -371,7 +387,7 @@
           <span class="move-city">Tallahassee</span>
         </div>
         <div class="move-type mono" data-en="Fleet Relocation" data-es="Mudanza de flota">Fleet Relocation</div>
-        <div class="move-status mono"><span class="ck">&#10003;</span><span data-en="Delivered" data-es="Entregado">Delivered</span></div>
+        <div class="move-status mono"><span class="ck"><svg class="ic"><use href="#ic-check"/></svg></span><span data-en="Delivered" data-es="Entregado">Delivered</span></div>
       </div>
 
       <div class="move reveal">
@@ -382,7 +398,7 @@
           <span class="move-city">Fort Valley, GA</span>
         </div>
         <div class="move-type mono" data-en="Private Vehicle Transport" data-es="Transporte de vehículo particular">Private Vehicle Transport</div>
-        <div class="move-status mono"><span class="ck">&#10003;</span><span data-en="Delivered" data-es="Entregado">Delivered</span></div>
+        <div class="move-status mono"><span class="ck"><svg class="ic"><use href="#ic-check"/></svg></span><span data-en="Delivered" data-es="Entregado">Delivered</span></div>
       </div>
 
     </div>
