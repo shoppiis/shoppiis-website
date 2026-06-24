@@ -37,7 +37,7 @@ const DICT = {
   "Get a Free Quote &rarr;": "Cotización gratis &rarr;",
   "Call Dispatch": "Llamar a despacho",
   "Fast per-mile quotes &middot;": "Cotizaciones rápidas por milla &middot;",
-  "$1M insured": "$1M asegurado",
+  "$100K insured": "$100K asegurado",
   "&middot; Florida &amp; Southeast lanes": "&middot; Rutas en Florida y el sureste",
   "OUR FLEET &middot;": "NUESTRA FLOTA &middot;",
   "&middot; SECURING A LOAD": "&middot; ASEGURANDO UNA CARGA",
@@ -45,7 +45,7 @@ const DICT = {
   // --- Trust strip ---
   "Active Authority": "Autoridad activa",
   "Interstate Carrier": "Transportista interestatal",
-  "$1M Insured": "$1M Asegurado",
+  "$100K Insured": "$100K Asegurado",
   "Cargo &amp; Liability": "Carga y responsabilidad",
   "Interstate": "Interestatal",
   "FMCSA Authorized": "Autorizado FMCSA",
@@ -59,7 +59,7 @@ const DICT = {
   "GOVERNMENT LOADS": "CARGAS GUBERNAMENTALES",
   "RUNNING &amp; NON-RUNNING VEHICLES": "VEHÍCULOS QUE ARRANCAN Y QUE NO",
   "PER-MILE PRICING": "PRECIO POR MILLA",
-  "$1M CARGO &amp; LIABILITY COVERAGE": "$1M EN COBERTURA DE CARGA Y RESPONSABILIDAD",
+  "$100K CARGO &amp; LIABILITY COVERAGE": "$100K EN COBERTURA DE CARGA Y RESPONSABILIDAD",
 
   // --- 01 What We Move ---
   "01 / What We Move": "01 / Qué transportamos",
@@ -106,8 +106,8 @@ const DICT = {
   "Clear, mileage-based quotes with no surprise fees. You know what the move costs before you book.":
     "Cotizaciones claras por millaje, sin cargos sorpresa. Usted sabe cuánto cuesta el traslado antes de reservar.",
   "Fully insured &amp; FMCSA-authorized": "Totalmente asegurado y autorizado por FMCSA",
-  "$1M cargo &amp; liability coverage and active interstate authority &mdash; verifiable in public records before you tender.":
-    "$1M en cobertura de carga y responsabilidad y autoridad interestatal activa &mdash; verificable en registros públicos antes de contratar.",
+  "$100K cargo &amp; liability coverage and active interstate authority &mdash; verifiable in public records before you tender.":
+    "$100K en cobertura de carga y responsabilidad y autoridad interestatal activa &mdash; verificable en registros públicos antes de contratar.",
   "Florida specialists": "Especialistas en Florida",
   "We know the corridors &mdash; Jacksonville, Orlando, Tampa, Naples, West Palm Beach, Tallahassee &mdash; and run them regularly.":
     "Conocemos los corredores &mdash; Jacksonville, Orlando, Tampa, Naples, West Palm Beach, Tallahassee &mdash; y los recorremos con frecuencia.",
@@ -150,7 +150,7 @@ const DICT = {
   "Tell us where it&rsquo;s going and what we&rsquo;re moving. We&rsquo;ll come back with a per-mile quote and an available pickup window &mdash; usually same business day.":
     "Díganos a dónde va y qué debemos transportar. Le respondemos con una cotización por milla y una ventana de recogida disponible &mdash; normalmente el mismo día hábil.",
   "No obligation, no hidden fees": "Sin compromiso, sin cargos ocultos",
-  "$1M cargo &amp; liability coverage": "Cobertura de $1M en carga y responsabilidad",
+  "$100K cargo &amp; liability coverage": "Cobertura de $100K en carga y responsabilidad",
   "Running &amp; non-running vehicles": "Vehículos que arrancan y que no arrancan",
   "Talk to dispatch: (347) 865-9529": "Hable con despacho: (347) 865-9529",
   "Pickup location": "Lugar de recogida",
@@ -227,8 +227,8 @@ const DICT = {
   "12 / Questions, Answered": "12 / Preguntas respondidas",
   "Frequently asked questions.": "Preguntas frecuentes.",
   "Is my vehicle insured during transport?": "¿Mi vehículo está asegurado durante el transporte?",
-  "Yes. Shoppiis carries $1,000,000 in primary cargo &amp; liability coverage (BIPD) through Progressive, and we operate under active FMCSA interstate authority (USDOT 4261491 / MC 1653490). You can request a certificate of insurance and verify our authority through the FMCSA SAFER system before booking.":
-    "Sí. Shoppiis tiene $1,000,000 en cobertura primaria de carga y responsabilidad (BIPD) a través de Progressive, y operamos bajo autoridad interestatal activa de la FMCSA (USDOT 4261491 / MC 1653490). Puede solicitar un certificado de seguro y verificar nuestra autoridad en el sistema FMCSA SAFER antes de reservar.",
+  "Yes. Shoppiis carries $100,000 in primary cargo &amp; liability coverage (BIPD) through Progressive, and we operate under active FMCSA interstate authority (USDOT 4261491 / MC 1653490). You can request a certificate of insurance and verify our authority through the FMCSA SAFER system before booking.":
+    "Sí. Shoppiis tiene $100,000 en cobertura primaria de carga y responsabilidad (BIPD) a través de Progressive, y operamos bajo autoridad interestatal activa de la FMCSA (USDOT 4261491 / MC 1653490). Puede solicitar un certificado de seguro y verificar nuestra autoridad en el sistema FMCSA SAFER antes de reservar.",
   "How soon can you pick up my vehicle?": "¿Qué tan pronto pueden retirar mi vehículo?",
   "It depends on the lane and current routing, but we usually provide an available pickup window the same business day you request a quote. Florida and Southeast corridors move fastest. Tell us your preferred date in the quote form and we&rsquo;ll confirm what&rsquo;s realistic.":
     "Depende de la ruta y la programación actual, pero normalmente damos una ventana de recogida disponible el mismo día hábil en que solicita la cotización. Los corredores de Florida y el sureste son los más rápidos. Indíquenos su fecha preferida en el formulario y confirmamos qué es realista.",
@@ -265,7 +265,7 @@ const DICT = {
   "Investor inquiries": "Consultas de inversores",
   "Partner with us": "Asóciese con nosotros",
   "FMCSA SAFER lookup": "Verificar en FMCSA SAFER",
-  "INTERSTATE · PROPERTY · $1M INSURED": "INTERESTATAL · PROPIEDAD · $1M ASEGURADO"
+  "INTERSTATE · PROPERTY · $100K INSURED": "INTERESTATAL · PROPIEDAD · $100K ASEGURADO"
 };
 
 /* ---- 1. Auto-etiquetado: pone data-en / data-es donde haya traducción ----
