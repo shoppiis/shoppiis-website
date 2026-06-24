@@ -71,8 +71,8 @@ const DICT = {
   "Transparent pricing": "Precios transparentes",
   "FL + SE": "FL + SE",
   "Active service area": "Zona de servicio activa",
-  "Up to 5": "Hasta 5",
-  "Vehicles per trailer load": "Vehículos por carga",
+  "Direct Carrier": "Transportista directo",
+  "No brokers": "Sin intermediarios",
 
   // --- 02 Services ---
   "02 / Vehicle Transport Services": "02 / Servicios de transporte",
