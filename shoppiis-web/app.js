@@ -28,17 +28,18 @@ const DICT = {
   "CALL DISPATCH": "LLAMAR A DESPACHO",
 
   // --- Hero ---
-  "FMCSA-AUTHORIZED FLORIDA AUTO CARRIER · USDOT 4261491":
-    "TRANSPORTISTA DE AUTOS EN FLORIDA · AUTORIZADO FMCSA · USDOT 4261491",
-  "Your vehicles, moved across": "Sus vehículos, transportados por toda",
+  "FMCSA-AUTHORIZED SOUTHEAST AUTO CARRIER · USDOT 4261491":
+    "TRANSPORTISTA DE AUTOS EN EL SURESTE · AUTORIZADO FMCSA · USDOT 4261491",
+  "Your vehicles, moved": "Sus vehículos, transportados",
+  "across the South": "por todo el sur",
   "&mdash; safely, on time, fully insured.": "&mdash; seguros, a tiempo y asegurados.",
-  "Shoppiis Cargo is an owner-operated Florida vehicle transport and car shipping company hauling cars across Florida and the Southeast for dealerships, manufacturers, private customers, and government loads. Real trucks, real routes, real accountability.":
-    "Shoppiis Cargo es una empresa de transporte de vehículos y envío de autos en Florida, operada por sus dueños, que traslada autos por Florida y el sureste para concesionarios, fabricantes, clientes particulares y cargas gubernamentales. Camiones reales, rutas reales, responsabilidad real.",
+  "Shoppiis Cargo is an owner-operated vehicle transport and car shipping company serving Florida, Georgia, Mississippi, Alabama, South Carolina, North Carolina, and Tennessee. We transport vehicles for dealerships, manufacturers, private customers, and government agencies with real trucks, real routes, and real accountability.":
+    "Shoppiis Cargo es una empresa de transporte de vehículos y envío de autos operada por sus dueños, que presta servicio en Florida, Georgia, Mississippi, Alabama, Carolina del Sur, Carolina del Norte y Tennessee. Transportamos vehículos para concesionarios, fabricantes, clientes particulares y agencias gubernamentales con camiones reales, rutas reales y responsabilidad real.",
   "Get a Free Quote &rarr;": "Cotización gratis &rarr;",
   "Call Dispatch": "Llamar a despacho",
   "Fast per-mile quotes &middot;": "Cotizaciones rápidas por milla &middot;",
   "$100K insured": "$100K asegurado",
-  "&middot; Florida &amp; Southeast lanes": "&middot; Rutas en Florida y el sureste",
+  "&middot; Southeast lanes": "&middot; Rutas por el sureste",
   "OUR FLEET &middot;": "NUESTRA FLOTA &middot;",
   "&middot; SECURING A LOAD": "&middot; ASEGURANDO UNA CARGA",
 
@@ -69,7 +70,7 @@ const DICT = {
     "Shoppiis Cargo opera rutas con camión y tráiler por Florida y el sureste, trasladando autos para concesionarios, fabricantes, clientes particulares y cargas gubernamentales &mdash; con equipo propio y un solo equipo responsable desde la recogida hasta la entrega.",
   "Per-mile": "Por milla",
   "Transparent pricing": "Precios transparentes",
-  "FL + SE": "FL + SE",
+  "7 States": "7 Estados",
   "Active service area": "Zona de servicio activa",
   "Direct Carrier": "Transportista directo",
   "No brokers": "Sin intermediarios",
@@ -108,9 +109,9 @@ const DICT = {
   "Fully insured &amp; FMCSA-authorized": "Totalmente asegurado y autorizado por FMCSA",
   "$100K cargo &amp; liability coverage and active interstate authority &mdash; verifiable in public records before you tender.":
     "$100K en cobertura de carga y responsabilidad y autoridad interestatal activa &mdash; verificable en registros públicos antes de contratar.",
-  "Florida specialists": "Especialistas en Florida",
-  "We know the corridors &mdash; Jacksonville, Orlando, Tampa, Naples, West Palm Beach, Tallahassee &mdash; and run them regularly.":
-    "Conocemos los corredores &mdash; Jacksonville, Orlando, Tampa, Naples, West Palm Beach, Tallahassee &mdash; y los recorremos con frecuencia.",
+  "Southeast specialists": "Especialistas en el sureste",
+  "We know the corridors &mdash; from Jacksonville and Atlanta to the Carolinas, Tennessee, and the Gulf Coast &mdash; and run them regularly.":
+    "Conocemos los corredores &mdash; desde Jacksonville y Atlanta hasta las Carolinas, Tennessee y la Costa del Golfo &mdash; y los recorremos con frecuencia.",
   "Reliable pickup windows": "Ventanas de recogida confiables",
   "We commit to a window and communicate. Dispatch is a real phone number answered by people who run the loads.":
     "Nos comprometemos a una ventana y mantenemos la comunicación. Despacho es un teléfono real atendido por quienes manejan las cargas.",
@@ -121,8 +122,8 @@ const DICT = {
   // --- 04 Metrics ---
   "04 / By The Numbers": "04 / En números",
   "Real operations, measured.": "Operaciones reales, medidas.",
-  "Operational metrics from active Shoppiis Cargo routes across Florida.":
-    "Métricas operativas de rutas activas de Shoppiis Cargo por toda Florida.",
+  "Operational metrics from active Shoppiis Cargo routes across the Southeast.":
+    "Métricas operativas de rutas activas de Shoppiis Cargo por todo el sureste.",
   "(Placeholders &mdash; populate with verified figures before publishing.)":
     "(Marcadores &mdash; complete con cifras verificadas antes de publicar.)",
   "Operations To Date": "Operaciones a la fecha",
@@ -132,17 +133,18 @@ const DICT = {
   "FMCSA VERIFIED": "VERIFICADO POR FMCSA",
 
   // --- 05 Operations ---
-  "05 / Operating Across Florida": "05 / Operando por toda Florida",
-  "On Florida&rsquo;s busiest vehicle-transport corridors.":
-    "En los corredores de transporte más activos de Florida.",
-  "Florida is a national vehicle-transport corridor with steady, recurring demand. Shoppiis runs key markets anchored by Jacksonville &mdash; one of the country&rsquo;s major auto-transport hubs.":
-    "Florida es un corredor nacional de transporte de vehículos con demanda constante. Shoppiis opera mercados clave anclados en Jacksonville &mdash; uno de los principales centros de transporte de autos del país.",
-  "NORTH &middot; HUB": "NORTE &middot; CENTRO",
-  "CENTRAL": "CENTRO",
-  "CENTRAL / GULF": "CENTRO / GOLFO",
-  "SOUTHWEST": "SUROESTE",
+  "07 / Operating Across the Southeast": "07 / Operando por el sureste",
+  "On the Southeast&rsquo;s busiest vehicle-transport corridors.":
+    "En los corredores de transporte más activos del sureste.",
+  "The Southeast is one of the country&rsquo;s busiest vehicle-transport regions, with steady, recurring demand. Shoppiis runs key markets across seven states &mdash; anchored by Jacksonville, one of the nation&rsquo;s major auto-transport hubs.":
+    "El sureste es una de las regiones de transporte de vehículos más activas del país, con demanda constante y recurrente. Shoppiis opera mercados clave en siete estados &mdash; anclados en Jacksonville, uno de los principales centros de transporte de autos del país.",
+  "HOME BASE &middot; HUB": "BASE CENTRAL &middot; CENTRO",
   "SOUTHEAST": "SURESTE",
-  "PANHANDLE": "PANHANDLE",
+  "GULF SOUTH": "COSTA DEL GOLFO",
+  "CAROLINAS": "CAROLINAS",
+  "TENNESSEE VALLEY": "VALLE DE TENNESSEE",
+  "South Carolina": "Carolina del Sur",
+  "North Carolina": "Carolina del Norte",
 
   // --- 06 Quote form ---
   "06 / Request Transport": "06 / Solicitar transporte",
@@ -205,7 +207,7 @@ const DICT = {
   "LOADED &amp; SECURED": "CARGADO Y ASEGURADO",
   "WHEEL-STRAP SECUREMENT": "AMARRE POR RUEDA",
   "RAMP LOADING": "CARGA POR RAMPA",
-  "ON A FLORIDA ROUTE": "EN RUTA POR FLORIDA",
+  "ON A SOUTHEAST ROUTE": "EN RUTA POR EL SURESTE",
   "READY TO ROLL": "LISTO PARA SALIR",
 
   // --- 09 Team ---
@@ -230,14 +232,14 @@ const DICT = {
   "Yes. Shoppiis carries $100,000 in primary cargo &amp; liability coverage (BIPD) through Progressive, and we operate under active FMCSA interstate authority (USDOT 4261491 / MC 1653490). You can request a certificate of insurance and verify our authority through the FMCSA SAFER system before booking.":
     "Sí. Shoppiis tiene $100,000 en cobertura primaria de carga y responsabilidad (BIPD) a través de Progressive, y operamos bajo autoridad interestatal activa de la FMCSA (USDOT 4261491 / MC 1653490). Puede solicitar un certificado de seguro y verificar nuestra autoridad en el sistema FMCSA SAFER antes de reservar.",
   "How soon can you pick up my vehicle?": "¿Qué tan pronto pueden retirar mi vehículo?",
-  "It depends on the lane and current routing, but we usually provide an available pickup window the same business day you request a quote. Florida and Southeast corridors move fastest. Tell us your preferred date in the quote form and we&rsquo;ll confirm what&rsquo;s realistic.":
-    "Depende de la ruta y la programación actual, pero normalmente damos una ventana de recogida disponible el mismo día hábil en que solicita la cotización. Los corredores de Florida y el sureste son los más rápidos. Indíquenos su fecha preferida en el formulario y confirmamos qué es realista.",
+  "It depends on the lane and current routing, but we usually provide an available pickup window the same business day you request a quote. Our Southeast corridors move fastest. Tell us your preferred date in the quote form and we&rsquo;ll confirm what&rsquo;s realistic.":
+    "Depende de la ruta y la programación actual, pero normalmente damos una ventana de recogida disponible el mismo día hábil en que solicita la cotización. Nuestros corredores del sureste son los más rápidos. Indíquenos su fecha preferida en el formulario y confirmamos qué es realista.",
   "Do you transport non-running or inoperable vehicles?": "¿Transportan vehículos que no arrancan o inoperables?",
   "Yes. We handle both running and non-running vehicles &mdash; just select the condition in your quote request so we bring the right equipment and securement. Non-running vehicles may require a winch and additional handling, which we&rsquo;ll account for in the quote.":
     "Sí. Manejamos vehículos que arrancan y que no &mdash; solo elija el estado en su solicitud para que llevemos el equipo y amarre correctos. Los vehículos que no arrancan pueden requerir cabrestante y manejo adicional, que incluimos en la cotización.",
   "What areas do you serve?": "¿Qué zonas cubren?",
-  "We operate across Florida and the Southeast, with regular routes through Jacksonville, Orlando, Tampa, Naples, West Palm Beach, and Tallahassee. Jacksonville is a major national auto-transport hub and anchors our network. Have a lane outside this area? Ask &mdash; we hold interstate authority and can quote it.":
-    "Operamos por Florida y el sureste, con rutas regulares por Jacksonville, Orlando, Tampa, Naples, West Palm Beach y Tallahassee. Jacksonville es un gran centro nacional de transporte de autos y ancla nuestra red. ¿Tiene una ruta fuera de esta zona? Pregúntenos &mdash; tenemos autoridad interestatal y podemos cotizarla.",
+  "We operate across the Southeastern United States &mdash; Florida, Georgia, Mississippi, Alabama, South Carolina, North Carolina, and Tennessee. Jacksonville is a major national auto-transport hub and anchors our network. Have a lane outside this area? Ask &mdash; we hold interstate authority and can quote it.":
+    "Operamos por todo el sureste de Estados Unidos &mdash; Florida, Georgia, Mississippi, Alabama, Carolina del Sur, Carolina del Norte y Tennessee. Jacksonville es un gran centro nacional de transporte de autos y ancla nuestra red. ¿Tiene una ruta fuera de esta zona? Pregúntenos &mdash; tenemos autoridad interestatal y podemos cotizarla.",
   "How does pricing and payment work?": "¿Cómo funcionan los precios y el pago?",
   "Transport is priced per mile based on distance, vehicle count, and condition &mdash; no surprise fees. You&rsquo;ll get a clear quote before you book. Payment terms are confirmed at booking; brokers can ask about carrier-packet and payment arrangements directly with dispatch.":
     "El transporte se cobra por milla según distancia, cantidad de vehículos y estado &mdash; sin cargos sorpresa. Recibe una cotización clara antes de reservar. Los términos de pago se confirman al reservar; los brókers pueden consultar por el carrier-packet y los arreglos de pago directamente con despacho.",
@@ -249,16 +251,16 @@ const DICT = {
   "Move a vehicle, or build with us.": "Mueva un vehículo o trabaje con nosotros.",
   "Brokers · Dealerships · Private": "Brókers · Concesionarios · Particulares",
   "Request Transport": "Solicitar transporte",
-  "Need a vehicle moved across Florida or the Southeast? Get a per-mile quote with an available pickup window.":
-    "¿Necesita mover un vehículo por Florida o el sureste? Solicite una cotización por milla con una ventana de recogida disponible.",
+  "Need a vehicle moved across the Southeast? Get a per-mile quote with an available pickup window.":
+    "¿Necesita mover un vehículo por el sureste? Solicite una cotización por milla con una ventana de recogida disponible.",
   "Talk To Dispatch": "Hable con despacho",
   "Call Us Directly": "Llámenos directamente",
   "Prefer to talk it through? Reach dispatch directly &mdash; answered by the people who run the loads.":
     "¿Prefiere hablarlo? Comuníquese directamente con despacho &mdash; atendido por quienes manejan las cargas.",
 
   // --- Footer ---
-  "Vehicle transport &amp; logistics infrastructure. Owner-operated auto carrier serving Florida and the Southeast.":
-    "Transporte de vehículos e infraestructura logística. Transportista de autos operado por sus dueños, sirviendo a Florida y el sureste.",
+  "Vehicle transport &amp; logistics infrastructure. Owner-operated auto carrier serving the Southeastern United States.":
+    "Transporte de vehículos e infraestructura logística. Transportista de autos operado por sus dueños, sirviendo al sureste de Estados Unidos.",
   "Company": "Empresa",
   "Get a Quote": "Cotización",
   "Other": "Otros",
