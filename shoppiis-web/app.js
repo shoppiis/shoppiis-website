@@ -154,7 +154,7 @@ const DICT = {
   "No obligation, no hidden fees": "Sin compromiso, sin cargos ocultos",
   "$100K cargo &amp; liability coverage": "Cobertura de $100K en carga y responsabilidad",
   "Running &amp; non-running vehicles": "Vehículos que arrancan y que no arrancan",
-  "Talk to dispatch: (347) 865-9529": "Hable con despacho: (347) 865-9529",
+  "Talk to dispatch: (239) 526-1266": "Hable con despacho: (239) 526-1266",
   "Pickup location": "Lugar de recogida",
   "Delivery location": "Lugar de entrega",
   "Vehicle (year / make / model)": "Vehículo (año / marca / modelo)",
@@ -170,8 +170,8 @@ const DICT = {
   "We typically respond the same business day. Your details are used only to quote your transport.":
     "Normalmente respondemos el mismo día hábil. Sus datos se usan solo para cotizar su transporte.",
   "Request received.": "Solicitud recibida.",
-  "Thanks &mdash; dispatch will reach out shortly with your quote and an available pickup window. Need it sooner? Call (347)&nbsp;865-9529.":
-    "Gracias &mdash; despacho se comunicará en breve con su cotización y una ventana de recogida disponible. ¿Lo necesita antes? Llame al (347)&nbsp;865-9529.",
+  "Thanks &mdash; dispatch will reach out shortly with your quote and an available pickup window. Need it sooner? Call (239)&nbsp;526-1266.":
+    "Gracias &mdash; despacho se comunicará en breve con su cotización y una ventana de recogida disponible. ¿Lo necesita antes? Llame al (239)&nbsp;526-1266.",
   // opciones del <select>
   "Running": "Arranca",
   "Non-running / inoperable": "No arranca / inoperable",
@@ -377,7 +377,7 @@ function setLang(lang){
     if (val !== null) el.textContent = val;
   });
   const wa = document.querySelector('.wa-float');
-  if (wa) wa.href = 'https://wa.me/13478659529?text=' + encodeURIComponent(WA_MSG[lang]);
+  if (wa) wa.href = 'https://wa.me/12395261266?text=' + encodeURIComponent(WA_MSG[lang]);
   document.querySelectorAll('[data-lang-toggle]').forEach(tg => {
     tg.querySelectorAll('button').forEach(b => {
       b.classList.toggle('active', b.getAttribute('data-lang') === lang);
@@ -429,8 +429,8 @@ if (form) {
       btn.disabled = false;
       btn.innerHTML = original;
       alert(es
-        ? 'No pudimos enviar su solicitud. Llámenos al (347) 865-9529 o intente de nuevo.'
-        : "We couldn't send your request. Please call (347) 865-9529 or try again.");
+        ? 'No pudimos enviar su solicitud. Llámenos al (239) 526-1266 o intente de nuevo.'
+        : "We couldn't send your request. Please call (239) 526-1266 or try again.");
     }
   });
 }
