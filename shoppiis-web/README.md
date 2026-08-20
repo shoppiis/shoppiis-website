@@ -98,18 +98,27 @@ Después el botón **"Request to Book"** rellena el formulario de abajo con
 esos datos para que despacho reciba el pedido por email.
 
 Usa **Mapbox** (gratis hasta ~100.000 consultas por mes). El token se
-configura como **variable de entorno en Netlify** (no va en el código):
+configura como **variable de entorno en Vercel** (no va en el código):
 
 1. Creá una cuenta gratis en **https://account.mapbox.com**.
 2. Copiá tu **Default public token** (empieza con `pk.`).
-3. En Netlify: **Site settings → Environment variables → Add a variable**.
-   - **Key:** `MAPBOX_TOKEN`
+3. En Vercel: **Project → Settings → Environment Variables → Add**.
+   - **Key (nombre exacto):** `MAPBOX_TOKEN`
    - **Value:** tu token `pk...`
-4. Volvé a desplegar (**Deploys → Trigger deploy → Deploy site**). En cada
-   deploy, `build.sh` toma esa variable y genera `config.js`
-   (`window.MAPBOX_TOKEN`), que `index.html` carga antes de `app.js`.
+   - **Environments:** marcá **Production** (y **Preview** si querés que
+     los deploys de prueba también muestren el mapa).
+4. **Redeploy:** Vercel no aplica una variable nueva al deploy actual.
+   Andá a **Deployments → (⋯) del último → Redeploy**. En cada build,
+   `vercel.json` corre `build.sh`, que toma la variable y genera
+   `config.js` (`window.MAPBOX_TOKEN`); `index.html` lo carga antes de
+   `app.js`.
 5. **Recomendado:** en el panel de Mapbox, restringí el token a tu dominio
    (`shoppiis.com`) en *URL restrictions*, así nadie más lo usa.
+
+> 📁 **Root Directory en Vercel:** como los archivos del sitio están en
+> `shoppiis-web/`, el proyecto de Vercel debe tener el *Root Directory*
+> apuntando a `shoppiis-web` (Settings → General → Root Directory). Ahí es
+> donde viven `vercel.json` y `build.sh`.
 
 > ℹ️ Como es un sitio estático, el token público termina igual en el
 > navegador (Mapbox lo requiere del lado del cliente) — por eso conviene
@@ -119,10 +128,6 @@ configura como **variable de entorno en Netlify** (no va en el código):
 > ⚠️ Si la variable no está o el token no empieza con `pk.`, el bloque de
 > cotización instantánea **queda oculto automáticamente** y el formulario
 > manual de cotización sigue funcionando igual. El sitio nunca se rompe.
-
-> 🖐️ ¿Deploy arrastrando la carpeta (netlify.com/drop) en vez de Git? Entonces
-> no corre `build.sh`. Editá `config.js` a mano poniendo tu token entre las
-> comillas (`window.MAPBOX_TOKEN = "pk...";`) antes de arrastrar la carpeta.
 
 ### Tarifas por milla
 
@@ -186,7 +191,7 @@ elegí esta carpeta → Publish.)
 
 ## ✅ Checklist antes de publicar
 
-- [ ] Variable `MAPBOX_TOKEN` (`pk...`) cargada en Netlify y deploy hecho (mapa + cotización)
+- [ ] Variable `MAPBOX_TOKEN` (`pk...`) cargada en Vercel + Redeploy hecho (mapa + cotización)
 - [ ] Clave de Web3Forms puesta en `index.html`
 - [ ] Mandé una cotización de prueba y me llegó el mail
 - [ ] Revisé los textos EN y ES
