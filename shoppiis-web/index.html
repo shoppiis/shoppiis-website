@@ -445,7 +445,7 @@
 <section class="sec quote" id="quote">
   <div class="wrap">
 
-    <!-- ===== INSTANT QUOTE (Mapbox) — se muestra solo si hay token de Mapbox en app.js ===== -->
+    <!-- ===== INSTANT QUOTE (Mapbox) — se muestra solo si la variable MAPBOX_TOKEN está configurada en Netlify ===== -->
     <div class="iq" id="instantQuote" hidden>
       <div class="iq-head reveal">
         <div class="kicker" data-en="Instant Quote" data-es="Cotización instantánea">Instant Quote</div>
@@ -697,6 +697,7 @@
   <a href="#quote" class="m-quote" data-en="Get a Free Quote" data-es="Cotización gratis">Get a Free Quote</a>
 </div>
 
+<script src="config.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

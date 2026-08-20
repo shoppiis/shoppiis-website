@@ -440,25 +440,26 @@ if (form) {
 /* ============================================================
    COTIZACIÓN INSTANTÁNEA (Mapbox) — mapa + distancia por milla
    ------------------------------------------------------------
-   PASO 1: creá una cuenta gratis en https://account.mapbox.com
-   PASO 2: copiá tu "Default public token" (empieza con pk.)
-   PASO 3: pegalo abajo reemplazando el placeholder.
-   Sin token válido, el bloque de cotización instantánea queda
-   oculto y el formulario manual de abajo sigue funcionando.
+   El token público de Mapbox NO va en el código: se toma de la
+   variable de entorno MAPBOX_TOKEN configurada en Netlify.
+   build.sh la escribe en config.js (window.MAPBOX_TOKEN) en cada
+   deploy, y config.js se carga antes que app.js en index.html.
+   Sin token válido, este bloque queda oculto y el formulario
+   manual de abajo sigue funcionando.
 
-   Tarifas por milla (editá acá o en el <select> del index.html):
+   Tarifas por milla (editá en el <select> del index.html):
      • Auto/camioneta/SUV estándar ... $1.00
      • Dually o Van ................... $1.50
      • Vehículo grande o custom ....... $1.75
    ============================================================ */
-const MAPBOX_TOKEN = "pk.PEGA_TU_TOKEN_DE_MAPBOX_ACA";
+const MAPBOX_TOKEN = ((typeof window !== 'undefined' && window.MAPBOX_TOKEN) || "").trim();
 const MIN_QUOTE = 0; // mínimo en dólares (0 = sin mínimo; poné p.ej. 150 si querés uno)
 
 (function initInstantQuote(){
   const box = document.getElementById('instantQuote');
   if (!box) return;
-  // sin token válido (o con el placeholder sin reemplazar): el bloque queda oculto
-  if (MAPBOX_TOKEN === "pk.PEGA_TU_TOKEN_DE_MAPBOX_ACA" || !/^pk\./.test(MAPBOX_TOKEN)) return;
+  // sin token válido: el bloque queda oculto
+  if (!/^pk\./.test(MAPBOX_TOKEN)) return;
 
   // Cargar CSS + JS de Mapbox bajo demanda (solo si hay token)
   [

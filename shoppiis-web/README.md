@@ -97,19 +97,32 @@ entrega, elige el tipo de vehículo, y el sitio calcula el precio solo
 Después el botón **"Request to Book"** rellena el formulario de abajo con
 esos datos para que despacho reciba el pedido por email.
 
-Usa **Mapbox** (gratis hasta ~100.000 consultas por mes). Para activarlo:
+Usa **Mapbox** (gratis hasta ~100.000 consultas por mes). El token se
+configura como **variable de entorno en Netlify** (no va en el código):
 
 1. Creá una cuenta gratis en **https://account.mapbox.com**.
 2. Copiá tu **Default public token** (empieza con `pk.`).
-3. Abrí `app.js`, buscá `MAPBOX_TOKEN` (arriba del bloque
-   "COTIZACIÓN INSTANTÁNEA") y pegá tu token reemplazando
-   `pk.PEGA_TU_TOKEN_DE_MAPBOX_ACA`.
-4. **Recomendado:** en el panel de Mapbox, restringí el token a tu dominio
+3. En Netlify: **Site settings → Environment variables → Add a variable**.
+   - **Key:** `MAPBOX_TOKEN`
+   - **Value:** tu token `pk...`
+4. Volvé a desplegar (**Deploys → Trigger deploy → Deploy site**). En cada
+   deploy, `build.sh` toma esa variable y genera `config.js`
+   (`window.MAPBOX_TOKEN`), que `index.html` carga antes de `app.js`.
+5. **Recomendado:** en el panel de Mapbox, restringí el token a tu dominio
    (`shoppiis.com`) en *URL restrictions*, así nadie más lo usa.
 
-> ⚠️ Si no ponés un token válido (que empiece con `pk.`), el bloque de
+> ℹ️ Como es un sitio estático, el token público termina igual en el
+> navegador (Mapbox lo requiere del lado del cliente) — por eso conviene
+> restringirlo por dominio. La variable de entorno sirve para no tenerlo en
+> el repo y poder rotarlo sin tocar el código.
+
+> ⚠️ Si la variable no está o el token no empieza con `pk.`, el bloque de
 > cotización instantánea **queda oculto automáticamente** y el formulario
 > manual de cotización sigue funcionando igual. El sitio nunca se rompe.
+
+> 🖐️ ¿Deploy arrastrando la carpeta (netlify.com/drop) en vez de Git? Entonces
+> no corre `build.sh`. Editá `config.js` a mano poniendo tu token entre las
+> comillas (`window.MAPBOX_TOKEN = "pk...";`) antes de arrastrar la carpeta.
 
 ### Tarifas por milla
 
@@ -173,7 +186,7 @@ elegí esta carpeta → Publish.)
 
 ## ✅ Checklist antes de publicar
 
-- [ ] Token de Mapbox (`pk...`) puesto en `app.js` y probado (mapa + cotización)
+- [ ] Variable `MAPBOX_TOKEN` (`pk...`) cargada en Netlify y deploy hecho (mapa + cotización)
 - [ ] Clave de Web3Forms puesta en `index.html`
 - [ ] Mandé una cotización de prueba y me llegó el mail
 - [ ] Revisé los textos EN y ES
