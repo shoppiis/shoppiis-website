@@ -444,6 +444,53 @@
 <!-- ============ QUOTE FORM ============ -->
 <section class="sec quote" id="quote">
   <div class="wrap">
+
+    <!-- ===== INSTANT QUOTE (Mapbox) — se muestra solo si hay token de Mapbox en app.js ===== -->
+    <div class="iq" id="instantQuote" hidden>
+      <div class="iq-head reveal">
+        <div class="kicker" data-en="Instant Quote" data-es="Cotización instantánea">Instant Quote</div>
+        <h2 data-en="Price your move in seconds." data-es="Cotice su transporte en segundos.">Price your move in seconds.</h2>
+        <p data-en="Pick your pickup and delivery, choose the vehicle, and get a live per-mile estimate on the map &mdash; then request to book." data-es="Elija recogida y entrega, seleccione el vehículo y obtenga un estimado por milla al instante en el mapa &mdash; luego solicite reservar.">Pick your pickup and delivery, choose the vehicle, and get a live per-mile estimate on the map &mdash; then request to book.</p>
+      </div>
+      <div class="iq-grid">
+        <div class="iq-panel reveal">
+          <div class="iq-field">
+            <label class="mono" data-en="Pickup location" data-es="Lugar de recogida">Pickup location</label>
+            <div id="iqOrigin" class="iq-geo"></div>
+          </div>
+          <div class="iq-field">
+            <label class="mono" data-en="Delivery location" data-es="Lugar de entrega">Delivery location</label>
+            <div id="iqDest" class="iq-geo"></div>
+          </div>
+          <div class="iq-field">
+            <label class="mono" data-en="Vehicle type" data-es="Tipo de vehículo">Vehicle type</label>
+            <select id="iqVehicle">
+              <option value="1.00" data-opt-en="Standard Car, Truck or SUV — $1.00 / mi" data-opt-es="Auto, camioneta o SUV estándar — $1.00 / mi">Standard Car, Truck or SUV — $1.00 / mi</option>
+              <option value="1.50" data-opt-en="Dually Truck or Van — $1.50 / mi" data-opt-es="Dually o Van — $1.50 / mi">Dually Truck or Van — $1.50 / mi</option>
+              <option value="1.75" data-opt-en="Oversized or Custom Vehicle — $1.75 / mi" data-opt-es="Vehículo grande o personalizado — $1.75 / mi">Oversized or Custom Vehicle — $1.75 / mi</option>
+            </select>
+          </div>
+          <button type="button" class="btn" id="iqCalc" data-en="Get Instant Quote &rarr;" data-es="Cotizar al instante &rarr;">Get Instant Quote &rarr;</button>
+          <div class="iq-msg mono" id="iqMsg" hidden></div>
+
+          <div class="iq-result" id="iqResult" hidden>
+            <div class="iq-route mono" id="iqRoute"></div>
+            <div class="iq-breakdown">
+              <div class="iq-line"><span data-en="Distance" data-es="Distancia">Distance</span><b id="iqMiles"></b></div>
+              <div class="iq-line"><span data-en="Rate" data-es="Tarifa">Rate</span><b id="iqRate"></b></div>
+            </div>
+            <div class="iq-total">
+              <span class="mono" data-en="Estimated total" data-es="Total estimado">Estimated total</span>
+              <div class="iq-price" id="iqPrice"></div>
+            </div>
+            <button type="button" class="btn" id="iqBook" data-en="Request to Book &rarr;" data-es="Solicitar reserva &rarr;">Request to Book &rarr;</button>
+            <div class="iq-fine mono" data-en="Estimate based on driving distance. Final price confirmed at booking." data-es="Estimado según la distancia de manejo. El precio final se confirma al reservar.">Estimate based on driving distance. Final price confirmed at booking.</div>
+          </div>
+        </div>
+        <div class="iq-map" id="iqMap" aria-label="Route map"></div>
+      </div>
+    </div>
+
     <div class="quote-grid">
       <div class="quote-aside reveal">
         <div class="kicker" data-en="08 / Request Transport" data-es="08 / Solicitar transporte">08 / Request Transport</div>

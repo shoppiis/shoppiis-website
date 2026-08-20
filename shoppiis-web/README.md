@@ -89,6 +89,47 @@ Para activarlo:
 
 ---
 
+## 🗺️ Cotización instantánea + mapa (Mapbox — IMPORTANTE)
+
+El sitio tiene una **cotización instantánea**: el cliente elige recogida y
+entrega, elige el tipo de vehículo, y el sitio calcula el precio solo
+(distancia real de manejo × tarifa por milla) y muestra la ruta en un mapa.
+Después el botón **"Request to Book"** rellena el formulario de abajo con
+esos datos para que despacho reciba el pedido por email.
+
+Usa **Mapbox** (gratis hasta ~100.000 consultas por mes). Para activarlo:
+
+1. Creá una cuenta gratis en **https://account.mapbox.com**.
+2. Copiá tu **Default public token** (empieza con `pk.`).
+3. Abrí `app.js`, buscá `MAPBOX_TOKEN` (arriba del bloque
+   "COTIZACIÓN INSTANTÁNEA") y pegá tu token reemplazando
+   `pk.PEGA_TU_TOKEN_DE_MAPBOX_ACA`.
+4. **Recomendado:** en el panel de Mapbox, restringí el token a tu dominio
+   (`shoppiis.com`) en *URL restrictions*, así nadie más lo usa.
+
+> ⚠️ Si no ponés un token válido (que empiece con `pk.`), el bloque de
+> cotización instantánea **queda oculto automáticamente** y el formulario
+> manual de cotización sigue funcionando igual. El sitio nunca se rompe.
+
+### Tarifas por milla
+
+Se editan en dos lugares que deben coincidir:
+- El `<select id="iqVehicle">` en `index.html` (el texto que ve el cliente).
+- Los `value="..."` de ese mismo `<select>` (el número que se multiplica).
+
+Tarifas actuales:
+
+| Tipo de vehículo                        | Tarifa    |
+|-----------------------------------------|-----------|
+| Standard Car, Truck or SUV              | $1.00/mi  |
+| Dually Truck or Van                     | $1.50/mi  |
+| Oversized or Custom Vehicle Delivery    | $1.75/mi  |
+
+¿Querés un **precio mínimo** (ej. no cobrar menos de $150 en rutas cortas)?
+En `app.js` cambiá `const MIN_QUOTE = 0;` por el monto que quieras.
+
+---
+
 ## 🚀 Deploy (elegí una — todas son gratis)
 
 ### Opción 1 — Netlify (la más fácil)
@@ -132,6 +173,7 @@ elegí esta carpeta → Publish.)
 
 ## ✅ Checklist antes de publicar
 
+- [ ] Token de Mapbox (`pk...`) puesto en `app.js` y probado (mapa + cotización)
 - [ ] Clave de Web3Forms puesta en `index.html`
 - [ ] Mandé una cotización de prueba y me llegó el mail
 - [ ] Revisé los textos EN y ES
