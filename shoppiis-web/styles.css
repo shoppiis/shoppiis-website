@@ -255,9 +255,17 @@ h2{font-family:'Archivo';font-weight:800;letter-spacing:-.025em;font-size:clamp(
 
 /* geocoder inputs → tema oscuro de marca */
 .iq-geo .mapboxgl-ctrl-geocoder{width:100%;max-width:none;min-width:0;background:var(--black);border:1px solid var(--grey-line);box-shadow:none;border-radius:0;font-family:'Archivo';font-size:.95rem}
-.iq-geo .mapboxgl-ctrl-geocoder--input{color:var(--white);height:auto;padding:13px 14px 13px 42px}
-.iq-geo .mapboxgl-ctrl-geocoder--input:focus{outline:none}
-.iq-geo .mapboxgl-ctrl-geocoder--input::placeholder{color:var(--grey)}
+/* texto tipeado y valor seleccionado: SIEMPRE blanco (Mapbox mete su CSS
+   después del nuestro, por eso !important + -webkit-text-fill-color para iOS) */
+.iq-geo .mapboxgl-ctrl-geocoder--input{color:#fff !important;-webkit-text-fill-color:#fff !important;caret-color:var(--yellow) !important;cursor:text !important;height:auto;padding:13px 14px 13px 42px}
+.iq-geo .mapboxgl-ctrl-geocoder--input:hover,
+.iq-geo .mapboxgl-ctrl-geocoder--input:focus{color:#fff !important;-webkit-text-fill-color:#fff !important;caret-color:var(--yellow) !important;cursor:text !important;outline:none}
+.iq-geo .mapboxgl-ctrl-geocoder--input::placeholder{color:var(--grey) !important;-webkit-text-fill-color:var(--grey) !important;opacity:1}
+/* autocompletado del navegador: mantener texto blanco y caret amarillo */
+.iq-geo .mapboxgl-ctrl-geocoder--input:-webkit-autofill,
+.iq-geo .mapboxgl-ctrl-geocoder--input:-webkit-autofill:focus{-webkit-text-fill-color:#fff !important;caret-color:var(--yellow) !important;transition:background-color 9999s ease-in-out 0s}
+/* foco del campo: borde amarillo de marca, claramente visible */
+.iq-geo .mapboxgl-ctrl-geocoder:focus-within{border-color:var(--yellow)}
 .iq-geo .mapboxgl-ctrl-geocoder--icon-search{top:13px;left:13px;fill:var(--yellow)}
 .iq-geo .mapboxgl-ctrl-geocoder--icon-loading{top:12px}
 .iq-geo .mapboxgl-ctrl-geocoder--button{background:transparent}
