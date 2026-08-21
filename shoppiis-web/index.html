@@ -444,6 +444,55 @@
 <!-- ============ QUOTE FORM ============ -->
 <section class="sec quote" id="quote">
   <div class="wrap">
+
+    <!-- ===== INSTANT QUOTE (Mapbox) — se muestra solo si la variable MAPBOX_TOKEN está configurada en Netlify ===== -->
+    <div class="iq" id="instantQuote" hidden>
+      <div class="iq-head reveal">
+        <div class="kicker" data-en="Instant Quote" data-es="Cotización instantánea">Instant Quote</div>
+        <h2 data-en="Price your move in seconds." data-es="Cotice su transporte en segundos.">Price your move in seconds.</h2>
+        <p data-en="Pick your pickup and delivery, choose the vehicle, and get a live per-mile estimate on the map &mdash; then request to book." data-es="Elija recogida y entrega, seleccione el vehículo y obtenga un estimado por milla al instante en el mapa &mdash; luego solicite reservar.">Pick your pickup and delivery, choose the vehicle, and get a live per-mile estimate on the map &mdash; then request to book.</p>
+      </div>
+      <div class="iq-grid">
+        <div class="iq-panel reveal">
+          <div class="iq-field">
+            <label class="mono" data-en="Pickup location" data-es="Lugar de recogida">Pickup location</label>
+            <div id="iqOrigin" class="iq-geo"></div>
+          </div>
+          <div class="iq-field">
+            <label class="mono" data-en="Delivery location" data-es="Lugar de entrega">Delivery location</label>
+            <div id="iqDest" class="iq-geo"></div>
+          </div>
+          <div class="iq-field">
+            <label class="mono" data-en="Vehicle type" data-es="Tipo de vehículo">Vehicle type</label>
+            <select id="iqVehicle">
+              <option value="1.00" data-opt-en="Standard Car, Truck or SUV — $1.00 / mi" data-opt-es="Auto, camioneta o SUV estándar — $1.00 / mi">Standard Car, Truck or SUV — $1.00 / mi</option>
+              <option value="1.50" data-opt-en="Dually Truck or Van — $1.50 / mi" data-opt-es="Dually o Van — $1.50 / mi">Dually Truck or Van — $1.50 / mi</option>
+              <option value="1.75" data-opt-en="Oversized or Custom Vehicle — $1.75 / mi" data-opt-es="Vehículo grande o personalizado — $1.75 / mi">Oversized or Custom Vehicle — $1.75 / mi</option>
+            </select>
+          </div>
+          <button type="button" class="btn" id="iqCalc" data-en="Get Instant Quote &rarr;" data-es="Cotizar al instante &rarr;">Get Instant Quote &rarr;</button>
+          <div class="iq-msg mono" id="iqMsg" hidden></div>
+
+          <div class="iq-result" id="iqResult" hidden>
+            <div class="iq-status mono" id="iqStatus" data-en="Estimated Quote" data-es="Cotización estimada">Estimated Quote</div>
+            <div class="iq-route mono" id="iqRoute"></div>
+            <div class="iq-breakdown">
+              <div class="iq-line"><span data-en="Distance" data-es="Distancia">Distance</span><b id="iqMiles"></b></div>
+              <div class="iq-line"><span data-en="Rate" data-es="Tarifa">Rate</span><b id="iqRate"></b></div>
+            </div>
+            <div class="iq-total">
+              <span class="mono" data-en="Estimated total" data-es="Total estimado">Estimated total</span>
+              <div class="iq-price" id="iqPrice"></div>
+            </div>
+            <button type="button" class="btn" id="iqBook" data-en="Request to Book &rarr;" data-es="Solicitar reserva &rarr;">Request to Book &rarr;</button>
+            <div class="iq-disclaimer" data-en="This is a booking request, not a confirmed reservation. Shoppiis will review availability and confirm the final price and pickup window." data-es="Esta es una solicitud de reserva, no una reserva confirmada. Shoppiis revisará la disponibilidad y confirmará el precio final y la ventana de recogida.">This is a booking request, not a confirmed reservation. Shoppiis will review availability and confirm the final price and pickup window.</div>
+            <div class="iq-fine mono" data-en="Estimate based on driving distance. Final price confirmed at booking." data-es="Estimado según la distancia de manejo. El precio final se confirma al reservar.">Estimate based on driving distance. Final price confirmed at booking.</div>
+          </div>
+        </div>
+        <div class="iq-map" id="iqMap" aria-label="Route map"></div>
+      </div>
+    </div>
+
     <div class="quote-grid">
       <div class="quote-aside reveal">
         <div class="kicker" data-en="08 / Request Transport" data-es="08 / Solicitar transporte">08 / Request Transport</div>
@@ -458,7 +507,9 @@
         <form class="qform" id="quoteForm">
           <!-- Web3Forms: pegá tu clave de acceso acá (https://web3forms.com) -->
           <input type="hidden" name="access_key" value="f1746726-21ae-46b0-90c2-44c6be312043">
-          <input type="hidden" name="subject" value="Nuevo pedido de cotización — Shoppiis">
+          <!-- El asunto se completa dinámicamente en app.js: "New Shoppiis Booking Request — [origen] → [destino]" -->
+          <input type="hidden" name="subject" value="New Shoppiis Booking Request">
+          <input type="hidden" name="status" value="BOOKING REQUEST — NOT YET CONFIRMED">
           <input type="hidden" name="from_name" value="Shoppiis Website">
           <!-- honeypot anti-bots: los humanos no lo ven ni lo completan -->
           <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
@@ -487,8 +538,9 @@
           <div class="form-note mono" data-en="We typically respond the same business day. Your details are used only to quote your transport." data-es="Normalmente respondemos el mismo día hábil. Sus datos se usan solo para cotizar su transporte.">We typically respond the same business day. Your details are used only to quote your transport.</div>
         </form>
         <div class="form-success" id="formSuccess">
-          <h3>Request received.</h3>
-          <p>Thanks &mdash; dispatch will reach out shortly with your quote and an available pickup window. Need it sooner? Call (239)&nbsp;526-1266.</p>
+          <h3 data-en="Booking request received." data-es="Solicitud de reserva recibida.">Booking request received.</h3>
+          <p data-en="Your transport is not confirmed yet. Shoppiis will review availability and contact you shortly to confirm the final rate and pickup window." data-es="Su transporte todavía no está confirmado. Shoppiis revisará la disponibilidad y se comunicará con usted para confirmar la tarifa final y la ventana de recogida.">Your transport is not confirmed yet. Shoppiis will review availability and contact you shortly to confirm the final rate and pickup window.</p>
+          <p class="fs-call mono" data-en="Need it sooner? Call (239)&nbsp;526-1266." data-es="¿Lo necesita antes? Llame al (239)&nbsp;526-1266.">Need it sooner? Call (239)&nbsp;526-1266.</p>
         </div>
       </div>
     </div>
@@ -650,6 +702,7 @@
   <a href="#quote" class="m-quote" data-en="Get a Free Quote" data-es="Cotización gratis">Get a Free Quote</a>
 </div>
 
+<script src="config.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

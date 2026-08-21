@@ -383,6 +383,8 @@ function setLang(lang){
       b.classList.toggle('active', b.getAttribute('data-lang') === lang);
     });
   });
+  // re-dibuja el resultado de la cotización instantánea en el idioma activo
+  if (window.__iqRender) window.__iqRender();
 }
 document.querySelectorAll('[data-lang-toggle] button').forEach(b => {
   b.addEventListener('click', () => setLang(b.getAttribute('data-lang')));
@@ -413,6 +415,15 @@ if (form) {
     const es = document.documentElement.lang === 'es';
     btn.disabled = true;
     btn.innerHTML = es ? 'Enviando…' : 'Sending…';
+    // Asunto del email interno: deja claro que es un PEDIDO DE RESERVA (no confirmado)
+    const subjEl = form.querySelector('input[name="subject"]');
+    if (subjEl) {
+      const o = (form.querySelector('[name="origin"]') || {}).value || '';
+      const d = (form.querySelector('[name="destination"]') || {}).value || '';
+      subjEl.value = (o.trim() && d.trim())
+        ? `New Shoppiis Booking Request — ${o.trim()} → ${d.trim()}`
+        : 'New Shoppiis Booking Request';
+    }
     try {
       const res = await fetch(FORM_ENDPOINT, {
         method: 'POST',
@@ -425,6 +436,16 @@ if (form) {
       const ok = document.getElementById('formSuccess');
       ok.classList.add('show');
       ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // La cotización pasa de "estimada" a "pendiente de confirmación de Shoppiis"
+      const st = document.getElementById('iqStatus');
+      if (st) {
+        st.setAttribute('data-en', 'Pending Shoppiis Confirmation');
+        st.setAttribute('data-es', 'Pendiente de confirmación de Shoppiis');
+        st.textContent = (document.documentElement.lang === 'es')
+          ? 'Pendiente de confirmación de Shoppiis'
+          : 'Pending Shoppiis Confirmation';
+        st.classList.add('pending');
+      }
     } catch (err) {
       btn.disabled = false;
       btn.innerHTML = original;
@@ -434,3 +455,183 @@ if (form) {
     }
   });
 }
+
+/* ============================================================
+   COTIZACIÓN INSTANTÁNEA (Mapbox) — mapa + distancia por milla
+   ------------------------------------------------------------
+   El token público de Mapbox NO va en el código: se toma de la
+   variable de entorno MAPBOX_TOKEN configurada en Netlify.
+   build.sh la escribe en config.js (window.MAPBOX_TOKEN) en cada
+   deploy, y config.js se carga antes que app.js en index.html.
+   Sin token válido, este bloque queda oculto y el formulario
+   manual de abajo sigue funcionando.
+
+   Tarifas por milla (editá en el <select> del index.html):
+     • Auto/camioneta/SUV estándar ... $1.00
+     • Dually o Van ................... $1.50
+     • Vehículo grande o custom ....... $1.75
+   ============================================================ */
+const MAPBOX_TOKEN = ((typeof window !== 'undefined' && window.MAPBOX_TOKEN) || "").trim();
+const MIN_QUOTE = 0; // mínimo en dólares (0 = sin mínimo; poné p.ej. 150 si querés uno)
+
+(function initInstantQuote(){
+  const box = document.getElementById('instantQuote');
+  if (!box) return;
+  // sin token válido: el bloque queda oculto
+  if (!/^pk\./.test(MAPBOX_TOKEN)) return;
+
+  // Cargar CSS + JS de Mapbox bajo demanda (solo si hay token)
+  [
+    'https://api.mapbox.com/mapbox-gl-js/v3.9.1/mapbox-gl.css',
+    'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.3/mapbox-gl-geocoder.css'
+  ].forEach(href => {
+    const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = href;
+    document.head.appendChild(l);
+  });
+
+  const scripts = [
+    'https://api.mapbox.com/mapbox-gl-js/v3.9.1/mapbox-gl.js',
+    'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.3/mapbox-gl-geocoder.min.js'
+  ];
+  scripts.reduce((p, src) => p.then(() => new Promise((res, rej) => {
+    const s = document.createElement('script'); s.src = src; s.onload = res; s.onerror = rej;
+    document.head.appendChild(s);
+  })), Promise.resolve()).then(setup).catch(() => {/* si falla la carga, queda el form manual */});
+
+  function setup(){
+    if (!window.mapboxgl || !window.MapboxGeocoder) return;
+    mapboxgl.accessToken = MAPBOX_TOKEN;
+    box.hidden = false;
+
+    const map = new mapboxgl.Map({
+      container: 'iqMap',
+      style: 'mapbox://styles/mapbox/dark-v11',
+      center: [-83.5, 30.8], // Sureste EE.UU.
+      zoom: 4.1,
+      cooperativeGestures: true,
+      attributionControl: true
+    });
+    map.addControl(new mapboxgl.NavigationControl({ showCompass:false }), 'top-right');
+
+    const state = { origin:null, dest:null, miles:null, rate:null, total:null, tier:'' };
+    const markers = [];
+
+    function makeGeocoder(containerId){
+      const es = document.documentElement.lang === 'es';
+      const g = new MapboxGeocoder({
+        accessToken: MAPBOX_TOKEN,
+        mapboxgl: mapboxgl,
+        marker: false,
+        countries: 'us',
+        types: 'place,locality,postcode,region,district',
+        placeholder: es ? 'Ciudad, Est. o ZIP' : 'City, ST or ZIP'
+      });
+      document.getElementById(containerId).appendChild(g.onAdd(map));
+      return g;
+    }
+    const feat = r => ({ name: r.place_name || r.text, lng: r.center[0], lat: r.center[1] });
+
+    const gOrigin = makeGeocoder('iqOrigin');
+    const gDest   = makeGeocoder('iqDest');
+    gOrigin.on('result', e => { state.origin = feat(e.result); });
+    gOrigin.on('clear',  () => { state.origin = null; });
+    gDest.on('result',   e => { state.dest = feat(e.result); });
+    gDest.on('clear',    () => { state.dest = null; });
+
+    const vehSel = document.getElementById('iqVehicle');
+    const msgEl  = document.getElementById('iqMsg');
+    const result = document.getElementById('iqResult');
+
+    document.getElementById('iqCalc').addEventListener('click', calc);
+    vehSel.addEventListener('change', () => { if (state.miles != null) applyPrice(); });
+
+    function showMsg(t){ msgEl.textContent = t; msgEl.hidden = false; }
+    function hideMsg(){ msgEl.hidden = true; }
+
+    async function calc(){
+      const es = document.documentElement.lang === 'es';
+      if (!state.origin || !state.dest){
+        showMsg(es ? 'Elegí el lugar de recogida y de entrega.' : 'Please pick both a pickup and delivery location.');
+        return;
+      }
+      showMsg(es ? 'Calculando…' : 'Calculating…');
+      try {
+        const coords = `${state.origin.lng},${state.origin.lat};${state.dest.lng},${state.dest.lat}`;
+        const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${coords}` +
+                    `?alternatives=false&overview=full&geometries=geojson&access_token=${MAPBOX_TOKEN}`;
+        const res = await fetch(url);
+        const data = await res.json();
+        if (!data.routes || !data.routes.length) throw new Error('no route');
+        const route = data.routes[0];
+        state.miles = Math.round(route.distance / 1609.344);
+        drawRoute(route.geometry);
+        applyPrice();
+        hideMsg();
+      } catch (err) {
+        showMsg(es
+          ? 'No pudimos calcular esa ruta. Probá otra ciudad o llamanos al (239) 526-1266.'
+          : 'We couldn’t route that lane. Try another city or call (239) 526-1266.');
+      }
+    }
+
+    function applyPrice(){
+      state.rate = parseFloat(vehSel.value);
+      state.tier = vehSel.options[vehSel.selectedIndex].textContent;
+      let total = Math.round(state.miles * state.rate);
+      if (MIN_QUOTE && total < MIN_QUOTE) total = MIN_QUOTE;
+      state.total = total;
+      renderResult();
+      result.hidden = false;
+    }
+
+    function drawRoute(geom){
+      const gj = { type:'Feature', geometry:geom };
+      const src = map.getSource('iq-route');
+      if (src) { src.setData(gj); }
+      else {
+        map.addSource('iq-route', { type:'geojson', data:gj });
+        map.addLayer({ id:'iq-route-line', type:'line', source:'iq-route',
+          layout:{ 'line-cap':'round', 'line-join':'round' },
+          paint:{ 'line-color':'#f2e20a', 'line-width':4 } });
+      }
+      markers.forEach(m => m.remove()); markers.length = 0;
+      [[state.origin,'#ffffff'],[state.dest,'#f2e20a']].forEach(([p,color]) => {
+        markers.push(new mapboxgl.Marker({ color }).setLngLat([p.lng,p.lat]).addTo(map));
+      });
+      const cs = geom.coordinates;
+      const b = cs.reduce((bb,c) => bb.extend(c), new mapboxgl.LngLatBounds(cs[0], cs[0]));
+      map.fitBounds(b, { padding:50, duration:700 });
+    }
+
+    window.__iqRender = renderResult;
+    function renderResult(){
+      if (state.miles == null) return;
+      const es = document.documentElement.lang === 'es';
+      document.getElementById('iqRoute').textContent = `${state.origin.name}   →   ${state.dest.name}`;
+      document.getElementById('iqMiles').textContent = state.miles.toLocaleString() + (es ? ' millas' : ' miles');
+      document.getElementById('iqRate').textContent  = '$' + state.rate.toFixed(2) + (es ? ' / milla' : ' / mile');
+      document.getElementById('iqPrice').textContent = '$' + state.total.toLocaleString();
+    }
+
+    // Request to Book → rellena el formulario manual con lo cotizado
+    document.getElementById('iqBook').addEventListener('click', () => {
+      const es = document.documentElement.lang === 'es';
+      const f = document.getElementById('quoteForm');
+      if (f) {
+        const set = (name, v) => { const el = f.querySelector(`[name="${name}"]`); if (el) el.value = v; };
+        set('origin', state.origin.name);
+        set('destination', state.dest.name);
+        const line = es
+          ? `Cotización instantánea: ${state.tier} · ${state.miles} millas × $${state.rate.toFixed(2)}/milla = $${state.total.toLocaleString()}.`
+          : `Instant quote: ${state.tier} · ${state.miles} mi × $${state.rate.toFixed(2)}/mi = $${state.total.toLocaleString()}.`;
+        const notes = f.querySelector('[name="notes"]');
+        if (notes) notes.value = line + (notes.value ? '\n' + notes.value : '');
+        let hidden = f.querySelector('input[name="quote_estimate"]');
+        if (!hidden) { hidden = document.createElement('input'); hidden.type = 'hidden'; hidden.name = 'quote_estimate'; f.appendChild(hidden); }
+        hidden.value = `$${state.total} — ${state.miles} mi @ $${state.rate.toFixed(2)}/mi (${state.tier})`;
+        f.scrollIntoView({ behavior:'smooth', block:'start' });
+        setTimeout(() => { const n = f.querySelector('input[name="name"]'); if (n) n.focus(); }, 650);
+      }
+    });
+  }
+})();

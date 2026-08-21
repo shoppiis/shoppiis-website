@@ -3,7 +3,9 @@
 
 [build]
   publish = "."
-  command = ""
+  # Genera config.js con el token de Mapbox desde la variable de entorno
+  # MAPBOX_TOKEN (configurada en Netlify → Site settings → Environment variables).
+  command = "bash build.sh"
 
 # Cabeceras de seguridad básicas
 [[headers]]

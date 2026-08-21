@@ -89,6 +89,65 @@ Para activarlo:
 
 ---
 
+## 🗺️ Cotización instantánea + mapa (Mapbox — IMPORTANTE)
+
+El sitio tiene una **cotización instantánea**: el cliente elige recogida y
+entrega, elige el tipo de vehículo, y el sitio calcula el precio solo
+(distancia real de manejo × tarifa por milla) y muestra la ruta en un mapa.
+Después el botón **"Request to Book"** rellena el formulario de abajo con
+esos datos para que despacho reciba el pedido por email.
+
+Usa **Mapbox** (gratis hasta ~100.000 consultas por mes). El token se
+configura como **variable de entorno en Vercel** (no va en el código):
+
+1. Creá una cuenta gratis en **https://account.mapbox.com**.
+2. Copiá tu **Default public token** (empieza con `pk.`).
+3. En Vercel: **Project → Settings → Environment Variables → Add**.
+   - **Key (nombre exacto):** `MAPBOX_TOKEN`
+   - **Value:** tu token `pk...`
+   - **Environments:** marcá **Production** (y **Preview** si querés que
+     los deploys de prueba también muestren el mapa).
+4. **Redeploy:** Vercel no aplica una variable nueva al deploy actual.
+   Andá a **Deployments → (⋯) del último → Redeploy**. En cada build,
+   `vercel.json` corre `build.sh`, que toma la variable y genera
+   `config.js` (`window.MAPBOX_TOKEN`); `index.html` lo carga antes de
+   `app.js`.
+5. **Recomendado:** en el panel de Mapbox, restringí el token a tu dominio
+   (`shoppiis.com`) en *URL restrictions*, así nadie más lo usa.
+
+> 📁 **Root Directory en Vercel:** como los archivos del sitio están en
+> `shoppiis-web/`, el proyecto de Vercel debe tener el *Root Directory*
+> apuntando a `shoppiis-web` (Settings → General → Root Directory). Ahí es
+> donde viven `vercel.json` y `build.sh`.
+
+> ℹ️ Como es un sitio estático, el token público termina igual en el
+> navegador (Mapbox lo requiere del lado del cliente) — por eso conviene
+> restringirlo por dominio. La variable de entorno sirve para no tenerlo en
+> el repo y poder rotarlo sin tocar el código.
+
+> ⚠️ Si la variable no está o el token no empieza con `pk.`, el bloque de
+> cotización instantánea **queda oculto automáticamente** y el formulario
+> manual de cotización sigue funcionando igual. El sitio nunca se rompe.
+
+### Tarifas por milla
+
+Se editan en dos lugares que deben coincidir:
+- El `<select id="iqVehicle">` en `index.html` (el texto que ve el cliente).
+- Los `value="..."` de ese mismo `<select>` (el número que se multiplica).
+
+Tarifas actuales:
+
+| Tipo de vehículo                        | Tarifa    |
+|-----------------------------------------|-----------|
+| Standard Car, Truck or SUV              | $1.00/mi  |
+| Dually Truck or Van                     | $1.50/mi  |
+| Oversized or Custom Vehicle Delivery    | $1.75/mi  |
+
+¿Querés un **precio mínimo** (ej. no cobrar menos de $150 en rutas cortas)?
+En `app.js` cambiá `const MIN_QUOTE = 0;` por el monto que quieras.
+
+---
+
 ## 🚀 Deploy (elegí una — todas son gratis)
 
 ### Opción 1 — Netlify (la más fácil)
@@ -132,6 +191,7 @@ elegí esta carpeta → Publish.)
 
 ## ✅ Checklist antes de publicar
 
+- [ ] Variable `MAPBOX_TOKEN` (`pk...`) cargada en Vercel + Redeploy hecho (mapa + cotización)
 - [ ] Clave de Web3Forms puesta en `index.html`
 - [ ] Mandé una cotización de prueba y me llegó el mail
 - [ ] Revisé los textos EN y ES

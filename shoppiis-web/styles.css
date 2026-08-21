@@ -236,6 +236,68 @@ h2{font-family:'Archivo';font-weight:800;letter-spacing:-.025em;font-size:clamp(
 .form-success h3{font-family:'Archivo';font-weight:800;font-size:1.5rem;color:var(--yellow);margin-bottom:12px}
 .form-success p{color:#cfcfca}
 
+/* ===== instant quote (mapbox) ===== */
+.iq[hidden]{display:none}
+.iq{padding-bottom:44px;margin-bottom:44px;border-bottom:1px solid var(--grey-line)}
+.iq-head{max-width:720px;margin-bottom:30px}
+.iq-head h2{margin:10px 0 12px}
+.iq-head p{color:#bdbdb8;font-size:1.02rem}
+.iq-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:stretch}
+.iq-panel{background:var(--panel);border:1px solid var(--grey-line);padding:28px 26px;display:flex;flex-direction:column;gap:16px}
+.iq-field{display:flex;flex-direction:column;gap:7px}
+.iq-field label{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--grey)}
+.iq-field select{background:var(--black);border:1px solid var(--grey-line);color:var(--white);padding:13px 14px;font-family:'Archivo';font-size:.95rem;width:100%;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23f2e20a' d='M2 4l4 4 4-4z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;transition:border-color .2s}
+.iq-field select:focus{outline:none;border-color:var(--yellow)}
+.iq-panel .btn{width:100%;justify-content:center;padding:15px}
+.iq-msg{font-size:.8rem;color:#cfcfca;letter-spacing:.02em}
+.iq-map{min-height:420px;border:1px solid var(--grey-line);background:var(--panel)}
+.iq-map .mapboxgl-map{height:100%}
+
+/* geocoder inputs → tema oscuro de marca */
+.iq-geo .mapboxgl-ctrl-geocoder{width:100%;max-width:none;min-width:0;background:var(--black);border:1px solid var(--grey-line);box-shadow:none;border-radius:0;font-family:'Archivo';font-size:.95rem}
+/* texto tipeado y valor seleccionado: SIEMPRE blanco (Mapbox mete su CSS
+   después del nuestro, por eso !important + -webkit-text-fill-color para iOS) */
+.iq-geo .mapboxgl-ctrl-geocoder--input{color:#fff !important;-webkit-text-fill-color:#fff !important;caret-color:var(--yellow) !important;cursor:text !important;height:auto;padding:13px 14px 13px 42px}
+.iq-geo .mapboxgl-ctrl-geocoder--input:hover,
+.iq-geo .mapboxgl-ctrl-geocoder--input:focus{color:#fff !important;-webkit-text-fill-color:#fff !important;caret-color:var(--yellow) !important;cursor:text !important;outline:none}
+.iq-geo .mapboxgl-ctrl-geocoder--input::placeholder{color:var(--grey) !important;-webkit-text-fill-color:var(--grey) !important;opacity:1}
+/* autocompletado del navegador: mantener texto blanco y caret amarillo */
+.iq-geo .mapboxgl-ctrl-geocoder--input:-webkit-autofill,
+.iq-geo .mapboxgl-ctrl-geocoder--input:-webkit-autofill:focus{-webkit-text-fill-color:#fff !important;caret-color:var(--yellow) !important;transition:background-color 9999s ease-in-out 0s}
+/* foco del campo: borde amarillo de marca, claramente visible */
+.iq-geo .mapboxgl-ctrl-geocoder:focus-within{border-color:var(--yellow)}
+.iq-geo .mapboxgl-ctrl-geocoder--icon-search{top:13px;left:13px;fill:var(--yellow)}
+.iq-geo .mapboxgl-ctrl-geocoder--icon-loading{top:12px}
+.iq-geo .mapboxgl-ctrl-geocoder--button{background:transparent}
+.iq-geo .mapboxgl-ctrl-geocoder--icon-close{fill:var(--grey)}
+/* dropdown de sugerencias: EN FLUJO NORMAL — ocupa alto y empuja el campo de
+   abajo hacia abajo en vez de taparlo. Mapbox lo pone absolute; lo pasamos a
+   static y lo colapsamos cuando no hay resultados. */
+.iq-geo .mapboxgl-ctrl-geocoder .suggestions-wrapper{overflow:visible}
+.iq-geo .mapboxgl-ctrl-geocoder .suggestions{position:static !important;top:auto !important;left:auto !important;right:auto !important;width:100% !important;margin-top:6px;max-height:260px;overflow-y:auto;background:var(--panel);border:1px solid var(--grey-line);border-radius:0;box-shadow:none;z-index:auto}
+.iq-geo .mapboxgl-ctrl-geocoder .suggestions:empty{margin:0;max-height:0;border:0;overflow:hidden}
+.iq-geo .mapboxgl-ctrl-geocoder .suggestions>li>a{color:#cfcfca}
+.iq-geo .mapboxgl-ctrl-geocoder .suggestions>.active>a,.iq-geo .mapboxgl-ctrl-geocoder .suggestions>li>a:hover{background:var(--panel2);color:var(--yellow)}
+
+/* resultado */
+.iq-result[hidden]{display:none}
+.iq-result{border-top:1px solid var(--grey-line);padding-top:18px;margin-top:2px;display:flex;flex-direction:column;gap:14px}
+.iq-route{font-size:.78rem;color:var(--yellow);letter-spacing:.03em;line-height:1.5}
+.iq-breakdown{display:flex;flex-direction:column;gap:8px}
+.iq-line{display:flex;justify-content:space-between;align-items:baseline;font-size:.92rem;color:#cfcfca;padding-bottom:8px;border-bottom:1px solid var(--grey-line)}
+.iq-line b{color:var(--white);font-weight:700}
+.iq-total{display:flex;justify-content:space-between;align-items:center;padding:6px 0 2px}
+.iq-total .mono{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--grey)}
+.iq-price{font-family:'Archivo';font-weight:900;font-size:2.2rem;letter-spacing:-.02em;color:var(--yellow);line-height:1}
+.iq-fine{font-size:.68rem;color:var(--grey);letter-spacing:.02em;line-height:1.5}
+/* etiqueta de estado: "Estimated Quote" → "Pending Shoppiis Confirmation" */
+.iq-status{align-self:flex-start;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--yellow);border:1px solid var(--grey-line);padding:5px 10px}
+.iq-status.pending{color:#0a0a0a;background:var(--yellow);border-color:var(--yellow)}
+/* aviso: es una SOLICITUD de reserva, no una reserva confirmada (sutil pero legible) */
+.iq-disclaimer{font-size:.74rem;line-height:1.55;color:#c7c7c2;letter-spacing:.01em;border-left:2px solid var(--yellow);padding-left:11px}
+/* nota de teléfono en el mensaje de éxito */
+.form-success .fs-call{color:var(--grey);font-size:.82rem;margin-top:12px}
+
 /* vision (compact, investor-light) */
 .vision{background:var(--black)}
 .vision-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
@@ -315,6 +377,8 @@ footer{background:var(--black);border-top:1px solid var(--grey-line);padding:60p
   .hero-grid{grid-template-columns:1fr;gap:42px}
   .hero-media{order:-1}
   .ops,.quote-grid,.vision-inner{grid-template-columns:1fr;gap:36px}
+  .iq-grid{grid-template-columns:1fr;gap:22px}
+  .iq-map{order:-1;min-height:300px}
   .cred-grid,.metrics-grid,.team-grid{grid-template-columns:repeat(2,1fr)}
   .foot-top{grid-template-columns:1fr 1fr}
   .trust-item{min-width:33%;border-bottom:1px solid var(--grey-line)}
