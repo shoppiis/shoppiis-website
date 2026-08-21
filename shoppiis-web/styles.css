@@ -290,6 +290,13 @@ h2{font-family:'Archivo';font-weight:800;letter-spacing:-.025em;font-size:clamp(
 .iq-total .mono{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--grey)}
 .iq-price{font-family:'Archivo';font-weight:900;font-size:2.2rem;letter-spacing:-.02em;color:var(--yellow);line-height:1}
 .iq-fine{font-size:.68rem;color:var(--grey);letter-spacing:.02em;line-height:1.5}
+/* etiqueta de estado: "Estimated Quote" → "Pending Shoppiis Confirmation" */
+.iq-status{align-self:flex-start;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--yellow);border:1px solid var(--grey-line);padding:5px 10px}
+.iq-status.pending{color:#0a0a0a;background:var(--yellow);border-color:var(--yellow)}
+/* aviso: es una SOLICITUD de reserva, no una reserva confirmada (sutil pero legible) */
+.iq-disclaimer{font-size:.74rem;line-height:1.55;color:#c7c7c2;letter-spacing:.01em;border-left:2px solid var(--yellow);padding-left:11px}
+/* nota de teléfono en el mensaje de éxito */
+.form-success .fs-call{color:var(--grey);font-size:.82rem;margin-top:12px}
 
 /* vision (compact, investor-light) */
 .vision{background:var(--black)}

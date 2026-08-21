@@ -415,6 +415,15 @@ if (form) {
     const es = document.documentElement.lang === 'es';
     btn.disabled = true;
     btn.innerHTML = es ? 'Enviando…' : 'Sending…';
+    // Asunto del email interno: deja claro que es un PEDIDO DE RESERVA (no confirmado)
+    const subjEl = form.querySelector('input[name="subject"]');
+    if (subjEl) {
+      const o = (form.querySelector('[name="origin"]') || {}).value || '';
+      const d = (form.querySelector('[name="destination"]') || {}).value || '';
+      subjEl.value = (o.trim() && d.trim())
+        ? `New Shoppiis Booking Request — ${o.trim()} → ${d.trim()}`
+        : 'New Shoppiis Booking Request';
+    }
     try {
       const res = await fetch(FORM_ENDPOINT, {
         method: 'POST',
@@ -427,6 +436,16 @@ if (form) {
       const ok = document.getElementById('formSuccess');
       ok.classList.add('show');
       ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // La cotización pasa de "estimada" a "pendiente de confirmación de Shoppiis"
+      const st = document.getElementById('iqStatus');
+      if (st) {
+        st.setAttribute('data-en', 'Pending Shoppiis Confirmation');
+        st.setAttribute('data-es', 'Pendiente de confirmación de Shoppiis');
+        st.textContent = (document.documentElement.lang === 'es')
+          ? 'Pendiente de confirmación de Shoppiis'
+          : 'Pending Shoppiis Confirmation';
+        st.classList.add('pending');
+      }
     } catch (err) {
       btn.disabled = false;
       btn.innerHTML = original;
