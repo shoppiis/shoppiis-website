@@ -270,7 +270,12 @@ h2{font-family:'Archivo';font-weight:800;letter-spacing:-.025em;font-size:clamp(
 .iq-geo .mapboxgl-ctrl-geocoder--icon-loading{top:12px}
 .iq-geo .mapboxgl-ctrl-geocoder--button{background:transparent}
 .iq-geo .mapboxgl-ctrl-geocoder--icon-close{fill:var(--grey)}
-.iq-geo .mapboxgl-ctrl-geocoder .suggestions{background:var(--panel);border:1px solid var(--grey-line);border-radius:0;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+/* dropdown de sugerencias: EN FLUJO NORMAL — ocupa alto y empuja el campo de
+   abajo hacia abajo en vez de taparlo. Mapbox lo pone absolute; lo pasamos a
+   static y lo colapsamos cuando no hay resultados. */
+.iq-geo .mapboxgl-ctrl-geocoder .suggestions-wrapper{overflow:visible}
+.iq-geo .mapboxgl-ctrl-geocoder .suggestions{position:static !important;top:auto !important;left:auto !important;right:auto !important;width:100% !important;margin-top:6px;max-height:260px;overflow-y:auto;background:var(--panel);border:1px solid var(--grey-line);border-radius:0;box-shadow:none;z-index:auto}
+.iq-geo .mapboxgl-ctrl-geocoder .suggestions:empty{margin:0;max-height:0;border:0;overflow:hidden}
 .iq-geo .mapboxgl-ctrl-geocoder .suggestions>li>a{color:#cfcfca}
 .iq-geo .mapboxgl-ctrl-geocoder .suggestions>.active>a,.iq-geo .mapboxgl-ctrl-geocoder .suggestions>li>a:hover{background:var(--panel2);color:var(--yellow)}
 
