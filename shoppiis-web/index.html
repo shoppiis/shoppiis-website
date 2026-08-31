@@ -448,7 +448,7 @@
     <!-- ===== INSTANT QUOTE (Mapbox) — se muestra solo si la variable MAPBOX_TOKEN está configurada en Netlify ===== -->
     <div class="iq" id="instantQuote" hidden>
       <div class="iq-head reveal">
-        <div class="kicker" data-en="Instant Quote" data-es="Cotización instantánea">Instant Quote</div>
+        <div class="kicker" data-en="08 / Instant Quote" data-es="08 / Cotización instantánea">08 / Instant Quote</div>
         <h2 data-en="Price your move in seconds." data-es="Cotice su transporte en segundos.">Price your move in seconds.</h2>
         <p data-en="Pick your pickup and delivery, choose the vehicle, and get a live per-mile estimate on the map &mdash; then request to book." data-es="Elija recogida y entrega, seleccione el vehículo y obtenga un estimado por milla al instante en el mapa &mdash; luego solicite reservar.">Pick your pickup and delivery, choose the vehicle, and get a live per-mile estimate on the map &mdash; then request to book.</p>
       </div>
@@ -493,11 +493,15 @@
       </div>
     </div>
 
-    <div class="quote-grid">
+    <!-- ===== FORMULARIO MANUAL =====
+         Con la cotización instantánea activa queda oculto y solo aparece al
+         tocar "Request to Book" (app.js). Si no hay mapa (sin MAPBOX_TOKEN o
+         si Mapbox no carga), queda visible como antes. ===== -->
+    <div class="quote-grid" id="manualQuote">
       <div class="quote-aside reveal">
-        <div class="kicker" data-en="08 / Request Transport" data-es="08 / Solicitar transporte">08 / Request Transport</div>
-        <h2 data-en="Get a free quote." data-es="Reciba una cotización gratis.">Get a free quote.</h2>
-        <p data-en="Tell us where it&rsquo;s going and what we&rsquo;re moving. We&rsquo;ll come back with a per-mile quote and an available pickup window &mdash; usually same business day." data-es="Díganos a dónde va y qué debemos transportar. Le respondemos con una cotización por milla y una ventana de recogida disponible &mdash; normalmente el mismo día hábil.">Tell us where it&rsquo;s going and what we&rsquo;re moving. We&rsquo;ll come back with a per-mile quote and an available pickup window &mdash; usually same business day.</p>
+        <div class="kicker" id="mqKicker" data-en="08 / Request Transport" data-es="08 / Solicitar transporte">08 / Request Transport</div>
+        <h2 id="mqTitle" data-en="Get a free quote." data-es="Reciba una cotización gratis.">Get a free quote.</h2>
+        <p id="mqLead" data-en="Tell us where it&rsquo;s going and what we&rsquo;re moving. We&rsquo;ll come back with a per-mile quote and an available pickup window &mdash; usually same business day." data-es="Díganos a dónde va y qué debemos transportar. Le respondemos con una cotización por milla y una ventana de recogida disponible &mdash; normalmente el mismo día hábil.">Tell us where it&rsquo;s going and what we&rsquo;re moving. We&rsquo;ll come back with a per-mile quote and an available pickup window &mdash; usually same business day.</p>
         <div class="qfeature" data-en="No obligation, no hidden fees" data-es="Sin compromiso, sin cargos ocultos">No obligation, no hidden fees</div>
         <div class="qfeature" data-en="$100K cargo &amp; liability coverage" data-es="Cobertura de $100K en carga y responsabilidad">$100K cargo &amp; liability coverage</div>
         <div class="qfeature" data-en="Running &amp; non-running vehicles" data-es="Vehículos que arrancan y que no arrancan">Running &amp; non-running vehicles</div>
@@ -534,7 +538,7 @@
             <div class="field"><label data-en="Preferred pickup date" data-es="Fecha de recogida preferida">Preferred pickup date</label><input type="date" name="date"></div>
           </div>
           <div class="field full" style="margin-bottom:16px"><label data-en="Notes (optional)" data-es="Notas (opcional)">Notes (optional)</label><textarea name="notes" placeholder="Anything we should know — timing, access, special handling…" data-ph-en="Anything we should know — timing, access, special handling…" data-ph-es="Algo que debamos saber — horarios, acceso, manejo especial…"></textarea></div>
-          <button type="submit" class="btn" data-en="Request My Quote &rarr;" data-es="Solicitar mi cotización &rarr;">Request My Quote &rarr;</button>
+          <button type="submit" class="btn" id="mqSubmit" data-en="Request My Quote &rarr;" data-es="Solicitar mi cotización &rarr;">Request My Quote &rarr;</button>
           <div class="form-note mono" data-en="We typically respond the same business day. Your details are used only to quote your transport." data-es="Normalmente respondemos el mismo día hábil. Sus datos se usan solo para cotizar su transporte.">We typically respond the same business day. Your details are used only to quote your transport.</div>
         </form>
         <div class="form-success" id="formSuccess">

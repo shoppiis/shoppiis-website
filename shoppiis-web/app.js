@@ -503,6 +503,19 @@ const MIN_QUOTE = 0; // mínimo en dólares (0 = sin mínimo; poné p.ej. 150 si
     mapboxgl.accessToken = MAPBOX_TOKEN;
     box.hidden = false;
 
+    /* Con la cotización instantánea funcionando, el formulario largo de
+       "Get a free quote" no se muestra: la gente cotiza en el mapa y el
+       formulario recién aparece al tocar "Request to Book" (abajo), ya
+       cargado con el origen, el destino y el precio estimado.
+       Si el mapa no carga, este bloque nunca corre y el formulario sigue
+       visible como antes. */
+    const manual   = document.getElementById('manualQuote');
+    const quoteSec = document.getElementById('quote');
+    if (manual) {
+      manual.hidden = true;
+      if (quoteSec) quoteSec.classList.add('iq-only');
+    }
+
     const map = new mapboxgl.Map({
       container: 'iqMap',
       style: 'mapbox://styles/mapbox/dark-v11',
@@ -613,11 +626,32 @@ const MIN_QUOTE = 0; // mínimo en dólares (0 = sin mínimo; poné p.ej. 150 si
       document.getElementById('iqPrice').textContent = '$' + state.total.toLocaleString();
     }
 
-    // Request to Book → rellena el formulario manual con lo cotizado
+    // Request to Book → muestra el formulario y lo rellena con lo cotizado
     document.getElementById('iqBook').addEventListener('click', () => {
       const es = document.documentElement.lang === 'es';
       const f = document.getElementById('quoteForm');
       if (f) {
+        // pone el texto en los dos idiomas para que el toggle EN/ES lo respete
+        const say = (id, en, sp) => {
+          const el = document.getElementById(id);
+          if (!el) return;
+          el.setAttribute('data-en', en);
+          el.setAttribute('data-es', sp);
+          el.innerHTML = es ? sp : en;
+        };
+        if (manual && manual.hidden) {
+          manual.hidden = false;
+          if (quoteSec) quoteSec.classList.remove('iq-only');
+          manual.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+          // el formulario deja de ser "pedí una cotización" y pasa a ser el
+          // paso 2: confirmar la reserva de la cotización ya calculada
+          say('mqKicker', 'Step 2 / Booking Request', 'Paso 2 / Solicitud de reserva');
+          say('mqTitle', 'Confirm your booking request.', 'Confirme su solicitud de reserva.');
+          say('mqLead',
+              'Your estimate is already loaded below. Add your contact details and we&rsquo;ll confirm availability, the final price and a pickup window &mdash; usually same business day.',
+              'Su estimado ya está cargado abajo. Agregue sus datos de contacto y le confirmamos disponibilidad, el precio final y una ventana de recogida &mdash; normalmente el mismo día hábil.');
+          say('mqSubmit', 'Send Booking Request &rarr;', 'Enviar solicitud de reserva &rarr;');
+        }
         const set = (name, v) => { const el = f.querySelector(`[name="${name}"]`); if (el) el.value = v; };
         set('origin', state.origin.name);
         set('destination', state.dest.name);
@@ -629,7 +663,10 @@ const MIN_QUOTE = 0; // mínimo en dólares (0 = sin mínimo; poné p.ej. 150 si
         let hidden = f.querySelector('input[name="quote_estimate"]');
         if (!hidden) { hidden = document.createElement('input'); hidden.type = 'hidden'; hidden.name = 'quote_estimate'; f.appendChild(hidden); }
         hidden.value = `$${state.total} — ${state.miles} mi @ $${state.rate.toFixed(2)}/mi (${state.tier})`;
-        f.scrollIntoView({ behavior:'smooth', block:'start' });
+        // scroll dejando aire para el header fijo (72px) y su borde
+        const target = manual || f;
+        const top = target.getBoundingClientRect().top + window.pageYOffset - 96;
+        window.scrollTo({ top: Math.max(top, 0), behavior:'smooth' });
         setTimeout(() => { const n = f.querySelector('input[name="name"]'); if (n) n.focus(); }, 650);
       }
     });
