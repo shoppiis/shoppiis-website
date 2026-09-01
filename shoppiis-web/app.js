@@ -526,6 +526,37 @@ const MIN_QUOTE = 0; // mínimo en dólares (0 = sin mínimo; poné p.ej. 150 si
     });
     map.addControl(new mapboxgl.NavigationControl({ showCompass:false }), 'top-right');
 
+    /* El alto del mapa lo manda la columna izquierda (el resultado, un mensaje
+       o un texto más largo al cambiar de idioma la estiran). Mapbox no siempre
+       lo detecta solo, así que la observamos y redimensionamos el canvas. */
+    const panelEl = box.querySelector('.iq-panel');
+    if (panelEl && window.ResizeObserver) {
+      let raf = 0;
+      new ResizeObserver(() => {
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => map.resize());
+      }).observe(panelEl);
+    }
+
+    /* Red de seguridad: si el mapa nunca llega a cargar (token vencido o
+       inválido, red caída), devolvemos el formulario a la vista para no
+       dejar a nadie sin forma de pedir el transporte. */
+    function showManual(){
+      if (!manual || !manual.hidden) return;
+      manual.hidden = false;
+      if (quoteSec) quoteSec.classList.remove('iq-only');
+      manual.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+    }
+    let mapReady = false;
+    map.on('load', () => { mapReady = true; map.resize(); });
+    // solo un token rechazado es motivo para volver al formulario al instante;
+    // un tile suelto que falla no cuenta (de eso se encarga el temporizador)
+    map.on('error', e => {
+      const st = e && e.error && e.error.status;
+      if (st === 401 || st === 403) showManual();
+    });
+    setTimeout(() => { if (!mapReady) showManual(); }, 12000);
+
     const state = { origin:null, dest:null, miles:null, rate:null, total:null, tier:'' };
     const markers = [];
 
@@ -577,9 +608,9 @@ const MIN_QUOTE = 0; // mínimo en dólares (0 = sin mínimo; poné p.ej. 150 si
         if (!data.routes || !data.routes.length) throw new Error('no route');
         const route = data.routes[0];
         state.miles = Math.round(route.distance / 1609.344);
-        drawRoute(route.geometry);
-        applyPrice();
+        applyPrice();               // muestra el precio (agranda la columna)
         hideMsg();
+        drawRoute(route.geometry);  // dibuja ya con el alto definitivo
       } catch (err) {
         showMsg(es
           ? 'No pudimos calcular esa ruta. Probá otra ciudad o llamanos al (239) 526-1266.'
@@ -589,12 +620,15 @@ const MIN_QUOTE = 0; // mínimo en dólares (0 = sin mínimo; poné p.ej. 150 si
 
     function applyPrice(){
       state.rate = parseFloat(vehSel.value);
-      state.tier = vehSel.options[vehSel.selectedIndex].textContent;
+      // el texto de la opción trae la tarifa ("… — $1.00 / mi"); guardamos solo el nombre
+      state.tier = vehSel.options[vehSel.selectedIndex].textContent.split('—')[0].trim();
       let total = Math.round(state.miles * state.rate);
       if (MIN_QUOTE && total < MIN_QUOTE) total = MIN_QUOTE;
       state.total = total;
       renderResult();
       result.hidden = false;
+      // si el formulario ya está abierto, actualizamos lo cotizado ahí también
+      if (manual && !manual.hidden) fillForm();
     }
 
     function drawRoute(geom){
@@ -611,9 +645,14 @@ const MIN_QUOTE = 0; // mínimo en dólares (0 = sin mínimo; poné p.ej. 150 si
       [[state.origin,'#ffffff'],[state.dest,'#f2e20a']].forEach(([p,color]) => {
         markers.push(new mapboxgl.Marker({ color }).setLngLat([p.lng,p.lat]).addTo(map));
       });
+      // el bloque del resultado estiró la columna: esperamos al layout, le
+      // damos al canvas el alto nuevo y recién ahí encuadramos la ruta
       const cs = geom.coordinates;
-      const b = cs.reduce((bb,c) => bb.extend(c), new mapboxgl.LngLatBounds(cs[0], cs[0]));
-      map.fitBounds(b, { padding:50, duration:700 });
+      requestAnimationFrame(() => {
+        map.resize();
+        const b = cs.reduce((bb,c) => bb.extend(c), new mapboxgl.LngLatBounds(cs[0], cs[0]));
+        map.fitBounds(b, { padding:50, duration:700 });
+      });
     }
 
     window.__iqRender = renderResult;
@@ -626,11 +665,40 @@ const MIN_QUOTE = 0; // mínimo en dólares (0 = sin mínimo; poné p.ej. 150 si
       document.getElementById('iqPrice').textContent = '$' + state.total.toLocaleString();
     }
 
+    /* Vuelca la cotización en el formulario. Se usa al pedir la reserva y
+       también cada vez que se recalcula con el formulario ya abierto, para
+       que nunca se envíe una ruta o un precio viejo. */
+    function fillForm(){
+      const f = document.getElementById('quoteForm');
+      if (!f || state.miles == null) return;
+      const es = document.documentElement.lang === 'es';
+      const set = (name, v) => { const el = f.querySelector(`[name="${name}"]`); if (el) el.value = v; };
+      set('origin', state.origin.name);
+      set('destination', state.dest.name);
+      const line = es
+        ? `Cotización instantánea: ${state.tier} · ${state.miles} millas × $${state.rate.toFixed(2)}/milla = $${state.total.toLocaleString()}.`
+        : `Instant quote: ${state.tier} · ${state.miles} mi × $${state.rate.toFixed(2)}/mi = $${state.total.toLocaleString()}.`;
+      const notes = f.querySelector('[name="notes"]');
+      if (notes) {
+        // pisa la línea de una cotización anterior en vez de apilarlas
+        const rest = notes.value.split('\n')
+          .filter(l => !/^\s*(Instant quote:|Cotización instantánea:)/.test(l))
+          .join('\n').trim();
+        notes.value = rest ? line + '\n' + rest : line;
+      }
+      let hidden = f.querySelector('input[name="quote_estimate"]');
+      if (!hidden) { hidden = document.createElement('input'); hidden.type = 'hidden'; hidden.name = 'quote_estimate'; f.appendChild(hidden); }
+      hidden.value = `$${state.total} — ${state.miles} mi @ $${state.rate.toFixed(2)}/mi (${state.tier})`;
+      return f;
+    }
+
     // Request to Book → muestra el formulario y lo rellena con lo cotizado
     document.getElementById('iqBook').addEventListener('click', () => {
       const es = document.documentElement.lang === 'es';
-      const f = document.getElementById('quoteForm');
-      if (f) {
+      const f = fillForm();
+      if (!f) return;
+
+      if (manual && manual.hidden) {
         // pone el texto en los dos idiomas para que el toggle EN/ES lo respete
         const say = (id, en, sp) => {
           const el = document.getElementById(id);
@@ -639,36 +707,25 @@ const MIN_QUOTE = 0; // mínimo en dólares (0 = sin mínimo; poné p.ej. 150 si
           el.setAttribute('data-es', sp);
           el.innerHTML = es ? sp : en;
         };
-        if (manual && manual.hidden) {
-          manual.hidden = false;
-          if (quoteSec) quoteSec.classList.remove('iq-only');
-          manual.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
-          // el formulario deja de ser "pedí una cotización" y pasa a ser el
-          // paso 2: confirmar la reserva de la cotización ya calculada
-          say('mqKicker', 'Step 2 / Booking Request', 'Paso 2 / Solicitud de reserva');
-          say('mqTitle', 'Confirm your booking request.', 'Confirme su solicitud de reserva.');
-          say('mqLead',
-              'Your estimate is already loaded below. Add your contact details and we&rsquo;ll confirm availability, the final price and a pickup window &mdash; usually same business day.',
-              'Su estimado ya está cargado abajo. Agregue sus datos de contacto y le confirmamos disponibilidad, el precio final y una ventana de recogida &mdash; normalmente el mismo día hábil.');
-          say('mqSubmit', 'Send Booking Request &rarr;', 'Enviar solicitud de reserva &rarr;');
-        }
-        const set = (name, v) => { const el = f.querySelector(`[name="${name}"]`); if (el) el.value = v; };
-        set('origin', state.origin.name);
-        set('destination', state.dest.name);
-        const line = es
-          ? `Cotización instantánea: ${state.tier} · ${state.miles} millas × $${state.rate.toFixed(2)}/milla = $${state.total.toLocaleString()}.`
-          : `Instant quote: ${state.tier} · ${state.miles} mi × $${state.rate.toFixed(2)}/mi = $${state.total.toLocaleString()}.`;
-        const notes = f.querySelector('[name="notes"]');
-        if (notes) notes.value = line + (notes.value ? '\n' + notes.value : '');
-        let hidden = f.querySelector('input[name="quote_estimate"]');
-        if (!hidden) { hidden = document.createElement('input'); hidden.type = 'hidden'; hidden.name = 'quote_estimate'; f.appendChild(hidden); }
-        hidden.value = `$${state.total} — ${state.miles} mi @ $${state.rate.toFixed(2)}/mi (${state.tier})`;
-        // scroll dejando aire para el header fijo (72px) y su borde
-        const target = manual || f;
-        const top = target.getBoundingClientRect().top + window.pageYOffset - 96;
-        window.scrollTo({ top: Math.max(top, 0), behavior:'smooth' });
-        setTimeout(() => { const n = f.querySelector('input[name="name"]'); if (n) n.focus(); }, 650);
+        manual.hidden = false;
+        if (quoteSec) quoteSec.classList.remove('iq-only');
+        manual.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+        // el formulario deja de ser "pedí una cotización" y pasa a ser el
+        // paso 2: confirmar la reserva de la cotización ya calculada
+        say('mqKicker', 'Step 2 / Booking Request', 'Paso 2 / Solicitud de reserva');
+        say('mqTitle', 'Confirm your booking request.', 'Confirme su solicitud de reserva.');
+        say('mqLead',
+            'Your estimate is already loaded below. Add your contact details and we&rsquo;ll confirm availability, the final price and a pickup window &mdash; usually same business day.',
+            'Su estimado ya está cargado abajo. Agregue sus datos de contacto y le confirmamos disponibilidad, el precio final y una ventana de recogida &mdash; normalmente el mismo día hábil.');
+        say('mqSubmit', 'Send Booking Request &rarr;', 'Enviar solicitud de reserva &rarr;');
       }
+
+      // scroll dejando aire para el header fijo
+      const header = document.querySelector('header');
+      const gap = (header ? header.offsetHeight : 72) + 24;
+      const top = (manual || f).getBoundingClientRect().top + window.pageYOffset - gap;
+      window.scrollTo({ top: Math.max(top, 0), behavior:'smooth' });
+      setTimeout(() => { const n = f.querySelector('input[name="name"]'); if (n) n.focus({ preventScroll:true }); }, 650);
     });
   }
 })();
