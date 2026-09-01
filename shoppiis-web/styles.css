@@ -215,6 +215,9 @@ h2{font-family:'Archivo';font-weight:800;letter-spacing:-.025em;font-size:clamp(
 /* QUOTE FORM */
 .quote{background:var(--ink)}
 .quote-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:start}
+.quote-grid[hidden]{display:none}
+/* Solo cotización instantánea: sin el formulario abajo, sobra el separador */
+.quote.iq-only .iq{padding-bottom:0;margin-bottom:0;border-bottom:0}
 .quote-aside .kicker{margin-bottom:18px}
 .quote-aside h2{margin-bottom:18px}
 .quote-aside p{color:#bdbdb8;font-size:1.02rem;margin-bottom:28px}
