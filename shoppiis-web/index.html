@@ -465,9 +465,9 @@
           <div class="iq-field">
             <label class="mono" data-en="Vehicle type" data-es="Tipo de vehículo">Vehicle type</label>
             <select id="iqVehicle">
-              <option value="1.00" data-opt-en="Standard Car, Truck or SUV — $1.00 / mi" data-opt-es="Auto, camioneta o SUV estándar — $1.00 / mi">Standard Car, Truck or SUV — $1.00 / mi</option>
-              <option value="1.50" data-opt-en="Dually Truck or Van — $1.50 / mi" data-opt-es="Dually o Van — $1.50 / mi">Dually Truck or Van — $1.50 / mi</option>
-              <option value="1.75" data-opt-en="Oversized or Custom Vehicle — $1.75 / mi" data-opt-es="Vehículo grande o personalizado — $1.75 / mi">Oversized or Custom Vehicle — $1.75 / mi</option>
+              <option value="1.25" data-opt-en="Standard Car, Truck or SUV — $1.25 / mi" data-opt-es="Auto, camioneta o SUV estándar — $1.25 / mi">Standard Car, Truck or SUV — $1.25 / mi</option>
+              <option value="1.75" data-opt-en="Dually Truck or Van — $1.75 / mi" data-opt-es="Dually o Van — $1.75 / mi">Dually Truck or Van — $1.75 / mi</option>
+              <option value="2.00" data-opt-en="Oversized or Custom Vehicle — $2.00 / mi" data-opt-es="Vehículo grande o personalizado — $2.00 / mi">Oversized or Custom Vehicle — $2.00 / mi</option>
             </select>
           </div>
           <button type="button" class="btn" id="iqCalc" data-en="Get Instant Quote &rarr;" data-es="Cotizar al instante &rarr;">Get Instant Quote &rarr;</button>
@@ -509,12 +509,20 @@
       </div>
       <div>
         <form class="qform" id="quoteForm">
-          <!-- Web3Forms: pegá tu clave de acceso acá (https://web3forms.com) -->
+          <!-- Web3Forms: pegá tu clave de acceso acá (https://web3forms.com)
+               ⚠ DÓNDE LLEGAN LOS PEDIDOS: el email destino NO se define acá — lo
+               define la cuenta de Web3Forms a la que pertenece esta access key.
+               Para que las cotizaciones lleguen a dispatch@shoppiis.com hay que
+               generar una access key nueva registrada con ese email en
+               https://web3forms.com y reemplazar el value de abajo. -->
           <input type="hidden" name="access_key" value="f1746726-21ae-46b0-90c2-44c6be312043">
           <!-- El asunto se completa dinámicamente en app.js: "New Shoppiis Booking Request — [origen] → [destino]" -->
           <input type="hidden" name="subject" value="New Shoppiis Booking Request">
           <input type="hidden" name="status" value="BOOKING REQUEST — NOT YET CONFIRMED">
           <input type="hidden" name="from_name" value="Shoppiis Website">
+          <!-- Copia a despacho. OJO: "ccemail" es una función PRO de Web3Forms —
+               en el plan gratuito el campo se ignora y NO se manda la copia. -->
+          <input type="hidden" name="ccemail" value="dispatch@shoppiis.com">
           <!-- honeypot anti-bots: los humanos no lo ven ni lo completan -->
           <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
           <div class="qrow">

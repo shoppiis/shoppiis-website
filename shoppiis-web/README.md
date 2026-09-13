@@ -75,12 +75,31 @@ El formulario ya está conectado a **Web3Forms** (gratis, sin servidor).
 Para activarlo:
 
 1. Entrá a **https://web3forms.com** y poné el email donde querés recibir los
-   pedidos (ej. `jorge.o@shoppiis.com`). Te dan una **Access Key**.
-2. Abrí `index.html`, buscá `TU_CLAVE_DE_WEB3FORMS_ACA` y pegá tu clave ahí.
-3. **Probalo:** mandá una cotización de prueba y confirmá que te llega el mail.
+   pedidos (**`dispatch@shoppiis.com`**). Te dan una **Access Key**.
+2. Abrí `index.html`, buscá el input `access_key` y pegá tu clave ahí.
+3. **Probalo:** mandá una cotización de prueba y confirmá que llega el mail.
 
 > ⚠️ Si no ponés la clave, el formulario muestra "enviado" pero **no manda nada**.
 > No publiques sin probar el envío al menos una vez.
+
+### 📍 A qué email llegan las cotizaciones
+
+**El email destino NO se configura en el código.** Web3Forms manda cada pedido
+al email de la cuenta dueña de la `access_key`. Para cambiar el destino hay
+dos caminos:
+
+- **Cambiar el destinatario principal (recomendado, gratis):** generá una
+  access key nueva en https://web3forms.com registrada con
+  `dispatch@shoppiis.com` y reemplazá el `value` del input `access_key` en
+  `index.html`. Desde ese momento todas las cotizaciones llegan a despacho.
+- **Mandar una copia (CC):** el `index.html` ya incluye
+  `<input type="hidden" name="ccemail" value="dispatch@shoppiis.com">`, que
+  manda copia a despacho **sin dejar de avisar al destinatario principal**.
+  ⚠️ `ccemail` es una **función PRO de Web3Forms**: con el plan gratuito el
+  campo se ignora silenciosamente y la copia **no se envía**.
+
+Alternativa sin tocar Web3Forms: crear un reenvío automático desde el buzón
+actual hacia `dispatch@shoppiis.com` en el proveedor de correo.
 
 ¿Preferís Formspree en vez de Web3Forms?
 - En `app.js` cambiá `FORM_ENDPOINT` por tu URL de Formspree
@@ -139,9 +158,9 @@ Tarifas actuales:
 
 | Tipo de vehículo                        | Tarifa    |
 |-----------------------------------------|-----------|
-| Standard Car, Truck or SUV              | $1.00/mi  |
-| Dually Truck or Van                     | $1.50/mi  |
-| Oversized or Custom Vehicle Delivery    | $1.75/mi  |
+| Standard Car, Truck or SUV              | $1.25/mi  |
+| Dually Truck or Van                     | $1.75/mi  |
+| Oversized or Custom Vehicle Delivery    | $2.00/mi  |
 
 ¿Querés un **precio mínimo** (ej. no cobrar menos de $150 en rutas cortas)?
 En `app.js` cambiá `const MIN_QUOTE = 0;` por el monto que quieras.
