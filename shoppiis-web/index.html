@@ -465,9 +465,9 @@
           <div class="iq-field">
             <label class="mono" data-en="Vehicle type" data-es="Tipo de vehículo">Vehicle type</label>
             <select id="iqVehicle">
-              <option value="1.00" data-opt-en="Standard Car, Truck or SUV — $1.00 / mi" data-opt-es="Auto, camioneta o SUV estándar — $1.00 / mi">Standard Car, Truck or SUV — $1.00 / mi</option>
-              <option value="1.50" data-opt-en="Dually Truck or Van — $1.50 / mi" data-opt-es="Dually o Van — $1.50 / mi">Dually Truck or Van — $1.50 / mi</option>
-              <option value="1.75" data-opt-en="Oversized or Custom Vehicle — $1.75 / mi" data-opt-es="Vehículo grande o personalizado — $1.75 / mi">Oversized or Custom Vehicle — $1.75 / mi</option>
+              <option value="1.25" data-opt-en="Standard Car, Truck or SUV — $1.25 / mi" data-opt-es="Auto, camioneta o SUV estándar — $1.25 / mi">Standard Car, Truck or SUV — $1.25 / mi</option>
+              <option value="1.75" data-opt-en="Dually Truck or Van — $1.75 / mi" data-opt-es="Dually o Van — $1.75 / mi">Dually Truck or Van — $1.75 / mi</option>
+              <option value="2.00" data-opt-en="Oversized or Custom Vehicle — $2.00 / mi" data-opt-es="Vehículo grande o personalizado — $2.00 / mi">Oversized or Custom Vehicle — $2.00 / mi</option>
             </select>
           </div>
           <button type="button" class="btn" id="iqCalc" data-en="Get Instant Quote &rarr;" data-es="Cotizar al instante &rarr;">Get Instant Quote &rarr;</button>
@@ -547,8 +547,14 @@
       </div>
       <div>
         <form class="qform" id="quoteForm">
-          <!-- Web3Forms: pegá tu clave de acceso acá (https://web3forms.com) -->
-          <input type="hidden" name="access_key" value="f1746726-21ae-46b0-90c2-44c6be312043">
+          <!-- Web3Forms — access key del formulario "Request My Quote".
+               DÓNDE LLEGAN LOS PEDIDOS: el email destino NO se define acá. Lo
+               define la cuenta/formulario dueño de esta access key, en
+               https://app.web3forms.com → Form Settings. Esta clave apunta al
+               buzón de despacho (dispatch@shoppiis.com). Si alguna vez hay que
+               cambiar el destino, se cambia allá — o se pega acá la clave de
+               otro formulario. -->
+          <input type="hidden" name="access_key" value="66ce08a9-dd33-44a8-959d-d5335bdc9608">
           <!-- El asunto se completa dinámicamente en app.js: "New Shoppiis Booking Request — [origen] → [destino]" -->
           <input type="hidden" name="subject" value="New Shoppiis Booking Request">
           <input type="hidden" name="status" value="BOOKING REQUEST — NOT YET CONFIRMED">
