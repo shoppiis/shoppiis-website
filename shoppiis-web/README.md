@@ -69,37 +69,46 @@ Todo en `styles.css`, arriba de todo en `:root`:
 
 ---
 
-## 📨 Formulario de cotización (IMPORTANTE — hacelo antes de publicar)
+## 📨 Formulario de cotización
 
-El formulario ya está conectado a **Web3Forms** (gratis, sin servidor).
-Para activarlo:
+El formulario está conectado a **Web3Forms** (gratis, sin servidor) y **ya
+apunta a `dispatch@shoppiis.com`** — no hace falta tocar nada. La access key
+vive en el input `access_key` de `index.html`.
+
+Si alguna vez hay que rehacerlo desde cero:
 
 1. Entrá a **https://web3forms.com** y poné el email donde querés recibir los
    pedidos (**`dispatch@shoppiis.com`**). Te dan una **Access Key**.
 2. Abrí `index.html`, buscá el input `access_key` y pegá tu clave ahí.
 3. **Probalo:** mandá una cotización de prueba y confirmá que llega el mail.
 
-> ⚠️ Si no ponés la clave, el formulario muestra "enviado" pero **no manda nada**.
+> ⚠️ Si la clave está mal, el formulario muestra "enviado" pero **no manda nada**.
 > No publiques sin probar el envío al menos una vez.
 
 ### 📍 A qué email llegan las cotizaciones
 
-**El email destino NO se configura en el código.** Web3Forms manda cada pedido
-al email de la cuenta dueña de la `access_key`. Para cambiar el destino hay
-dos caminos:
+Las cotizaciones van al **buzón de despacho (`dispatch@shoppiis.com`)** a
+través del formulario "Request My Quote" de Web3Forms
+(access key `66ce08a9-dd33-44a8-959d-d5335bdc9608`).
 
-- **Cambiar el destinatario principal (recomendado, gratis):** generá una
-  access key nueva en https://web3forms.com registrada con
-  `dispatch@shoppiis.com` y reemplazá el `value` del input `access_key` en
-  `index.html`. Desde ese momento todas las cotizaciones llegan a despacho.
-- **Mandar una copia (CC):** el `index.html` ya incluye
-  `<input type="hidden" name="ccemail" value="dispatch@shoppiis.com">`, que
-  manda copia a despacho **sin dejar de avisar al destinatario principal**.
-  ⚠️ `ccemail` es una **función PRO de Web3Forms**: con el plan gratuito el
-  campo se ignora silenciosamente y la copia **no se envía**.
+**El email destino NO se configura en el código.** Web3Forms manda cada
+pedido al email configurado en el formulario dueño de la `access_key`. Para
+cambiarlo: https://app.web3forms.com → el formulario → **Settings** →
+email destino. También se puede pegar en `index.html` la access key de otro
+formulario.
 
-Alternativa sin tocar Web3Forms: crear un reenvío automático desde el buzón
-actual hacia `dispatch@shoppiis.com` en el proveedor de correo.
+> ✅ Después de cualquier cambio de destino, mandá una cotización de prueba
+> desde el sitio y confirmá que llega. El formulario dice "enviado" aunque la
+> clave esté mal.
+
+**Un solo destinatario por formulario (plan Free).** Si además de despacho
+hace falta que otra casilla reciba los pedidos, las opciones son:
+
+- Un **reenvío automático** desde `dispatch@shoppiis.com` hacia la otra
+  casilla, configurado en el proveedor de correo (gratis, recomendado).
+- El campo `ccemail` de Web3Forms, que manda copia a otra dirección —
+  ⚠️ es una **función PRO**: con el plan gratuito se ignora en silencio y la
+  copia **no se envía**.
 
 ¿Preferís Formspree en vez de Web3Forms?
 - En `app.js` cambiá `FORM_ENDPOINT` por tu URL de Formspree

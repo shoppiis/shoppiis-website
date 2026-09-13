@@ -509,20 +509,18 @@
       </div>
       <div>
         <form class="qform" id="quoteForm">
-          <!-- Web3Forms: pegá tu clave de acceso acá (https://web3forms.com)
-               ⚠ DÓNDE LLEGAN LOS PEDIDOS: el email destino NO se define acá — lo
-               define la cuenta de Web3Forms a la que pertenece esta access key.
-               Para que las cotizaciones lleguen a dispatch@shoppiis.com hay que
-               generar una access key nueva registrada con ese email en
-               https://web3forms.com y reemplazar el value de abajo. -->
-          <input type="hidden" name="access_key" value="f1746726-21ae-46b0-90c2-44c6be312043">
+          <!-- Web3Forms — access key del formulario "Request My Quote".
+               DÓNDE LLEGAN LOS PEDIDOS: el email destino NO se define acá. Lo
+               define la cuenta/formulario dueño de esta access key, en
+               https://app.web3forms.com → Form Settings. Esta clave apunta al
+               buzón de despacho (dispatch@shoppiis.com). Si alguna vez hay que
+               cambiar el destino, se cambia allá — o se pega acá la clave de
+               otro formulario. -->
+          <input type="hidden" name="access_key" value="66ce08a9-dd33-44a8-959d-d5335bdc9608">
           <!-- El asunto se completa dinámicamente en app.js: "New Shoppiis Booking Request — [origen] → [destino]" -->
           <input type="hidden" name="subject" value="New Shoppiis Booking Request">
           <input type="hidden" name="status" value="BOOKING REQUEST — NOT YET CONFIRMED">
           <input type="hidden" name="from_name" value="Shoppiis Website">
-          <!-- Copia a despacho. OJO: "ccemail" es una función PRO de Web3Forms —
-               en el plan gratuito el campo se ignora y NO se manda la copia. -->
-          <input type="hidden" name="ccemail" value="dispatch@shoppiis.com">
           <!-- honeypot anti-bots: los humanos no lo ven ni lo completan -->
           <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
           <div class="qrow">
