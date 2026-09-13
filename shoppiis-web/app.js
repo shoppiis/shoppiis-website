@@ -467,9 +467,9 @@ if (form) {
    manual de abajo sigue funcionando.
 
    Tarifas por milla (editá en el <select> del index.html):
-     • Auto/camioneta/SUV estándar ... $1.00
-     • Dually o Van ................... $1.50
-     • Vehículo grande o custom ....... $1.75
+     • Auto/camioneta/SUV estándar ... $1.25
+     • Dually o Van ................... $1.75
+     • Vehículo grande o custom ....... $2.00
    ============================================================ */
 const MAPBOX_TOKEN = ((typeof window !== 'undefined' && window.MAPBOX_TOKEN) || "").trim();
 const MIN_QUOTE = 0; // mínimo en dólares (0 = sin mínimo; poné p.ej. 150 si querés uno)
@@ -620,7 +620,7 @@ const MIN_QUOTE = 0; // mínimo en dólares (0 = sin mínimo; poné p.ej. 150 si
 
     function applyPrice(){
       state.rate = parseFloat(vehSel.value);
-      // el texto de la opción trae la tarifa ("… — $1.00 / mi"); guardamos solo el nombre
+      // el texto de la opción trae la tarifa ("… — $1.25 / mi"); guardamos solo el nombre
       state.tier = vehSel.options[vehSel.selectedIndex].textContent.split('—')[0].trim();
       let total = Math.round(state.miles * state.rate);
       if (MIN_QUOTE && total < MIN_QUOTE) total = MIN_QUOTE;
