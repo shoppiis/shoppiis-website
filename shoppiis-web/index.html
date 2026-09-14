@@ -79,7 +79,7 @@
     {"@type":"Question","name":"How soon can you pick up my vehicle?","acceptedAnswer":{"@type":"Answer","text":"It depends on the lane and current routing, but we usually provide an available pickup window the same business day you request a quote. Our Southeast corridors move fastest. Tell us your preferred date in the quote form and we'll confirm what's realistic."}},
     {"@type":"Question","name":"Do you transport non-running or inoperable vehicles?","acceptedAnswer":{"@type":"Answer","text":"Yes. We handle both running and non-running vehicles — just select the condition in your quote request so we bring the right equipment and securement. Non-running vehicles may require a winch and additional handling, which we'll account for in the quote."}},
     {"@type":"Question","name":"What areas do you serve?","acceptedAnswer":{"@type":"Answer","text":"We operate across the Southeastern United States — Florida, Georgia, Mississippi, Alabama, South Carolina, North Carolina, and Tennessee. Jacksonville is a major national auto-transport hub and anchors our network. Have a lane outside this area? Ask — we hold interstate authority and can quote it."}},
-    {"@type":"Question","name":"How does pricing and payment work?","acceptedAnswer":{"@type":"Answer","text":"Transport is priced per mile based on distance, vehicle count, and condition — no surprise fees. You'll get a clear quote before you book. Payment terms are confirmed at booking; brokers can ask about carrier-packet and payment arrangements directly with dispatch."}}
+    {"@type":"Question","name":"How does pricing and payment work?","acceptedAnswer":{"@type":"Answer","text":"Transport is priced per mile based on distance, vehicle count, and condition — no surprise fees. You'll get a clear quote before you book. Customers don't pay until the Shoppiis truck arrives for pickup, the vehicle has been inspected, and the transport details have been confirmed — dispatch then sends the final invoice for payment. Brokers can ask about carrier-packet and payment arrangements directly with dispatch."}}
   ]
 }
 </script>
@@ -493,6 +493,44 @@
       </div>
     </div>
 
+    <!-- ===== PROCESO DEL CLIENTE (5 pasos) =====
+         Qué pasa después de cotizar y antes de mandar la solicitud de reserva.
+         Vive dentro de la sección 08 (cotización / reserva), entre la cotización
+         instantánea y el formulario. ===== -->
+    <div class="process">
+      <div class="sec-head reveal">
+        <h2 data-en="How Your Transport Works" data-es="Cómo funciona su transporte">How Your Transport Works</h2>
+        <p data-en="From pickup to delivery, we keep you informed every step of the way." data-es="Desde la recogida hasta la entrega, lo mantenemos informado en cada paso.">From pickup to delivery, we keep you informed every step of the way.</p>
+      </div>
+      <div class="process-list reveal">
+        <div class="process-step">
+          <div class="ps-n mono">// 01</div>
+          <h3 class="ps-t" data-en="Pickup coordination" data-es="Coordinación de la recogida">Pickup coordination</h3>
+          <p class="ps-d" data-en="Your driver will contact you on the day of pickup to coordinate arrival." data-es="Su conductor lo contactará el día de la recogida para coordinar la llegada.">Your driver will contact you on the day of pickup to coordinate arrival.</p>
+        </div>
+        <div class="process-step">
+          <div class="ps-n mono">// 02</div>
+          <h3 class="ps-t" data-en="Vehicle inspection &amp; payment" data-es="Inspección del vehículo y pago">Vehicle inspection &amp; payment</h3>
+          <p class="ps-d" data-en="When the truck arrives, your driver will inspect the vehicle and confirm the transport details. Once everything is verified, dispatch will send your final invoice for payment. You don&rsquo;t pay anything until our truck arrives for pickup." data-es="Cuando el camión llega, su conductor inspecciona el vehículo y confirma los detalles del transporte. Una vez verificado todo, despacho le envía la factura final para el pago. Usted no paga nada hasta que nuestro camión llega a la recogida.">When the truck arrives, your driver will inspect the vehicle and confirm the transport details. Once everything is verified, dispatch will send your final invoice for payment. You don&rsquo;t pay anything until our truck arrives for pickup.</p>
+        </div>
+        <div class="process-step">
+          <div class="ps-n mono">// 03</div>
+          <h3 class="ps-t" data-en="Live GPS tracking" data-es="Seguimiento GPS en vivo">Live GPS tracking</h3>
+          <p class="ps-d" data-en="After pickup, dispatch will text you a tracking link so you can follow your vehicle&rsquo;s progress in real time." data-es="Después de la recogida, despacho le envía por mensaje un enlace de seguimiento para ver el avance de su vehículo en tiempo real.">After pickup, dispatch will text you a tracking link so you can follow your vehicle&rsquo;s progress in real time.</p>
+        </div>
+        <div class="process-step">
+          <div class="ps-n mono">// 04</div>
+          <h3 class="ps-t" data-en="Delivery coordination" data-es="Coordinación de la entrega">Delivery coordination</h3>
+          <p class="ps-d" data-en="Your driver will contact you approximately 24 hours before delivery to confirm the drop-off details." data-es="Su conductor lo contactará aproximadamente 24 horas antes de la entrega para confirmar los detalles.">Your driver will contact you approximately 24 hours before delivery to confirm the drop-off details.</p>
+        </div>
+        <div class="process-step">
+          <div class="ps-n mono">// 05</div>
+          <h3 class="ps-t" data-en="Final delivery" data-es="Entrega final">Final delivery</h3>
+          <p class="ps-d" data-en="Your vehicle will be delivered and released to you, your designated representative, or the authorized business receiving it." data-es="Su vehículo se entrega y se libera a usted, a su representante designado o a la empresa autorizada que lo recibe.">Your vehicle will be delivered and released to you, your designated representative, or the authorized business receiving it.</p>
+        </div>
+      </div>
+    </div>
+
     <!-- ===== FORMULARIO MANUAL =====
          Con la cotización instantánea activa queda oculto y solo aparece al
          tocar "Request to Book" (app.js). Si no hay mapa (sin MAPBOX_TOKEN o
@@ -639,7 +677,7 @@
       <div class="faq-item"><button class="faq-q">How soon can you pick up my vehicle?<span class="sign">+</span></button><div class="faq-a"><div class="inner">It depends on the lane and current routing, but we usually provide an available pickup window the same business day you request a quote. Our Southeast corridors move fastest. Tell us your preferred date in the quote form and we&rsquo;ll confirm what&rsquo;s realistic.</div></div></div>
       <div class="faq-item"><button class="faq-q">Do you transport non-running or inoperable vehicles?<span class="sign">+</span></button><div class="faq-a"><div class="inner">Yes. We handle both running and non-running vehicles &mdash; just select the condition in your quote request so we bring the right equipment and securement. Non-running vehicles may require a winch and additional handling, which we&rsquo;ll account for in the quote.</div></div></div>
       <div class="faq-item"><button class="faq-q">What areas do you serve?<span class="sign">+</span></button><div class="faq-a"><div class="inner">We operate across the Southeastern United States &mdash; Florida, Georgia, Mississippi, Alabama, South Carolina, North Carolina, and Tennessee. Jacksonville is a major national auto-transport hub and anchors our network. Have a lane outside this area? Ask &mdash; we hold interstate authority and can quote it.</div></div></div>
-      <div class="faq-item"><button class="faq-q">How does pricing and payment work?<span class="sign">+</span></button><div class="faq-a"><div class="inner">Transport is priced per mile based on distance, vehicle count, and condition &mdash; no surprise fees. You&rsquo;ll get a clear quote before you book. Payment terms are confirmed at booking; brokers can ask about carrier-packet and payment arrangements directly with dispatch. <em style="color:#5a5a56">[Confirm accepted payment methods/terms before publishing.]</em></div></div></div>
+      <div class="faq-item"><button class="faq-q">How does pricing and payment work?<span class="sign">+</span></button><div class="faq-a"><div class="inner">Transport is priced per mile based on distance, vehicle count, and condition &mdash; no surprise fees. You&rsquo;ll get a clear quote before you book. Customers don&rsquo;t pay until the Shoppiis truck arrives for pickup, the vehicle has been inspected, and the transport details have been confirmed &mdash; dispatch then sends the final invoice for payment. Brokers can ask about carrier-packet and payment arrangements directly with dispatch.</div></div></div>
     </div>
   </div>
 </section>

@@ -210,14 +210,15 @@ h2{font-family:'Archivo';font-weight:800;letter-spacing:-.025em;font-size:clamp(
 .faq-item.open .faq-q .sign{transform:rotate(45deg)}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;color:#b3b3ae;font-size:1rem}
 .faq-a .inner{padding:0 4px 26px}
-.faq-item.open .faq-a{max-height:340px}
+.faq-item.open .faq-a{max-height:420px}
 
 /* QUOTE FORM */
 .quote{background:var(--ink)}
 .quote-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:start}
 .quote-grid[hidden]{display:none}
-/* Solo cotización instantánea: sin el formulario abajo, sobra el separador */
-.quote.iq-only .iq{padding-bottom:0;margin-bottom:0;border-bottom:0}
+/* Solo cotización instantánea: sin el formulario abajo, sobra el separador
+   del último bloque de la sección (el proceso) */
+.quote.iq-only .process{padding-bottom:0;margin-bottom:0;border-bottom:0}
 .quote-aside .kicker{margin-bottom:18px}
 .quote-aside h2{margin-bottom:18px}
 .quote-aside p{color:#bdbdb8;font-size:1.02rem;margin-bottom:28px}
@@ -300,6 +301,28 @@ h2{font-family:'Archivo';font-weight:800;letter-spacing:-.025em;font-size:clamp(
 .iq-disclaimer{font-size:.74rem;line-height:1.55;color:#c7c7c2;letter-spacing:.01em;border-left:2px solid var(--yellow);padding-left:11px}
 /* nota de teléfono en el mensaje de éxito */
 .form-success .fs-call{color:var(--grey);font-size:.82rem;margin-top:12px}
+
+/* ===== proceso del cliente (5 pasos) ===== */
+.process{padding-bottom:44px;margin-bottom:44px;border-bottom:1px solid var(--grey-line)}
+.process .sec-head{max-width:720px;margin-bottom:30px}
+.process-list{border:1px solid var(--grey-line);background:var(--panel)}
+.process-step{display:grid;grid-template-columns:62px 220px 1fr;gap:0 22px;padding:22px;border-top:1px solid var(--grey-line);transition:background .2s}
+.process-step:first-child{border-top:none}
+.process-step:hover{background:var(--panel2)}
+.ps-n{font-size:.76rem;letter-spacing:.1em;color:var(--yellow);padding-top:4px}
+.ps-t{font-family:'Archivo';font-weight:700;font-size:1.08rem;letter-spacing:-.01em;line-height:1.35}
+.ps-d{color:#b3b3ae;font-size:.95rem}
+@media(max-width:980px){
+  .process-step{grid-template-columns:54px 1fr;gap:4px 18px}
+  .process-step .ps-d{grid-column:2}
+}
+@media(max-width:760px){
+  .process{padding-bottom:30px;margin-bottom:30px}
+  .process .sec-head{margin-bottom:22px}
+  .process-step{grid-template-columns:1fr;gap:6px 0;padding:18px 16px}
+  .process-step .ps-d{grid-column:auto}
+  .ps-n{padding-top:0}
+}
 
 /* vision (compact, investor-light) */
 .vision{background:var(--black)}

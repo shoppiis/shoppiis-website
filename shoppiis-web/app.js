@@ -211,7 +211,7 @@ const DICT = {
   "READY TO ROLL": "LISTO PARA SALIR",
 
   // --- 09 Team ---
-  "09 / The Team": "09 / El equipo",
+  "11 / The Team": "11 / El equipo",
   "The people running the operation.": "Las personas que manejan la operación.",
   "We run Shoppiis directly &mdash; winning the loads, managing the routes, and controlling the equipment. Hands-on operators, not absentee owners.":
     "Manejamos Shoppiis directamente &mdash; ganando las cargas, gestionando las rutas y controlando el equipo. Operadores con las manos en el trabajo, no dueños ausentes.",
@@ -241,10 +241,8 @@ const DICT = {
   "We operate across the Southeastern United States &mdash; Florida, Georgia, Mississippi, Alabama, South Carolina, North Carolina, and Tennessee. Jacksonville is a major national auto-transport hub and anchors our network. Have a lane outside this area? Ask &mdash; we hold interstate authority and can quote it.":
     "Operamos por todo el sureste de Estados Unidos &mdash; Florida, Georgia, Mississippi, Alabama, Carolina del Sur, Carolina del Norte y Tennessee. Jacksonville es un gran centro nacional de transporte de autos y ancla nuestra red. ¿Tiene una ruta fuera de esta zona? Pregúntenos &mdash; tenemos autoridad interestatal y podemos cotizarla.",
   "How does pricing and payment work?": "¿Cómo funcionan los precios y el pago?",
-  "Transport is priced per mile based on distance, vehicle count, and condition &mdash; no surprise fees. You&rsquo;ll get a clear quote before you book. Payment terms are confirmed at booking; brokers can ask about carrier-packet and payment arrangements directly with dispatch.":
-    "El transporte se cobra por milla según distancia, cantidad de vehículos y estado &mdash; sin cargos sorpresa. Recibe una cotización clara antes de reservar. Los términos de pago se confirman al reservar; los brókers pueden consultar por el carrier-packet y los arreglos de pago directamente con despacho.",
-  "[Confirm accepted payment methods/terms before publishing.]":
-    "[Confirme los métodos/términos de pago aceptados antes de publicar.]",
+  "Transport is priced per mile based on distance, vehicle count, and condition &mdash; no surprise fees. You&rsquo;ll get a clear quote before you book. Customers don&rsquo;t pay until the Shoppiis truck arrives for pickup, the vehicle has been inspected, and the transport details have been confirmed &mdash; dispatch then sends the final invoice for payment. Brokers can ask about carrier-packet and payment arrangements directly with dispatch.":
+    "El transporte se cobra por milla según distancia, cantidad de vehículos y estado &mdash; sin cargos sorpresa. Recibe una cotización clara antes de reservar. Los clientes no pagan hasta que el camión de Shoppiis llega a la recogida, se inspecciona el vehículo y se confirman los detalles del transporte &mdash; luego despacho envía la factura final para el pago. Los brókers pueden consultar por el carrier-packet y los arreglos de pago directamente con despacho.",
 
   // --- 13 Contact ---
   "13 / Get In Touch": "13 / Contacto",
