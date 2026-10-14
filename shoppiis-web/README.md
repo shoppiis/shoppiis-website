@@ -176,6 +176,47 @@ En `app.js` cambiá `const MIN_QUOTE = 0;` por el monto que quieras.
 
 ---
 
+## 📦 Carga directa (sección `#cargo`)
+
+Sección nueva para carga directa con el mismo tráiler: placa de capacidad,
+tarifas, qué llevamos / qué no, y un **planificador de carga en vivo** — el
+cliente escribe largo, ancho, alto y peso y el plano del tráiler (vista
+lateral y superior) se redibuja al instante: amarillo si entra, rojo si se
+pasa de algún límite. Abajo completa ruta y contacto y la solicitud llega a
+**dispatch@shoppiis.com** por Web3Forms (misma access key que vehículos),
+con asunto `New Shoppiis CARGO Request — origen → destino`.
+
+| Límite        | Valor     |
+|---------------|-----------|
+| Peso máximo   | 8,000 lb  |
+| Largo máximo  | 15 ft     |
+| Ancho máximo  | 8 ft      |
+| Alto máximo   | 6 ft      |
+
+| Opción            | Tarifa    |
+|-------------------|-----------|
+| Abierto estándar  | $1.50/mi  |
+| Con lona (tarp)   | $1.75/mi  |
+
+Si cambian, se editan en **dos lugares que deben coincidir**:
+- **Límites:** `CARGO_LIMITS` en `app.js` **y** las tarjetas de la placa
+  (`.cg-specs`) en `index.html` (y los textos "15 FT MAX / 6 FT / 8 FT" del SVG).
+- **Tarifas:** los `data-rate="..."` y `value="..."` de los radio
+  `trailer_option` en `index.html` **y** las tarjetas `.cg-rate`.
+
+Reglas que el sitio aplica:
+- No se puede enviar si la carga excede algún límite (le sugiere llamar a despacho).
+- Es obligatorio declarar qué es la carga y tildar la confirmación de
+  **sin materiales peligrosos** y **no es mudanza personal**.
+- La distancia es opcional: si `MAPBOX_TOKEN` está configurado, se calcula
+  sola al completar recogida y entrega; si no, el cliente la escribe o
+  despacho la calcula.
+
+> ℹ️ La sección de credibilidad dice "Hazmat authorized" (dato de la FMCSA).
+> Igual el sitio deja claro que **no** aceptamos materiales peligrosos.
+
+---
+
 ## 🚀 Deploy (elegí una — todas son gratis)
 
 ### Opción 1 — Netlify (la más fácil)
