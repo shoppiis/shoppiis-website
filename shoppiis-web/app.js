@@ -60,6 +60,8 @@ const DICT = {
   "GOVERNMENT LOADS": "CARGAS GUBERNAMENTALES",
   "RUNNING &amp; NON-RUNNING VEHICLES": "VEHÍCULOS QUE ARRANCAN Y QUE NO",
   "PER-MILE PRICING": "PRECIO POR MILLA",
+  "NEW: DIRECT CARGO FROM $1.50/MI": "NUEVO: CARGA DIRECTA DESDE $1.50/MI",
+  "BUILDING MATERIALS &middot; METAL &middot; CONCRETE": "MATERIALES DE CONSTRUCCIÓN &middot; METAL &middot; CONCRETO",
   "$100K CARGO &amp; LIABILITY COVERAGE": "$100K EN COBERTURA DE CARGA Y RESPONSABILIDAD",
 
   // --- 01 What We Move ---
@@ -383,6 +385,8 @@ function setLang(lang){
   });
   // re-dibuja el resultado de la cotización instantánea en el idioma activo
   if (window.__iqRender) window.__iqRender();
+  // y el planificador de carga directa
+  if (window.__cargoRender) window.__cargoRender();
 }
 document.querySelectorAll('[data-lang-toggle] button').forEach(b => {
   b.addEventListener('click', () => setLang(b.getAttribute('data-lang')));
@@ -726,4 +730,320 @@ const MIN_QUOTE = 0; // mínimo en dólares (0 = sin mínimo; poné p.ej. 150 si
       setTimeout(() => { const n = f.querySelector('input[name="name"]'); if (n) n.focus({ preventScroll:true }); }, 650);
     });
   }
+})();
+
+/* ============================================================
+   CARGA DIRECTA — planificador de carga en vivo + solicitud
+   ------------------------------------------------------------
+   El cliente carga largo / ancho / alto / peso y el plano del
+   tráiler (SVG en index.html) se redibuja al instante: la carga
+   se pinta en amarillo si entra y en rojo si se pasa de algún
+   límite. Abajo pide ruta y contacto y manda todo a despacho por
+   Web3Forms (misma access key que el formulario de vehículos).
+
+   Límites del tráiler — si cambian, actualizá también las
+   tarjetas de la sección #cargo en index.html:
+   ============================================================ */
+const CARGO_LIMITS = { length: 15, width: 8, height: 6, weight: 8000 }; // pies, pies, pies, libras
+
+(function initCargo(){
+  const form = document.getElementById('cargoForm');
+  if (!form) return;
+  const L = CARGO_LIMITS;
+  const DIMS = ['length', 'width', 'height', 'weight'];
+  const isEs = () => document.documentElement.lang === 'es';
+  const fmt = n => Number(n).toLocaleString('en-US', { maximumFractionDigits: 1 });
+  const inputs = {};
+  DIMS.forEach(d => { inputs[d] = form.querySelector(`[data-dim="${d}"]`); });
+  const svg = document.getElementById('cgSvg');
+  const chip = document.getElementById('cgChip');
+  const verdict = document.getElementById('cgVerdict');
+  const msg = document.getElementById('cgMsg');
+  const milesEl = form.querySelector('[name="distance_mi"]');
+  let unit = 'ft';
+
+  /* ---- lectura de valores (siempre en pies / libras) ---- */
+  function read(){
+    const v = {};
+    DIMS.forEach(d => {
+      const raw = parseFloat(inputs[d].value);
+      if (!(raw > 0)) { v[d] = null; return; }
+      v[d] = (d !== 'weight' && unit === 'in') ? raw / 12 : raw;
+    });
+    return v;
+  }
+  const rate = () => { const r = form.querySelector('[name="trailer_option"]:checked'); return parseFloat(r ? r.getAttribute('data-rate') : '1.50'); };
+  const optLabel = () => (form.querySelector('[name="trailer_option"]:checked') || {}).getAttribute('data-label') || 'Standard open';
+
+  /* ---- unidades FT / IN: convierte lo ya escrito ---- */
+  form.querySelectorAll('.cg-unit button').forEach(b => {
+    b.addEventListener('click', () => {
+      const next = b.getAttribute('data-unit');
+      if (next === unit) return;
+      ['length', 'width', 'height'].forEach(d => {
+        const raw = parseFloat(inputs[d].value);
+        if (raw > 0) inputs[d].value = +(next === 'in' ? raw * 12 : raw / 12).toFixed(2);
+        inputs[d].placeholder = '≤ ' + (next === 'in' ? L[d] * 12 : L[d]);
+      });
+      unit = next;
+      form.querySelectorAll('.cg-unit button').forEach(x => x.classList.toggle('active', x === b));
+      form.querySelectorAll('.cg-u').forEach(u => { u.textContent = `(${unit})`; });
+      render();
+    });
+  });
+
+  /* ---- dibujo animado del SVG ---- */
+  const S = 22;                                   // px por pie en el plano
+  const SIDE = { x: 110, w: 330, deckY: 200 };    // tráiler en vista lateral
+  const TOP  = { x: 110, w: 330, y: 330, h: 176 };// cubierta en vista superior
+  const sideBox = svg.querySelector('#cgSide .cg-box');
+  const topBox  = svg.querySelector('#cgTop .cg-box');
+  const tarp    = svg.querySelector('#cgSide .cg-tarp');
+  const straps  = svg.querySelector('#cgSide .cg-straps');
+  const wtText  = svg.querySelector('#cgSide .cg-wt');
+  let cur = { l: 0, w: 0, h: 0 }, raf = 0;
+
+  function geom(g){
+    const sw = g.l * S, sh = g.h * S, tw = g.w * S;
+    return {
+      side: { x: SIDE.x + (SIDE.w - sw) / 2, y: SIDE.deckY - sh, w: sw, h: sh },
+      top:  { x: TOP.x + (TOP.w - sw) / 2,  y: TOP.y + (TOP.h - tw) / 2, w: sw, h: tw }
+    };
+  }
+  function setRect(el, r){
+    el.setAttribute('x', r.x.toFixed(1)); el.setAttribute('y', r.y.toFixed(1));
+    el.setAttribute('width', Math.max(r.w, 0).toFixed(1)); el.setAttribute('height', Math.max(r.h, 0).toFixed(1));
+  }
+  function paint(g, v){
+    const { side, top } = geom(g);
+    setRect(sideBox, side); setRect(topBox, top);
+    const has = side.w > 1 && side.h > 1;
+    // lona: cubre la carga con una caída suave en los bordes
+    tarp.setAttribute('d', has
+      ? `M${side.x - 3} ${side.y + side.h}V${side.y + 6}Q${side.x - 2} ${side.y - 4} ${side.x + 8} ${side.y - 4}` +
+        `H${side.x + side.w - 8}Q${side.x + side.w + 2} ${side.y - 4} ${side.x + side.w + 3} ${side.y + 6}V${side.y + side.h}Z`
+      : '');
+    // correas: una cada ~5 pies, mínimo dos
+    let html = '';
+    if (has) {
+      const n = Math.max(2, Math.ceil(g.l / 5));
+      for (let i = 1; i <= n; i++) {
+        const x = (side.x + side.w * i / (n + 1)).toFixed(1);
+        html += `<line x1="${x}" y1="${(side.y - 2).toFixed(1)}" x2="${x}" y2="${SIDE.deckY + 6}"/>`;
+      }
+    }
+    straps.innerHTML = html;
+    // peso escrito sobre la carga (si hay lugar)
+    const showWt = v && v.weight && side.w > 74 && side.h > 26;
+    wtText.textContent = showWt ? `${fmt(Math.round(v.weight))} LB` : '';
+    wtText.setAttribute('x', (side.x + side.w / 2).toFixed(1));
+    wtText.setAttribute('y', (side.y + side.h / 2 + 4).toFixed(1));
+  }
+  function animateTo(target, v){
+    cancelAnimationFrame(raf);
+    const from = { ...cur }, t0 = performance.now(), dur = 280;
+    const step = now => {
+      const k = Math.min((now - t0) / dur, 1), e = 1 - Math.pow(1 - k, 3);
+      cur = { l: from.l + (target.l - from.l) * e, w: from.w + (target.w - from.w) * e, h: from.h + (target.h - from.h) * e };
+      paint(cur, v);
+      if (k < 1) raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+  }
+
+  /* ---- estado de cada medida + veredicto ---- */
+  function status(){
+    const v = read();
+    const over = DIMS.filter(d => v[d] != null && v[d] > L[d] + 1e-9);
+    const missing = DIMS.filter(d => v[d] == null);
+    return { v, over, missing, fits: !over.length && !missing.length };
+  }
+
+  const NAMES = {
+    en: { length: 'Length', width: 'Width', height: 'Height', weight: 'Weight' },
+    es: { length: 'El largo', width: 'El ancho', height: 'El alto', weight: 'El peso' }
+  };
+  const unitTxt = d => d === 'weight' ? 'lb' : 'ft';
+
+  function render(){
+    const es = isEs();
+    const { v, over, missing, fits } = status();
+
+    // medidores
+    DIMS.forEach(d => {
+      const m = form.querySelector(`.cg-meter[data-meter="${d}"]`);
+      const val = v[d];
+      const pct = val == null ? 0 : Math.min(val / L[d], 1) * 100;
+      m.querySelector('i').style.width = pct + '%';
+      m.querySelector('b').textContent = (val == null ? '—' : fmt(d === 'weight' ? Math.round(val) : val)) +
+        ` / ${fmt(L[d])} ${unitTxt(d)}`;
+      const isOver = over.includes(d);
+      m.classList.toggle('over', isOver);
+      inputs[d].classList.toggle('over', isOver);
+    });
+
+    // plano: tope visual de 125–135% del límite para que no se salga del dibujo
+    const clamp = (d, k) => v[d] == null ? 0 : Math.min(v[d], L[d] * k);
+    const hasBox = v.length != null || v.width != null || v.height != null;
+    const target = hasBox
+      ? { l: clamp('length', 1.25) || L.length * .55, w: clamp('width', 1.22) || L.width * .55, h: clamp('height', 1.32) || L.height * .4 }
+      : { l: 0, w: 0, h: 0 };
+    animateTo(target, v);
+    sideBox.classList.toggle('over', over.includes('length') || over.includes('height') || over.includes('weight'));
+    topBox.classList.toggle('over', over.includes('length') || over.includes('width') || over.includes('weight'));
+    svg.classList.toggle('tarp', rate() > 1.5);
+    svg.classList.toggle('side-over', over.includes('length') || over.includes('height') || over.includes('weight'));
+
+    // chip + veredicto
+    chip.className = 'cg-chip mono';
+    verdict.className = 'cg-verdict';
+    if (over.length) {
+      chip.classList.add('bad'); chip.textContent = es ? 'Excede' : 'Over limit';
+      verdict.classList.add('bad');
+      const lines = over.map(d => {
+        const diff = fmt(d === 'weight' ? Math.round(v[d] - L[d]) : v[d] - L[d]);
+        return es
+          ? `${NAMES.es[d]} supera el máximo de ${fmt(L[d])} ${unitTxt(d)} por ${diff} ${unitTxt(d)}.`
+          : `${NAMES.en[d]} is ${diff} ${unitTxt(d)} over the ${fmt(L[d])} ${unitTxt(d)} max.`;
+      }).join(' ');
+      verdict.innerHTML = `<b>${es ? 'Excede los límites de nuestro tráiler' : 'Over our trailer limits'}</b>${lines} ` +
+        (es ? '¿Se puede dividir la carga? <a href="tel:+12395261266">Llame a despacho</a>.'
+            : 'Can the load be split? <a href="tel:+12395261266">Call dispatch</a>.');
+    } else if (fits) {
+      chip.classList.add('ok'); chip.textContent = es ? 'Entra' : 'Fits';
+      verdict.classList.add('ok');
+      verdict.innerHTML = es
+        ? '<b>Entra en nuestro tráiler &#10003;</b>Dentro de los cuatro límites de carga. Complete la ruta y envíe la solicitud.'
+        : '<b>Fits on our trailer &#10003;</b>Within all four carry limits. Add your route below and send the request.';
+    } else {
+      chip.textContent = es ? 'Esperando medidas' : 'Awaiting size';
+      verdict.innerHTML = missing.length === 4
+        ? (es ? '<b>Ingrese las medidas de su carga.</b>Largo, ancho, alto y peso &mdash; el plano se dibuja solo.'
+              : '<b>Enter your cargo&rsquo;s measurements.</b>Length, width, height and weight &mdash; the plan draws itself.')
+        : (es ? `<b>Vamos bien.</b>Falta: ${missing.map(d => NAMES.es[d].replace('El ', '').toLowerCase()).join(', ')}.`
+              : `<b>Looking good so far.</b>Still needed: ${missing.map(d => NAMES.en[d].toLowerCase()).join(', ')}.`);
+    }
+
+    // estimado
+    const r = rate();
+    const miles = parseFloat(milesEl.value);
+    const price = document.getElementById('cgPrice');
+    const line = document.getElementById('cgEstLine');
+    const optName = es ? (r > 1.5 ? 'Con lona' : 'Abierto estándar') : optLabel();
+    if (miles > 0) {
+      price.innerHTML = '$' + Math.round(miles * r).toLocaleString('en-US');
+      line.textContent = es
+        ? `${fmt(Math.round(miles))} millas × $${r.toFixed(2)}/milla · ${optName}`
+        : `${fmt(Math.round(miles))} mi × $${r.toFixed(2)}/mi · ${optName}`;
+    } else {
+      price.innerHTML = `$${r.toFixed(2)}<small>/ ${es ? 'milla' : 'mi'}</small>`;
+      line.textContent = es
+        ? `${optName} · agregue la distancia para ver el total estimado. Despacho confirma el precio final.`
+        : `${optName} · add the distance to see an estimated total. Dispatch confirms the final price.`;
+    }
+    if (!msg.hidden && (fits || !over.length)) msg.hidden = true;
+  }
+  window.__cargoRender = render;
+
+  DIMS.forEach(d => inputs[d].addEventListener('input', render));
+  form.querySelectorAll('[name="trailer_option"]').forEach(r => r.addEventListener('change', render));
+  milesEl.addEventListener('input', () => { milesEl.removeAttribute('data-auto'); routeNote(null); render(); });
+
+  /* ---- distancia automática (solo si hay token de Mapbox) ----
+     Con MAPBOX_TOKEN configurado, al completar recogida y entrega
+     buscamos ambas ciudades y calculamos la distancia de manejo.
+     Sin token, el cliente la puede escribir (o dejarla vacía y
+     despacho la calcula). Nunca pisa un número escrito a mano. */
+  const routeEl = document.getElementById('cgRoute');
+  function routeNote(t){ routeEl.textContent = t || ''; routeEl.hidden = !t; }
+  const token = ((window.MAPBOX_TOKEN) || '').trim();
+  if (/^pk\./.test(token)) {
+    const oEl = form.querySelector('[name="origin"]'), dEl = form.querySelector('[name="destination"]');
+    let seq = 0;
+    const geocode = async q => {
+      const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(q)}.json` +
+                  `?country=us&limit=1&types=place,locality,postcode,address,region&access_token=${token}`;
+      const d = await (await fetch(url)).json();
+      const f = d.features && d.features[0];
+      return f ? { name: f.place_name, c: f.center } : null;
+    };
+    const autoMiles = async () => {
+      const o = oEl.value.trim(), dd = dEl.value.trim();
+      if (!o || !dd) return;
+      if (milesEl.value && !milesEl.hasAttribute('data-auto')) return; // respeta lo escrito a mano
+      const my = ++seq;
+      routeNote(isEs() ? 'Calculando distancia…' : 'Calculating distance…');
+      try {
+        const [a, b] = await Promise.all([geocode(o), geocode(dd)]);
+        if (!a || !b) throw new Error('geocode');
+        const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${a.c[0]},${a.c[1]};${b.c[0]},${b.c[1]}` +
+                    `?alternatives=false&overview=false&access_token=${token}`;
+        const r = await (await fetch(url)).json();
+        if (my !== seq) return;
+        if (!r.routes || !r.routes.length) throw new Error('route');
+        const mi = Math.round(r.routes[0].distance / 1609.344);
+        milesEl.value = mi; milesEl.setAttribute('data-auto', '1');
+        const short = s => s.split(',').slice(0, 2).join(',');
+        routeNote(`${short(a.name)} → ${short(b.name)} · ${mi.toLocaleString('en-US')} mi ${isEs() ? '(manejo, automático)' : '(driving, auto)'}`);
+        render();
+      } catch (e) {
+        if (my === seq) routeNote(isEs() ? 'No pudimos calcularla — escriba las millas o déjelo vacío.' : 'Couldn’t calculate it — type the miles or leave it blank.');
+      }
+    };
+    oEl.addEventListener('change', autoMiles);
+    dEl.addEventListener('change', autoMiles);
+  }
+
+  /* ---- envío ---- */
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    const es = isEs();
+    const { v, over, missing } = status();
+    const showErr = t => { msg.innerHTML = t; msg.hidden = false; };
+    if (missing.length) {
+      showErr(es ? 'Agregue largo, ancho, alto y peso de la carga.' : 'Please add the cargo’s length, width, height and weight.');
+      inputs[missing[0]].focus();
+      return;
+    }
+    if (over.length) {
+      showErr(es ? 'Esta carga excede los límites del tráiler. Llame a despacho al (239) 526-1266 para ver opciones.'
+                 : 'This load is over our trailer limits. Call dispatch at (239) 526-1266 to talk options.');
+      form.querySelector('.cg-viz').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    msg.hidden = true;
+
+    // datos normalizados para el email de despacho
+    const ftIn = ft => `${fmt(ft)} ft (${fmt(ft * 12)} in)`;
+    const set = (n, val) => { const el = form.querySelector(`[name="${n}"]`); if (el) el.value = val; };
+    set('dimensions', `L ${ftIn(v.length)} × W ${ftIn(v.width)} × H ${ftIn(v.height)} · ${fmt(Math.round(v.weight))} lb`);
+    set('fit_check', `FITS — within 15 ft L / 8 ft W / 6 ft H / 8,000 lb`);
+    const r = rate(), miles = parseFloat(milesEl.value);
+    set('estimate', miles > 0
+      ? `$${Math.round(miles * r).toLocaleString('en-US')} — ${Math.round(miles)} mi @ $${r.toFixed(2)}/mi (${optLabel()})`
+      : `$${r.toFixed(2)}/mi (${optLabel()}) — distance to be calculated by dispatch`);
+    const o = form.querySelector('[name="origin"]').value.trim(), d = form.querySelector('[name="destination"]').value.trim();
+    set('subject', `New Shoppiis CARGO Request — ${o} → ${d}`);
+
+    const btn = document.getElementById('cgSubmit');
+    const original = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = es ? 'Enviando…' : 'Sending…';
+    try {
+      const res = await fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form) });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || data.success === false) throw new Error('send failed');
+      form.style.display = 'none';
+      const ok = document.getElementById('cargoSuccess');
+      ok.classList.add('show');
+      ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } catch (err) {
+      btn.disabled = false;
+      btn.innerHTML = original;
+      showErr(es ? 'No pudimos enviar su solicitud. Llámenos al (239) 526-1266 o intente de nuevo.'
+                 : 'We couldn’t send your request. Please call (239) 526-1266 or try again.');
+    }
+  });
+
+  render();
 })();
