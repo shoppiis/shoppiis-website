@@ -79,8 +79,8 @@
     {"@type":"Question","name":"How soon can you pick up my vehicle?","acceptedAnswer":{"@type":"Answer","text":"It depends on the lane and current routing, but we usually provide an available pickup window the same business day you request a quote. Our Southeast corridors move fastest. Tell us your preferred date in the quote form and we'll confirm what's realistic."}},
     {"@type":"Question","name":"Do you transport non-running or inoperable vehicles?","acceptedAnswer":{"@type":"Answer","text":"Yes. We handle both running and non-running vehicles — just select the condition in your quote request so we bring the right equipment and securement. Non-running vehicles may require a winch and additional handling, which we'll account for in the quote."}},
     {"@type":"Question","name":"What areas do you serve?","acceptedAnswer":{"@type":"Answer","text":"We operate across the Southeastern United States — Florida, Georgia, Mississippi, Alabama, South Carolina, North Carolina, and Tennessee. Jacksonville is a major national auto-transport hub and anchors our network. Have a lane outside this area? Ask — we hold interstate authority and can quote it."}},
-    {"@type":"Question","name":"Do you haul cargo besides vehicles?","acceptedAnswer":{"@type":"Answer","text":"Yes. The same trailer runs direct cargo up to 8,000 lb and 15 ft long, 8 ft wide and 6 ft high — building materials, metal rods and steel, concrete products, equipment and more. It is $1.50 per mile on a standard open trailer or $1.75 per mile tarped, and the same $100K cargo insurance covers your load. We don't accept hazardous materials or personal household moves, and every load must be disclosed."}},
-    {"@type":"Question","name":"How does pricing and payment work?","acceptedAnswer":{"@type":"Answer","text":"Transport is priced per mile based on distance, vehicle count, and condition — no surprise fees. You'll get a clear quote before you book. Customers don't pay until the Shoppiis truck arrives for pickup, the vehicle has been inspected, and the transport details have been confirmed — dispatch then sends the final invoice for payment. Brokers can ask about carrier-packet and payment arrangements directly with dispatch."}}
+    {"@type":"Question","name":"How does pricing and payment work?","acceptedAnswer":{"@type":"Answer","text":"Transport is priced per mile based on distance, vehicle count, and condition — no surprise fees. You'll get a clear quote before you book. Customers don't pay until the Shoppiis truck arrives for pickup, the vehicle has been inspected, and the transport details have been confirmed — dispatch then sends the final invoice for payment. Brokers can ask about carrier-packet and payment arrangements directly with dispatch."}},
+    {"@type":"Question","name":"Do you haul cargo besides vehicles?","acceptedAnswer":{"@type":"Answer","text":"Yes. The same trailer runs direct cargo up to 8,000 lb and 15 ft long, 8 ft wide and 6 ft high — building materials, metal rods and steel, concrete products, equipment and more. It is $1.50 per mile on a standard open trailer or $1.75 per mile tarped, and the same $100K cargo insurance covers your load. We don't accept hazardous materials or personal household moves, and every load must be disclosed."}}
   ]
 }
 </script>
@@ -98,9 +98,9 @@
     <div class="nav-right">
       <nav class="nav-links" id="navlinks">
         <a href="#services" data-en="Services" data-es="Servicios">Services</a>
-        <a href="#cargo" class="nav-new" data-en="Cargo" data-es="Carga">Cargo</a>
         <a href="#why" data-en="Why Shoppiis" data-es="Por qué Shoppiis">Why Shoppiis</a>
         <a href="#operations" data-en="Operations" data-es="Operaciones">Operations</a>
+        <a href="#cargo" class="nav-new" data-en="Cargo" data-es="Carga">Cargo</a>
         <a href="#gallery" data-en="Fleet" data-es="Flota">Fleet</a>
         <a href="#team" data-en="Team" data-es="Equipo">Team</a>
         <a href="#faq" data-en="FAQ" data-es="Preguntas">FAQ</a>
@@ -138,7 +138,6 @@
         <a href="tel:+12395261266" class="btn ghost" data-en="Call Dispatch" data-es="Llamar a despacho">Call Dispatch</a>
       </div>
       <div class="cta-sub mono" data-en="Fast per-mile quotes &middot; <b>$100K insured</b> &middot; Southeast lanes" data-es="Cotizaciones rápidas por milla &middot; <b>$100K asegurado</b> &middot; Rutas por el sureste">Fast per-mile quotes &middot; <b>$100K insured</b> &middot; Southeast lanes</div>
-      <a href="#cargo" class="hero-new"><span class="hn-tag mono" data-en="New" data-es="Nuevo">New</span><span class="hn-txt" data-en="Now hauling direct cargo &mdash; building materials, metal &amp; more from <b>$1.50/mi</b>" data-es="Ahora llevamos carga directa &mdash; materiales, metal y más desde <b>$1.50/mi</b>">Now hauling direct cargo &mdash; building materials, metal &amp; more from <b>$1.50/mi</b></span><span class="hn-arr">&rarr;</span></a>
     </div>
     <div class="hero-media reveal">
       <div class="frame">
@@ -171,9 +170,9 @@
     <span><b>+</b> PRIVATE &amp; FLEET RELOCATIONS</span>
     <span><b>+</b> RUNNING &amp; NON-RUNNING VEHICLES</span>
     <span><b>+</b> PER-MILE PRICING</span>
+    <span><b>+</b> $100K CARGO &amp; LIABILITY COVERAGE</span>
     <span><b>+</b> NEW: DIRECT CARGO FROM $1.50/MI</span>
     <span><b>+</b> BUILDING MATERIALS &middot; METAL &middot; CONCRETE</span>
-    <span><b>+</b> $100K CARGO &amp; LIABILITY COVERAGE</span>
   </div>
 </div>
 
@@ -206,231 +205,6 @@
       <div class="svc reveal"><div class="ico mono">// 02</div><h3>Auction &amp; Manufacturer Deliveries</h3><p>Reliable, repeatable hauling of auction purchases and manufacturer deliveries on established regional lanes.</p></div>
       <div class="svc reveal"><div class="ico mono">// 03</div><h3>Private &amp; Fleet Relocations</h3><p>Single-vehicle moves for private customers and multi-vehicle fleet relocations, priced honestly per mile.</p></div>
       <div class="svc reveal"><div class="ico mono">// 04</div><h3>Government Loads</h3><p>Authorized interstate capacity for government and institutional vehicle-transport requirements.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ DIRECT CARGO (NUEVO) ============
-     Carga directa con el mismo tráiler. Los límites que se ven acá
-     (8,000 lb · 15 ft · 8 ft · 6 ft) tienen que coincidir con
-     CARGO_LIMITS en app.js, y las tarifas con los data-rate="..." de los
-     radio "trailer_option". El formulario manda a dispatch por Web3Forms
-     (misma access key que el de vehículos). ===== -->
-<section class="sec cargo" id="cargo">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="kicker is-new" data-en="New / Direct Cargo" data-es="Nuevo / Carga directa">New / Direct Cargo</div>
-      <h2 data-en="Same trailer. Same crew. Now hauling <span class=&quot;hl&quot;>your cargo</span>." data-es="El mismo tráiler. El mismo equipo. Ahora llevamos <span class=&quot;hl&quot;>su carga</span>.">Same trailer. Same crew. Now hauling <span class="hl">your cargo</span>.</h2>
-      <p data-en="The trailer that moves your vehicles now runs direct cargo too. Building materials, metal, concrete, equipment and more &mdash; hauled under our own FMCSA authority, priced per mile, and covered by the same $100K cargo insurance." data-es="El tráiler que mueve sus vehículos ahora también lleva carga directa. Materiales de construcción, metal, concreto, equipos y más &mdash; bajo nuestra propia autoridad FMCSA, con precio por milla y cubierto por el mismo seguro de carga de $100K.">The trailer that moves your vehicles now runs direct cargo too. Building materials, metal, concrete, equipment and more &mdash; hauled under our own FMCSA authority, priced per mile, and covered by the same $100K cargo insurance.</p>
-    </div>
-
-    <!-- placa de capacidad del tráiler -->
-    <div class="cg-specs reveal">
-      <div class="cg-spec"><div class="cg-sv">8,000<small>lb</small></div><div class="cg-sl mono" data-en="Max weight" data-es="Peso máximo">Max weight</div></div>
-      <div class="cg-spec"><div class="cg-sv">15<small>ft</small></div><div class="cg-sl mono" data-en="Max length" data-es="Largo máximo">Max length</div></div>
-      <div class="cg-spec"><div class="cg-sv">8<small>ft</small></div><div class="cg-sl mono" data-en="Max width" data-es="Ancho máximo">Max width</div></div>
-      <div class="cg-spec"><div class="cg-sv">6<small>ft</small></div><div class="cg-sl mono" data-en="Max height" data-es="Alto máximo">Max height</div></div>
-    </div>
-
-    <!-- tarifas + qué llevamos / qué no -->
-    <div class="cg-info">
-      <div class="cg-rate reveal">
-        <div class="ico mono">// 01 &middot; <span data-en="Standard open" data-es="Abierto estándar">Standard open</span></div>
-        <div class="cg-price">$1.50<small data-en="/ mile" data-es="/ milla">/ mile</small></div>
-        <p data-en="Open trailer, load secured with straps and chains. Ideal for steel, concrete products, lumber and equipment." data-es="Tráiler abierto, carga asegurada con correas y cadenas. Ideal para acero, productos de concreto, madera y equipos.">Open trailer, load secured with straps and chains. Ideal for steel, concrete products, lumber and equipment.</p>
-      </div>
-      <div class="cg-rate reveal">
-        <div class="ico mono">// 02 &middot; <span data-en="Tarp cover" data-es="Con lona">Tarp cover</span></div>
-        <div class="cg-price">$1.75<small data-en="/ mile" data-es="/ milla">/ mile</small></div>
-        <p data-en="Tarped and strapped to protect your load from rain, sun and road debris. Ideal for drywall, insulation and anything that shouldn&rsquo;t get wet." data-es="Con lona y amarrada para proteger su carga de la lluvia, el sol y lo que salte del camino. Ideal para drywall, aislante y todo lo que no se deba mojar.">Tarped and strapped to protect your load from rain, sun and road debris. Ideal for drywall, insulation and anything that shouldn&rsquo;t get wet.</p>
-      </div>
-      <div class="cg-haul reveal">
-        <div class="cg-haul-h mono" data-en="We haul" data-es="Llevamos">We haul</div>
-        <ul class="cg-chips">
-          <li data-en="Building materials" data-es="Materiales de construcción">Building materials</li>
-          <li data-en="Lumber &amp; drywall" data-es="Madera y drywall">Lumber &amp; drywall</li>
-          <li data-en="Metal rods &amp; steel" data-es="Varillas y acero">Metal rods &amp; steel</li>
-          <li data-en="Concrete products" data-es="Productos de concreto">Concrete products</li>
-          <li data-en="Machinery &amp; equipment" data-es="Maquinaria y equipos">Machinery &amp; equipment</li>
-          <li data-en="Palletized goods" data-es="Mercadería en pallets">Palletized goods</li>
-        </ul>
-        <div class="cg-haul-h no mono" data-en="We don&rsquo;t haul" data-es="No llevamos">We don&rsquo;t haul</div>
-        <ul class="cg-chips no">
-          <li data-en="Hazardous materials" data-es="Materiales peligrosos">Hazardous materials</li>
-          <li data-en="Personal / household moves" data-es="Mudanzas personales">Personal / household moves</li>
-        </ul>
-        <p class="cg-haul-note mono" data-en="Every load must be disclosed &mdash; tell us exactly what it is." data-es="Toda carga se debe declarar &mdash; díganos exactamente qué es.">Every load must be disclosed &mdash; tell us exactly what it is.</p>
-      </div>
-    </div>
-
-    <!-- ===== PLANIFICADOR DE CARGA + SOLICITUD ===== -->
-    <form class="cg-form" id="cargoForm">
-      <!-- Web3Forms: misma access key que el formulario de vehículos (llega a dispatch@shoppiis.com) -->
-      <input type="hidden" name="access_key" value="66ce08a9-dd33-44a8-959d-d5335bdc9608">
-      <!-- el asunto se completa en app.js: "New Shoppiis CARGO Request — [origen] → [destino]" -->
-      <input type="hidden" name="subject" value="New Shoppiis CARGO Request">
-      <input type="hidden" name="service" value="DIRECT CARGO">
-      <input type="hidden" name="status" value="CARGO REQUEST — NOT YET CONFIRMED">
-      <input type="hidden" name="from_name" value="Shoppiis Website">
-      <input type="hidden" name="dimensions" value="">
-      <input type="hidden" name="fit_check" value="">
-      <input type="hidden" name="estimate" value="">
-      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
-
-      <div class="cg-planner-head reveal">
-        <h3 data-en="Will it fit? Check your load live." data-es="¿Entra? Revise su carga en vivo.">Will it fit? Check your load live.</h3>
-        <p data-en="Enter your cargo&rsquo;s size and weight &mdash; the trailer plan updates as you type. Then send the request right from here." data-es="Ingrese el tamaño y el peso de su carga &mdash; el plano del tráiler se actualiza mientras escribe. Después envíe la solicitud desde acá mismo.">Enter your cargo&rsquo;s size and weight &mdash; the trailer plan updates as you type. Then send the request right from here.</p>
-      </div>
-
-      <div class="cg-planner">
-        <!-- columna izquierda: datos de la carga -->
-        <div class="cg-panel reveal">
-          <div class="cg-step mono">// 01 &middot; <span data-en="Your cargo" data-es="Su carga">Your cargo</span></div>
-          <div class="qrow">
-            <div class="field"><label data-en="Cargo type" data-es="Tipo de carga">Cargo type</label>
-              <select name="cargo_type">
-                <option data-opt-en="Building materials" data-opt-es="Materiales de construcción">Building materials</option>
-                <option data-opt-en="Lumber / drywall" data-opt-es="Madera / drywall">Lumber / drywall</option>
-                <option data-opt-en="Metal rods / steel" data-opt-es="Varillas / acero">Metal rods / steel</option>
-                <option data-opt-en="Concrete products" data-opt-es="Productos de concreto">Concrete products</option>
-                <option data-opt-en="Machinery / equipment" data-opt-es="Maquinaria / equipos">Machinery / equipment</option>
-                <option data-opt-en="Palletized goods" data-opt-es="Mercadería en pallets">Palletized goods</option>
-                <option data-opt-en="Other (describe below)" data-opt-es="Otro (descríbalo abajo)">Other (describe below)</option>
-              </select>
-            </div>
-            <div class="field"><label data-en="What exactly is it?" data-es="¿Qué es exactamente?">What exactly is it?</label><input type="text" name="cargo_description" placeholder="e.g. 2 pallets of concrete blocks" data-ph-en="e.g. 2 pallets of concrete blocks" data-ph-es="ej. 2 pallets de bloques de concreto" required></div>
-          </div>
-
-          <div class="cg-dims-head">
-            <span class="mono" data-en="Size &amp; weight" data-es="Tamaño y peso">Size &amp; weight</span>
-            <div class="cg-unit" role="group" aria-label="Units">
-              <button type="button" data-unit="ft" class="active">FT</button><div class="lang-sep"></div><button type="button" data-unit="in">IN</button>
-            </div>
-          </div>
-          <div class="cg-dims">
-            <div class="field"><label><span data-en="Length" data-es="Largo">Length</span> <span class="cg-u">(ft)</span></label><input type="number" inputmode="decimal" min="0" step="any" data-dim="length" placeholder="&le; 15"></div>
-            <div class="field"><label><span data-en="Width" data-es="Ancho">Width</span> <span class="cg-u">(ft)</span></label><input type="number" inputmode="decimal" min="0" step="any" data-dim="width" placeholder="&le; 8"></div>
-            <div class="field"><label><span data-en="Height" data-es="Alto">Height</span> <span class="cg-u">(ft)</span></label><input type="number" inputmode="decimal" min="0" step="any" data-dim="height" placeholder="&le; 6"></div>
-            <div class="field"><label><span data-en="Weight" data-es="Peso">Weight</span> (lb)</label><input type="number" inputmode="numeric" min="0" step="any" data-dim="weight" name="weight_lb" placeholder="&le; 8,000"></div>
-          </div>
-
-          <div class="cg-opt-h mono" data-en="Trailer option" data-es="Opción de tráiler">Trailer option</div>
-          <div class="cg-opts">
-            <label class="cg-opt">
-              <input type="radio" name="trailer_option" value="Standard open — $1.50/mi" data-rate="1.50" data-label="Standard open" checked>
-              <span class="cg-opt-box"><b data-en="Standard open" data-es="Abierto estándar">Standard open</b><span class="mono">$1.50 / mi</span></span>
-            </label>
-            <label class="cg-opt">
-              <input type="radio" name="trailer_option" value="Tarp cover — $1.75/mi" data-rate="1.75" data-label="Tarp cover">
-              <span class="cg-opt-box"><b data-en="Tarp cover" data-es="Con lona">Tarp cover</b><span class="mono">$1.75 / mi</span></span>
-            </label>
-          </div>
-          <ul class="cg-tips">
-            <li data-en="<span>Measure at the <b>longest, widest and tallest point</b> &mdash; including pallets and anything that sticks out.</span>" data-es="<span>Mida en el <b>punto más largo, más ancho y más alto</b> &mdash; incluyendo pallets y todo lo que sobresalga.</span>"><span>Measure at the <b>longest, widest and tallest point</b> &mdash; including pallets and anything that sticks out.</span></li>
-            <li data-en="<span>Not sure of the exact weight? Give your <b>best estimate</b> &mdash; dispatch will confirm before pickup.</span>" data-es="<span>¿No sabe el peso exacto? Dé su <b>mejor estimado</b> &mdash; despacho lo confirma antes de la recogida.</span>"><span>Not sure of the exact weight? Give your <b>best estimate</b> &mdash; dispatch will confirm before pickup.</span></li>
-            <li data-en="<span>Every load rides under the same <b>$100K cargo insurance</b> as our vehicle moves.</span>" data-es="<span>Toda carga viaja con el mismo <b>seguro de carga de $100K</b> que nuestros vehículos.</span>"><span>Every load rides under the same <b>$100K cargo insurance</b> as our vehicle moves.</span></li>
-          </ul>
-        </div>
-
-        <!-- columna derecha: plano del tráiler en vivo -->
-        <div class="cg-viz reveal" aria-live="polite">
-          <div class="cg-viz-top">
-            <span class="mono cg-viz-t" data-en="Live load plan" data-es="Plano de carga en vivo">Live load plan</span>
-            <span class="cg-chip mono" id="cgChip"></span>
-          </div>
-          <svg class="cg-svg" id="cgSvg" viewBox="0 0 520 556" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Trailer load diagram">
-            <defs>
-              <pattern id="cgGrid" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M22 0H0V22" fill="none" stroke="#1f1f1f" stroke-width="1"/></pattern>
-              <pattern id="cgTarp" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#232323"/><rect width="3" height="8" fill="rgba(242,226,10,.35)"/></pattern>
-            </defs>
-            <rect x="0" y="0" width="520" height="556" fill="url(#cgGrid)"/>
-
-            <!-- VISTA LATERAL: largo × alto -->
-            <text class="cg-vl" x="20" y="22">SIDE &middot; L &times; H</text>
-            <g class="cg-dimline"><path d="M110 46H440M110 40V52M440 40V52"/></g>
-            <text class="cg-dt" x="275" y="40" text-anchor="middle">15 FT MAX</text>
-            <g class="cg-dimline"><path d="M470 68V200M464 68H476M464 200H476"/></g>
-            <text class="cg-dt" x="480" y="138">6 FT</text>
-            <rect class="cg-env" x="110" y="68" width="330" height="132"/>
-            <!-- tráiler cuello de ganso -->
-            <path class="cg-trailer" d="M110 210V158H34V172H96V210Z"/>
-            <rect class="cg-trailer" x="110" y="200" width="330" height="10"/>
-            <circle class="cg-wheel" cx="372" cy="222" r="12"/><circle class="cg-wheel" cx="408" cy="222" r="12"/>
-            <path class="cg-ground" d="M14 235H506"/>
-            <g id="cgSide">
-              <rect class="cg-box" x="275" y="200" width="0" height="0"/>
-              <path class="cg-tarp" d=""/>
-              <g class="cg-straps"></g>
-              <text class="cg-wt" x="275" y="190" text-anchor="middle"></text>
-            </g>
-
-            <!-- VISTA SUPERIOR: largo × ancho -->
-            <text class="cg-vl" x="20" y="290">TOP &middot; L &times; W</text>
-            <rect class="cg-trailer" x="34" y="388" width="76" height="60"/>
-            <rect class="cg-deck" x="110" y="330" width="330" height="176"/>
-            <rect class="cg-env" x="110" y="330" width="330" height="176"/>
-            <g class="cg-dimline"><path d="M110 532H440M110 526V538M440 526V538"/></g>
-            <text class="cg-dt" x="275" y="550" text-anchor="middle">15 FT MAX</text>
-            <g class="cg-dimline"><path d="M470 330V506M464 330H476M464 506H476"/></g>
-            <text class="cg-dt" x="480" y="422">8 FT</text>
-            <g id="cgTop">
-              <rect class="cg-box" x="275" y="418" width="0" height="0"/>
-            </g>
-          </svg>
-
-          <div class="cg-meters">
-            <div class="cg-meter" data-meter="length"><div class="cg-m-row"><span data-en="Length" data-es="Largo">Length</span><b class="mono"></b></div><div class="cg-bar"><i></i></div></div>
-            <div class="cg-meter" data-meter="width"><div class="cg-m-row"><span data-en="Width" data-es="Ancho">Width</span><b class="mono"></b></div><div class="cg-bar"><i></i></div></div>
-            <div class="cg-meter" data-meter="height"><div class="cg-m-row"><span data-en="Height" data-es="Alto">Height</span><b class="mono"></b></div><div class="cg-bar"><i></i></div></div>
-            <div class="cg-meter" data-meter="weight"><div class="cg-m-row"><span data-en="Weight" data-es="Peso">Weight</span><b class="mono"></b></div><div class="cg-bar"><i></i></div></div>
-          </div>
-          <div class="cg-verdict" id="cgVerdict"></div>
-        </div>
-      </div>
-
-      <!-- abajo: ruta + contacto + estimado -->
-      <div class="cg-bottom reveal">
-        <div class="cg-panel">
-          <div class="cg-step mono">// 02 &middot; <span data-en="Route &amp; contact" data-es="Ruta y contacto">Route &amp; contact</span></div>
-          <div class="qrow">
-            <div class="field"><label data-en="Pickup location" data-es="Lugar de recogida">Pickup location</label><input type="text" name="origin" placeholder="City, ST or ZIP" data-ph-en="City, ST or ZIP" data-ph-es="Ciudad, Est. o ZIP" required></div>
-            <div class="field"><label data-en="Delivery location" data-es="Lugar de entrega">Delivery location</label><input type="text" name="destination" placeholder="City, ST or ZIP" data-ph-en="City, ST or ZIP" data-ph-es="Ciudad, Est. o ZIP" required></div>
-          </div>
-          <div class="qrow">
-            <div class="field"><label data-en="Approx. distance (miles)" data-es="Distancia aprox. (millas)">Approx. distance (miles)</label><input type="number" inputmode="numeric" min="0" step="1" name="distance_mi" placeholder="Optional" data-ph-en="Optional" data-ph-es="Opcional"><small class="cg-route mono" id="cgRoute" hidden></small></div>
-            <div class="field"><label data-en="Preferred pickup date" data-es="Fecha de recogida preferida">Preferred pickup date</label><input type="date" name="date"></div>
-          </div>
-          <div class="qrow">
-            <div class="field"><label data-en="Your name" data-es="Su nombre">Your name</label><input type="text" name="name" placeholder="Full name or company" data-ph-en="Full name or company" data-ph-es="Nombre completo o empresa" required></div>
-            <div class="field"><label data-en="Phone" data-es="Teléfono">Phone</label><input type="tel" name="phone" placeholder="(___) ___-____" required></div>
-          </div>
-          <div class="qrow">
-            <div class="field"><label data-en="Email" data-es="Correo">Email</label><input type="email" name="email" placeholder="you@email.com" data-ph-en="you@email.com" data-ph-es="correo@ejemplo.com" required></div>
-            <div class="field"><label data-en="Notes (optional)" data-es="Notas (opcional)">Notes (optional)</label><input type="text" name="notes" placeholder="Loading dock, forklift on site, timing…" data-ph-en="Loading dock, forklift on site, timing…" data-ph-es="Muelle de carga, montacargas en sitio, horarios…"></div>
-          </div>
-        </div>
-
-        <div class="cg-summary">
-          <div class="cg-est">
-            <span class="mono" data-en="Estimated total" data-es="Total estimado">Estimated total</span>
-            <div class="cg-est-price" id="cgPrice">$1.50<small>/ mi</small></div>
-            <div class="cg-est-line mono" id="cgEstLine"></div>
-          </div>
-          <label class="cg-cert">
-            <input type="checkbox" name="certification" value="Customer confirms: no hazardous materials, not a personal/household move, cargo accurately disclosed." required>
-            <span data-en="I confirm this load contains <b>no hazardous materials</b>, is <b>not a personal / household move</b>, and is described accurately." data-es="Confirmo que esta carga <b>no contiene materiales peligrosos</b>, <b>no es una mudanza personal</b> y está descrita correctamente.">I confirm this load contains <b>no hazardous materials</b>, is <b>not a personal / household move</b>, and is described accurately.</span>
-          </label>
-          <button type="submit" class="btn" id="cgSubmit" data-en="Request Cargo Pickup &rarr;" data-es="Solicitar retiro de carga &rarr;">Request Cargo Pickup &rarr;</button>
-          <div class="cg-msg mono" id="cgMsg" hidden></div>
-          <div class="iq-disclaimer" data-en="This is a request, not a confirmed booking. Dispatch will review your load and confirm the final rate and pickup window &mdash; usually same business day." data-es="Esta es una solicitud, no una reserva confirmada. Despacho revisará su carga y confirmará la tarifa final y la ventana de recogida &mdash; normalmente el mismo día hábil.">This is a request, not a confirmed booking. Dispatch will review your load and confirm the final rate and pickup window &mdash; usually same business day.</div>
-        </div>
-      </div>
-    </form>
-
-    <div class="form-success cg-success" id="cargoSuccess">
-      <h3 data-en="Cargo request received." data-es="Solicitud de carga recibida.">Cargo request received.</h3>
-      <p data-en="Your load is not confirmed yet. Dispatch will review the details and contact you shortly to confirm the final rate and pickup window." data-es="Su carga todavía no está confirmada. Despacho revisará los detalles y se comunicará con usted para confirmar la tarifa final y la ventana de recogida.">Your load is not confirmed yet. Dispatch will review the details and contact you shortly to confirm the final rate and pickup window.</p>
-      <p class="fs-call mono" data-en="Need it sooner? Call (239)&nbsp;526-1266." data-es="¿Lo necesita antes? Llame al (239)&nbsp;526-1266.">Need it sooner? Call (239)&nbsp;526-1266.</p>
     </div>
   </div>
 </section>
@@ -825,6 +599,231 @@
   </div>
 </section>
 
+<!-- ============ DIRECT CARGO (NUEVO) ============
+     Carga directa con el mismo tráiler. Los límites que se ven acá
+     (8,000 lb · 15 ft · 8 ft · 6 ft) tienen que coincidir con
+     CARGO_LIMITS en app.js, y las tarifas con los data-rate="..." de los
+     radio "trailer_option". El formulario manda a dispatch por Web3Forms
+     (misma access key que el de vehículos). ===== -->
+<section class="sec cargo" id="cargo">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker is-new" data-en="New / Direct Cargo" data-es="Nuevo / Carga directa">New / Direct Cargo</div>
+      <h2 data-en="Same trailer. Same crew. Now hauling <span class=&quot;hl&quot;>your cargo</span>." data-es="El mismo tráiler. El mismo equipo. Ahora llevamos <span class=&quot;hl&quot;>su carga</span>.">Same trailer. Same crew. Now hauling <span class="hl">your cargo</span>.</h2>
+      <p data-en="The trailer that moves your vehicles now runs direct cargo too. Building materials, metal, concrete, equipment and more &mdash; hauled under our own FMCSA authority, priced per mile, and covered by the same $100K cargo insurance." data-es="El tráiler que mueve sus vehículos ahora también lleva carga directa. Materiales de construcción, metal, concreto, equipos y más &mdash; bajo nuestra propia autoridad FMCSA, con precio por milla y cubierto por el mismo seguro de carga de $100K.">The trailer that moves your vehicles now runs direct cargo too. Building materials, metal, concrete, equipment and more &mdash; hauled under our own FMCSA authority, priced per mile, and covered by the same $100K cargo insurance.</p>
+    </div>
+
+    <!-- placa de capacidad del tráiler -->
+    <div class="cg-specs reveal">
+      <div class="cg-spec"><div class="cg-sv">8,000<small>lb</small></div><div class="cg-sl mono" data-en="Max weight" data-es="Peso máximo">Max weight</div></div>
+      <div class="cg-spec"><div class="cg-sv">15<small>ft</small></div><div class="cg-sl mono" data-en="Max length" data-es="Largo máximo">Max length</div></div>
+      <div class="cg-spec"><div class="cg-sv">8<small>ft</small></div><div class="cg-sl mono" data-en="Max width" data-es="Ancho máximo">Max width</div></div>
+      <div class="cg-spec"><div class="cg-sv">6<small>ft</small></div><div class="cg-sl mono" data-en="Max height" data-es="Alto máximo">Max height</div></div>
+    </div>
+
+    <!-- tarifas + qué llevamos / qué no -->
+    <div class="cg-info">
+      <div class="cg-rate reveal">
+        <div class="ico mono">// 01 &middot; <span data-en="Standard open" data-es="Abierto estándar">Standard open</span></div>
+        <div class="cg-price">$1.50<small data-en="/ mile" data-es="/ milla">/ mile</small></div>
+        <p data-en="Open trailer, load secured with straps and chains. Ideal for steel, concrete products, lumber and equipment." data-es="Tráiler abierto, carga asegurada con correas y cadenas. Ideal para acero, productos de concreto, madera y equipos.">Open trailer, load secured with straps and chains. Ideal for steel, concrete products, lumber and equipment.</p>
+      </div>
+      <div class="cg-rate reveal">
+        <div class="ico mono">// 02 &middot; <span data-en="Tarp cover" data-es="Con lona">Tarp cover</span></div>
+        <div class="cg-price">$1.75<small data-en="/ mile" data-es="/ milla">/ mile</small></div>
+        <p data-en="Tarped and strapped to protect your load from rain, sun and road debris. Ideal for drywall, insulation and anything that shouldn&rsquo;t get wet." data-es="Con lona y amarrada para proteger su carga de la lluvia, el sol y lo que salte del camino. Ideal para drywall, aislante y todo lo que no se deba mojar.">Tarped and strapped to protect your load from rain, sun and road debris. Ideal for drywall, insulation and anything that shouldn&rsquo;t get wet.</p>
+      </div>
+      <div class="cg-haul reveal">
+        <div class="cg-haul-h mono" data-en="We haul" data-es="Llevamos">We haul</div>
+        <ul class="cg-chips">
+          <li data-en="Building materials" data-es="Materiales de construcción">Building materials</li>
+          <li data-en="Lumber &amp; drywall" data-es="Madera y drywall">Lumber &amp; drywall</li>
+          <li data-en="Metal rods &amp; steel" data-es="Varillas y acero">Metal rods &amp; steel</li>
+          <li data-en="Concrete products" data-es="Productos de concreto">Concrete products</li>
+          <li data-en="Machinery &amp; equipment" data-es="Maquinaria y equipos">Machinery &amp; equipment</li>
+          <li data-en="Palletized goods" data-es="Mercadería en pallets">Palletized goods</li>
+        </ul>
+        <div class="cg-haul-h no mono" data-en="We don&rsquo;t haul" data-es="No llevamos">We don&rsquo;t haul</div>
+        <ul class="cg-chips no">
+          <li data-en="Hazardous materials" data-es="Materiales peligrosos">Hazardous materials</li>
+          <li data-en="Personal / household moves" data-es="Mudanzas personales">Personal / household moves</li>
+        </ul>
+        <p class="cg-haul-note mono" data-en="Every load must be disclosed &mdash; tell us exactly what it is." data-es="Toda carga se debe declarar &mdash; díganos exactamente qué es.">Every load must be disclosed &mdash; tell us exactly what it is.</p>
+      </div>
+    </div>
+
+    <!-- ===== PLANIFICADOR DE CARGA + SOLICITUD ===== -->
+    <form class="cg-form" id="cargoForm">
+      <!-- Web3Forms: misma access key que el formulario de vehículos (llega a dispatch@shoppiis.com) -->
+      <input type="hidden" name="access_key" value="66ce08a9-dd33-44a8-959d-d5335bdc9608">
+      <!-- el asunto se completa en app.js: "New Shoppiis CARGO Request — [origen] → [destino]" -->
+      <input type="hidden" name="subject" value="New Shoppiis CARGO Request">
+      <input type="hidden" name="service" value="DIRECT CARGO">
+      <input type="hidden" name="status" value="CARGO REQUEST — NOT YET CONFIRMED">
+      <input type="hidden" name="from_name" value="Shoppiis Website">
+      <input type="hidden" name="dimensions" value="">
+      <input type="hidden" name="fit_check" value="">
+      <input type="hidden" name="estimate" value="">
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
+      <div class="cg-planner-head reveal">
+        <h3 data-en="Will it fit? Check your load live." data-es="¿Entra? Revise su carga en vivo.">Will it fit? Check your load live.</h3>
+        <p data-en="Enter your cargo&rsquo;s size and weight &mdash; the trailer plan updates as you type. Then send the request right from here." data-es="Ingrese el tamaño y el peso de su carga &mdash; el plano del tráiler se actualiza mientras escribe. Después envíe la solicitud desde acá mismo.">Enter your cargo&rsquo;s size and weight &mdash; the trailer plan updates as you type. Then send the request right from here.</p>
+      </div>
+
+      <div class="cg-planner">
+        <!-- columna izquierda: datos de la carga -->
+        <div class="cg-panel reveal">
+          <div class="cg-step mono">// 01 &middot; <span data-en="Your cargo" data-es="Su carga">Your cargo</span></div>
+          <div class="qrow">
+            <div class="field"><label data-en="Cargo type" data-es="Tipo de carga">Cargo type</label>
+              <select name="cargo_type">
+                <option data-opt-en="Building materials" data-opt-es="Materiales de construcción">Building materials</option>
+                <option data-opt-en="Lumber / drywall" data-opt-es="Madera / drywall">Lumber / drywall</option>
+                <option data-opt-en="Metal rods / steel" data-opt-es="Varillas / acero">Metal rods / steel</option>
+                <option data-opt-en="Concrete products" data-opt-es="Productos de concreto">Concrete products</option>
+                <option data-opt-en="Machinery / equipment" data-opt-es="Maquinaria / equipos">Machinery / equipment</option>
+                <option data-opt-en="Palletized goods" data-opt-es="Mercadería en pallets">Palletized goods</option>
+                <option data-opt-en="Other (describe below)" data-opt-es="Otro (descríbalo abajo)">Other (describe below)</option>
+              </select>
+            </div>
+            <div class="field"><label data-en="What exactly is it?" data-es="¿Qué es exactamente?">What exactly is it?</label><input type="text" name="cargo_description" placeholder="e.g. 2 pallets of concrete blocks" data-ph-en="e.g. 2 pallets of concrete blocks" data-ph-es="ej. 2 pallets de bloques de concreto" required></div>
+          </div>
+
+          <div class="cg-dims-head">
+            <span class="mono" data-en="Size &amp; weight" data-es="Tamaño y peso">Size &amp; weight</span>
+            <div class="cg-unit" role="group" aria-label="Units">
+              <button type="button" data-unit="ft" class="active">FT</button><div class="lang-sep"></div><button type="button" data-unit="in">IN</button>
+            </div>
+          </div>
+          <div class="cg-dims">
+            <div class="field"><label><span data-en="Length" data-es="Largo">Length</span> <span class="cg-u">(ft)</span></label><input type="number" inputmode="decimal" min="0" step="any" data-dim="length" placeholder="&le; 15"></div>
+            <div class="field"><label><span data-en="Width" data-es="Ancho">Width</span> <span class="cg-u">(ft)</span></label><input type="number" inputmode="decimal" min="0" step="any" data-dim="width" placeholder="&le; 8"></div>
+            <div class="field"><label><span data-en="Height" data-es="Alto">Height</span> <span class="cg-u">(ft)</span></label><input type="number" inputmode="decimal" min="0" step="any" data-dim="height" placeholder="&le; 6"></div>
+            <div class="field"><label><span data-en="Weight" data-es="Peso">Weight</span> (lb)</label><input type="number" inputmode="numeric" min="0" step="any" data-dim="weight" name="weight_lb" placeholder="&le; 8,000"></div>
+          </div>
+
+          <div class="cg-opt-h mono" data-en="Trailer option" data-es="Opción de tráiler">Trailer option</div>
+          <div class="cg-opts">
+            <label class="cg-opt">
+              <input type="radio" name="trailer_option" value="Standard open — $1.50/mi" data-rate="1.50" data-label="Standard open" checked>
+              <span class="cg-opt-box"><b data-en="Standard open" data-es="Abierto estándar">Standard open</b><span class="mono">$1.50 / mi</span></span>
+            </label>
+            <label class="cg-opt">
+              <input type="radio" name="trailer_option" value="Tarp cover — $1.75/mi" data-rate="1.75" data-label="Tarp cover">
+              <span class="cg-opt-box"><b data-en="Tarp cover" data-es="Con lona">Tarp cover</b><span class="mono">$1.75 / mi</span></span>
+            </label>
+          </div>
+          <ul class="cg-tips">
+            <li data-en="<span>Measure at the <b>longest, widest and tallest point</b> &mdash; including pallets and anything that sticks out.</span>" data-es="<span>Mida en el <b>punto más largo, más ancho y más alto</b> &mdash; incluyendo pallets y todo lo que sobresalga.</span>"><span>Measure at the <b>longest, widest and tallest point</b> &mdash; including pallets and anything that sticks out.</span></li>
+            <li data-en="<span>Not sure of the exact weight? Give your <b>best estimate</b> &mdash; dispatch will confirm before pickup.</span>" data-es="<span>¿No sabe el peso exacto? Dé su <b>mejor estimado</b> &mdash; despacho lo confirma antes de la recogida.</span>"><span>Not sure of the exact weight? Give your <b>best estimate</b> &mdash; dispatch will confirm before pickup.</span></li>
+            <li data-en="<span>Every load rides under the same <b>$100K cargo insurance</b> as our vehicle moves.</span>" data-es="<span>Toda carga viaja con el mismo <b>seguro de carga de $100K</b> que nuestros vehículos.</span>"><span>Every load rides under the same <b>$100K cargo insurance</b> as our vehicle moves.</span></li>
+          </ul>
+        </div>
+
+        <!-- columna derecha: plano del tráiler en vivo -->
+        <div class="cg-viz reveal" aria-live="polite">
+          <div class="cg-viz-top">
+            <span class="mono cg-viz-t" data-en="Live load plan" data-es="Plano de carga en vivo">Live load plan</span>
+            <span class="cg-chip mono" id="cgChip"></span>
+          </div>
+          <svg class="cg-svg" id="cgSvg" viewBox="0 0 520 556" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Trailer load diagram">
+            <defs>
+              <pattern id="cgGrid" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M22 0H0V22" fill="none" stroke="#1f1f1f" stroke-width="1"/></pattern>
+              <pattern id="cgTarp" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#232323"/><rect width="3" height="8" fill="rgba(242,226,10,.35)"/></pattern>
+            </defs>
+            <rect x="0" y="0" width="520" height="556" fill="url(#cgGrid)"/>
+
+            <!-- VISTA LATERAL: largo × alto -->
+            <text class="cg-vl" x="20" y="22">SIDE &middot; L &times; H</text>
+            <g class="cg-dimline"><path d="M110 46H440M110 40V52M440 40V52"/></g>
+            <text class="cg-dt" x="275" y="40" text-anchor="middle">15 FT MAX</text>
+            <g class="cg-dimline"><path d="M470 68V200M464 68H476M464 200H476"/></g>
+            <text class="cg-dt" x="480" y="138">6 FT</text>
+            <rect class="cg-env" x="110" y="68" width="330" height="132"/>
+            <!-- tráiler cuello de ganso -->
+            <path class="cg-trailer" d="M110 210V158H34V172H96V210Z"/>
+            <rect class="cg-trailer" x="110" y="200" width="330" height="10"/>
+            <circle class="cg-wheel" cx="372" cy="222" r="12"/><circle class="cg-wheel" cx="408" cy="222" r="12"/>
+            <path class="cg-ground" d="M14 235H506"/>
+            <g id="cgSide">
+              <rect class="cg-box" x="275" y="200" width="0" height="0"/>
+              <path class="cg-tarp" d=""/>
+              <g class="cg-straps"></g>
+              <text class="cg-wt" x="275" y="190" text-anchor="middle"></text>
+            </g>
+
+            <!-- VISTA SUPERIOR: largo × ancho -->
+            <text class="cg-vl" x="20" y="290">TOP &middot; L &times; W</text>
+            <rect class="cg-trailer" x="34" y="388" width="76" height="60"/>
+            <rect class="cg-deck" x="110" y="330" width="330" height="176"/>
+            <rect class="cg-env" x="110" y="330" width="330" height="176"/>
+            <g class="cg-dimline"><path d="M110 532H440M110 526V538M440 526V538"/></g>
+            <text class="cg-dt" x="275" y="550" text-anchor="middle">15 FT MAX</text>
+            <g class="cg-dimline"><path d="M470 330V506M464 330H476M464 506H476"/></g>
+            <text class="cg-dt" x="480" y="422">8 FT</text>
+            <g id="cgTop">
+              <rect class="cg-box" x="275" y="418" width="0" height="0"/>
+            </g>
+          </svg>
+
+          <div class="cg-meters">
+            <div class="cg-meter" data-meter="length"><div class="cg-m-row"><span data-en="Length" data-es="Largo">Length</span><b class="mono"></b></div><div class="cg-bar"><i></i></div></div>
+            <div class="cg-meter" data-meter="width"><div class="cg-m-row"><span data-en="Width" data-es="Ancho">Width</span><b class="mono"></b></div><div class="cg-bar"><i></i></div></div>
+            <div class="cg-meter" data-meter="height"><div class="cg-m-row"><span data-en="Height" data-es="Alto">Height</span><b class="mono"></b></div><div class="cg-bar"><i></i></div></div>
+            <div class="cg-meter" data-meter="weight"><div class="cg-m-row"><span data-en="Weight" data-es="Peso">Weight</span><b class="mono"></b></div><div class="cg-bar"><i></i></div></div>
+          </div>
+          <div class="cg-verdict" id="cgVerdict"></div>
+        </div>
+      </div>
+
+      <!-- abajo: ruta + contacto + estimado -->
+      <div class="cg-bottom reveal">
+        <div class="cg-panel">
+          <div class="cg-step mono">// 02 &middot; <span data-en="Route &amp; contact" data-es="Ruta y contacto">Route &amp; contact</span></div>
+          <div class="qrow">
+            <div class="field"><label data-en="Pickup location" data-es="Lugar de recogida">Pickup location</label><input type="text" name="origin" placeholder="City, ST or ZIP" data-ph-en="City, ST or ZIP" data-ph-es="Ciudad, Est. o ZIP" required></div>
+            <div class="field"><label data-en="Delivery location" data-es="Lugar de entrega">Delivery location</label><input type="text" name="destination" placeholder="City, ST or ZIP" data-ph-en="City, ST or ZIP" data-ph-es="Ciudad, Est. o ZIP" required></div>
+          </div>
+          <div class="qrow">
+            <div class="field"><label data-en="Approx. distance (miles)" data-es="Distancia aprox. (millas)">Approx. distance (miles)</label><input type="number" inputmode="numeric" min="0" step="1" name="distance_mi" placeholder="Optional" data-ph-en="Optional" data-ph-es="Opcional"><small class="cg-route mono" id="cgRoute" hidden></small></div>
+            <div class="field"><label data-en="Preferred pickup date" data-es="Fecha de recogida preferida">Preferred pickup date</label><input type="date" name="date"></div>
+          </div>
+          <div class="qrow">
+            <div class="field"><label data-en="Your name" data-es="Su nombre">Your name</label><input type="text" name="name" placeholder="Full name or company" data-ph-en="Full name or company" data-ph-es="Nombre completo o empresa" required></div>
+            <div class="field"><label data-en="Phone" data-es="Teléfono">Phone</label><input type="tel" name="phone" placeholder="(___) ___-____" required></div>
+          </div>
+          <div class="qrow">
+            <div class="field"><label data-en="Email" data-es="Correo">Email</label><input type="email" name="email" placeholder="you@email.com" data-ph-en="you@email.com" data-ph-es="correo@ejemplo.com" required></div>
+            <div class="field"><label data-en="Notes (optional)" data-es="Notas (opcional)">Notes (optional)</label><input type="text" name="notes" placeholder="Loading dock, forklift on site, timing…" data-ph-en="Loading dock, forklift on site, timing…" data-ph-es="Muelle de carga, montacargas en sitio, horarios…"></div>
+          </div>
+        </div>
+
+        <div class="cg-summary">
+          <div class="cg-est">
+            <span class="mono" data-en="Estimated total" data-es="Total estimado">Estimated total</span>
+            <div class="cg-est-price" id="cgPrice">$1.50<small>/ mi</small></div>
+            <div class="cg-est-line mono" id="cgEstLine"></div>
+          </div>
+          <label class="cg-cert">
+            <input type="checkbox" name="certification" value="Customer confirms: no hazardous materials, not a personal/household move, cargo accurately disclosed." required>
+            <span data-en="I confirm this load contains <b>no hazardous materials</b>, is <b>not a personal / household move</b>, and is described accurately." data-es="Confirmo que esta carga <b>no contiene materiales peligrosos</b>, <b>no es una mudanza personal</b> y está descrita correctamente.">I confirm this load contains <b>no hazardous materials</b>, is <b>not a personal / household move</b>, and is described accurately.</span>
+          </label>
+          <button type="submit" class="btn" id="cgSubmit" data-en="Request Cargo Pickup &rarr;" data-es="Solicitar retiro de carga &rarr;">Request Cargo Pickup &rarr;</button>
+          <div class="cg-msg mono" id="cgMsg" hidden></div>
+          <div class="iq-disclaimer" data-en="This is a request, not a confirmed booking. Dispatch will review your load and confirm the final rate and pickup window &mdash; usually same business day." data-es="Esta es una solicitud, no una reserva confirmada. Despacho revisará su carga y confirmará la tarifa final y la ventana de recogida &mdash; normalmente el mismo día hábil.">This is a request, not a confirmed booking. Dispatch will review your load and confirm the final rate and pickup window &mdash; usually same business day.</div>
+        </div>
+      </div>
+    </form>
+
+    <div class="form-success cg-success" id="cargoSuccess">
+      <h3 data-en="Cargo request received." data-es="Solicitud de carga recibida.">Cargo request received.</h3>
+      <p data-en="Your load is not confirmed yet. Dispatch will review the details and contact you shortly to confirm the final rate and pickup window." data-es="Su carga todavía no está confirmada. Despacho revisará los detalles y se comunicará con usted para confirmar la tarifa final y la ventana de recogida.">Your load is not confirmed yet. Dispatch will review the details and contact you shortly to confirm the final rate and pickup window.</p>
+      <p class="fs-call mono" data-en="Need it sooner? Call (239)&nbsp;526-1266." data-es="¿Lo necesita antes? Llame al (239)&nbsp;526-1266.">Need it sooner? Call (239)&nbsp;526-1266.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ============ CREDIBILITY ============ -->
 <section class="sec cred" id="cred">
   <div class="wrap">
@@ -906,9 +905,9 @@
       <div class="faq-item"><button class="faq-q">Is my vehicle insured during transport?<span class="sign">+</span></button><div class="faq-a"><div class="inner">Yes. Shoppiis carries $100,000 in primary cargo &amp; liability coverage (BIPD) through Progressive, and we operate under active FMCSA interstate authority (USDOT 4261491 / MC 1653490). You can request a certificate of insurance and verify our authority through the FMCSA SAFER system before booking.</div></div></div>
       <div class="faq-item"><button class="faq-q">How soon can you pick up my vehicle?<span class="sign">+</span></button><div class="faq-a"><div class="inner">It depends on the lane and current routing, but we usually provide an available pickup window the same business day you request a quote. Our Southeast corridors move fastest. Tell us your preferred date in the quote form and we&rsquo;ll confirm what&rsquo;s realistic.</div></div></div>
       <div class="faq-item"><button class="faq-q">Do you transport non-running or inoperable vehicles?<span class="sign">+</span></button><div class="faq-a"><div class="inner">Yes. We handle both running and non-running vehicles &mdash; just select the condition in your quote request so we bring the right equipment and securement. Non-running vehicles may require a winch and additional handling, which we&rsquo;ll account for in the quote.</div></div></div>
-      <div class="faq-item"><button class="faq-q"><span data-en="Do you haul cargo besides vehicles?" data-es="¿Llevan carga además de vehículos?">Do you haul cargo besides vehicles?</span><span class="sign">+</span></button><div class="faq-a"><div class="inner" data-en="Yes. The same trailer runs direct cargo up to 8,000&nbsp;lb and 15&nbsp;ft long, 8&nbsp;ft wide and 6&nbsp;ft high &mdash; building materials, metal rods and steel, concrete products, equipment and more. It&rsquo;s $1.50 per mile on a standard open trailer or $1.75 per mile tarped, and the same $100K cargo insurance covers your load. We don&rsquo;t accept hazardous materials or personal household moves, and every load must be disclosed. Use the load planner in the <a href=&quot;#cargo&quot;>Direct Cargo</a> section to check fit and send a request." data-es="Sí. El mismo tráiler lleva carga directa de hasta 8,000&nbsp;lb y 15&nbsp;ft de largo, 8&nbsp;ft de ancho y 6&nbsp;ft de alto &mdash; materiales de construcción, varillas y acero, productos de concreto, equipos y más. Cuesta $1.50 por milla en tráiler abierto estándar o $1.75 por milla con lona, y el mismo seguro de carga de $100K cubre su carga. No aceptamos materiales peligrosos ni mudanzas personales, y toda carga se debe declarar. Use el planificador en la sección <a href=&quot;#cargo&quot;>Carga directa</a> para ver si entra y enviar la solicitud.">Yes. The same trailer runs direct cargo up to 8,000&nbsp;lb and 15&nbsp;ft long, 8&nbsp;ft wide and 6&nbsp;ft high &mdash; building materials, metal rods and steel, concrete products, equipment and more. It&rsquo;s $1.50 per mile on a standard open trailer or $1.75 per mile tarped, and the same $100K cargo insurance covers your load. We don&rsquo;t accept hazardous materials or personal household moves, and every load must be disclosed. Use the load planner in the <a href="#cargo">Direct Cargo</a> section to check fit and send a request.</div></div></div>
       <div class="faq-item"><button class="faq-q">What areas do you serve?<span class="sign">+</span></button><div class="faq-a"><div class="inner">We operate across the Southeastern United States &mdash; Florida, Georgia, Mississippi, Alabama, South Carolina, North Carolina, and Tennessee. Jacksonville is a major national auto-transport hub and anchors our network. Have a lane outside this area? Ask &mdash; we hold interstate authority and can quote it.</div></div></div>
       <div class="faq-item"><button class="faq-q">How does pricing and payment work?<span class="sign">+</span></button><div class="faq-a"><div class="inner">Transport is priced per mile based on distance, vehicle count, and condition &mdash; no surprise fees. You&rsquo;ll get a clear quote before you book. Customers don&rsquo;t pay until the Shoppiis truck arrives for pickup, the vehicle has been inspected, and the transport details have been confirmed &mdash; dispatch then sends the final invoice for payment. Brokers can ask about carrier-packet and payment arrangements directly with dispatch.</div></div></div>
+      <div class="faq-item"><button class="faq-q"><span data-en="Do you haul cargo besides vehicles?" data-es="¿Llevan carga además de vehículos?">Do you haul cargo besides vehicles?</span><span class="sign">+</span></button><div class="faq-a"><div class="inner" data-en="Yes. The same trailer runs direct cargo up to 8,000&nbsp;lb and 15&nbsp;ft long, 8&nbsp;ft wide and 6&nbsp;ft high &mdash; building materials, metal rods and steel, concrete products, equipment and more. It&rsquo;s $1.50 per mile on a standard open trailer or $1.75 per mile tarped, and the same $100K cargo insurance covers your load. We don&rsquo;t accept hazardous materials or personal household moves, and every load must be disclosed. Use the load planner in the <a href=&quot;#cargo&quot;>Direct Cargo</a> section to check fit and send a request." data-es="Sí. El mismo tráiler lleva carga directa de hasta 8,000&nbsp;lb y 15&nbsp;ft de largo, 8&nbsp;ft de ancho y 6&nbsp;ft de alto &mdash; materiales de construcción, varillas y acero, productos de concreto, equipos y más. Cuesta $1.50 por milla en tráiler abierto estándar o $1.75 por milla con lona, y el mismo seguro de carga de $100K cubre su carga. No aceptamos materiales peligrosos ni mudanzas personales, y toda carga se debe declarar. Use el planificador en la sección <a href=&quot;#cargo&quot;>Carga directa</a> para ver si entra y enviar la solicitud.">Yes. The same trailer runs direct cargo up to 8,000&nbsp;lb and 15&nbsp;ft long, 8&nbsp;ft wide and 6&nbsp;ft high &mdash; building materials, metal rods and steel, concrete products, equipment and more. It&rsquo;s $1.50 per mile on a standard open trailer or $1.75 per mile tarped, and the same $100K cargo insurance covers your load. We don&rsquo;t accept hazardous materials or personal household moves, and every load must be disclosed. Use the load planner in the <a href="#cargo">Direct Cargo</a> section to check fit and send a request.</div></div></div>
     </div>
   </div>
 </section>
@@ -950,7 +949,7 @@
       </div>
       <div class="foot-col">
         <h4 data-en="Company" data-es="Empresa">Company</h4>
-        <a href="#services" data-en="Services" data-es="Servicios">Services</a><a href="#cargo" data-en="Direct Cargo" data-es="Carga directa">Direct Cargo</a><a href="#why" data-en="Why Shoppiis" data-es="Por qué Shoppiis">Why Shoppiis</a><a href="#operations" data-en="Operations" data-es="Operaciones">Operations</a><a href="#gallery" data-en="Fleet" data-es="Flota">Fleet</a><a href="#team" data-en="Team" data-es="Equipo">Team</a><a href="#faq" data-en="FAQ" data-es="Preguntas">FAQ</a>
+        <a href="#services" data-en="Services" data-es="Servicios">Services</a><a href="#why" data-en="Why Shoppiis" data-es="Por qué Shoppiis">Why Shoppiis</a><a href="#operations" data-en="Operations" data-es="Operaciones">Operations</a><a href="#cargo" data-en="Direct Cargo" data-es="Carga directa">Direct Cargo</a><a href="#gallery" data-en="Fleet" data-es="Flota">Fleet</a><a href="#team" data-en="Team" data-es="Equipo">Team</a><a href="#faq" data-en="FAQ" data-es="Preguntas">FAQ</a>
       </div>
       <div class="foot-col">
         <h4 data-en="Get a Quote" data-es="Cotización">Get a Quote</h4>

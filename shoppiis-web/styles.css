@@ -315,13 +315,6 @@ h2{font-family:'Archivo';font-weight:800;letter-spacing:-.025em;font-size:clamp(
   html[lang="es"] .nav-links a{letter-spacing:.015em}
   html[lang="es"] .nav-links .btn{padding:11px 12px}
 }
-/* aviso en el hero */
-.hero-new{display:inline-flex;align-items:center;gap:12px;margin-top:22px;padding:8px 14px 8px 8px;border:1px solid var(--grey-line);background:var(--panel);font-size:.86rem;color:#cfcfca;transition:border-color .2s,background .2s;max-width:100%}
-.hero-new:hover{border-color:var(--yellow);background:var(--panel2)}
-.hero-new .hn-tag{background:var(--yellow);color:#000;font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 8px;flex-shrink:0}
-.hero-new .hn-txt b{color:var(--yellow);font-weight:700}
-.hero-new .hn-arr{color:var(--yellow);font-weight:800;transition:transform .2s;flex-shrink:0}
-.hero-new:hover .hn-arr{transform:translateX(3px)}
 /* kicker con punto pulsante */
 .kicker.is-new::after{content:"";width:7px;height:7px;background:var(--yellow);border-radius:50%;animation:pulse 2.2s infinite}
 
@@ -479,8 +472,6 @@ h2{font-family:'Archivo';font-weight:800;letter-spacing:-.025em;font-size:clamp(
   .cg-viz{padding:16px}
   .cg-meters{grid-template-columns:1fr;gap:10px}
   .cg-est-price{font-size:2.2rem}
-  .hero-new{font-size:.8rem;margin-top:16px;align-items:flex-start}
-  .hero-new .hn-arr{display:none}
 }
 
 /* ===== proceso del cliente (5 pasos) ===== */
@@ -615,11 +606,11 @@ footer{background:var(--black);border-top:1px solid var(--grey-line);padding:60p
   .ticker{order:5}
   #what{order:6}
   #services{order:7}
-  #cargo{order:7}
   #why{order:8}
   #metrics{order:9}
   #moves{order:10}
   #operations{order:11}
+  #cargo{order:11} /* carga directa: servicio secundario, después del recorrido de autos */
   #cred{order:12}
   #gallery{order:13}
   #team{order:14}
