@@ -226,6 +226,7 @@ const DICT = {
   "Finance &amp; Operations": "Finanzas y operaciones",
   "Keeps the numbers honest and the pricing fair. Finance grad out of UCF who makes sure every truck we add actually pays for itself.":
     "Mantiene los números claros y los precios justos. Graduado en finanzas de UCF que se asegura de que cada camión que sumamos realmente se pague solo.",
+  "Cybersecurity &amp; IAM": "Ciberseguridad e IAM",
 
   // --- 12 FAQ ---
   "12 / Questions, Answered": "12 / Preguntas respondidas",

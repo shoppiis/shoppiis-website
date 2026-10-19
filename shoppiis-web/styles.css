@@ -191,8 +191,9 @@ h2{font-family:'Archivo';font-weight:800;letter-spacing:-.025em;font-size:clamp(
 .cred-note a{color:var(--yellow);border-bottom:1px solid var(--yellow-dim)}
 
 /* TEAM */
-.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.tcard{background:var(--panel);border:1px solid var(--grey-line);padding:34px 30px;transition:border-color .2s;position:relative}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+@media(max-width:1100px){.team-grid{grid-template-columns:repeat(2,1fr)}}
+.tcard{background:var(--panel);border:1px solid var(--grey-line);padding:34px 28px;transition:border-color .2s;position:relative}
 .tcard:hover{border-color:var(--yellow)}
 .tcard .avatar{width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,#222,#161616);border:1px solid var(--grey-line);display:flex;align-items:center;justify-content:center;margin-bottom:22px;position:relative;overflow:hidden}
 .tcard .avatar svg{width:48px;height:48px;fill:#3a3a38}

@@ -20,7 +20,8 @@ shoppiis-web/
 │   └── team/
 │       ├── jorge.jpg
 │       ├── benjamin.jpg
-│       └── ignacio.jpg
+│       ├── ignacio.jpg
+│       └── airfan.jpg
 ├── netlify.toml      ← config opcional para Netlify
 ├── 404.html
 └── README.md
