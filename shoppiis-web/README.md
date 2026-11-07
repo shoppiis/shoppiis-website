@@ -168,7 +168,7 @@ Tarifas actuales:
 
 | Tipo de vehículo                        | Tarifa    |
 |-----------------------------------------|-----------|
-| Standard Car, Truck or SUV              | $1.25/mi  |
+| Standard Car, Truck or SUV              | $1.50/mi  |
 | Dually Truck or Van                     | $1.75/mi  |
 | Oversized or Custom Vehicle Delivery    | $2.00/mi  |
 
